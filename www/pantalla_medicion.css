@@ -20,29 +20,90 @@
 #valorMedicion{
 	position: absolute;
 	width: 98%;
-	top: 50px;
+	top: 80px;
 	
 	text-align: center;
-	color: rgb(50, 50, 50);
+	color: rgb(50,50,50);
 	font-size: 100px;
 	font-weight: bold;
 	display: none;
-	
 }
+	
 
 
 #pantalla_medicion
 #valorMedicionTiempoReal{
 	position: absolute;
 	width: 98%;
-	top: 50px;
+	top: 80px;
 	
 	text-align: center;
-	color: rgb(50, 50, 50);
+	color: rgb(255,255,255);
 	font-size: 100px;
 	font-weight: bold;
+}
+	
+#pantalla_medicion
+#cotaMedicion{
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	right: 5px;
+	height: 50px;
+	color: rgb(50,50,50);
+	font-size: 20px;
+	display: none;
+}
+
+
+#pantalla_medicion
+#cotaSeleccionada{
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	right: 5px;
+	height: 50px;
+	color: rgb(255,255,255);
+	font-size: 20px;
+}
+#pantalla_medicion
+div.tipoPieza{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+#pantalla_medicion
+div.cota{
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
 	
 }
+
+
+#pantalla_medicion
+#dialMedicionTiempoReal{
+	position: absolute;
+	left: 1%;
+	top: 190px;
+		
+	width: 98%;
+	height: 80px;
+}
+
+
+#pantalla_medicion
+#dialMedicion{
+	position: absolute;
+	left: 1%;
+	top: 190px;
+	
+	width: 98%;
+	height: 80px;
+	display: none;
+}
+
 
 #pantalla_medicion
 #btn_lista_mediciones{

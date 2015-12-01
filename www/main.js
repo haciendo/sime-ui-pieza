@@ -23,6 +23,25 @@ $(function() {
 
 
 var datos = {
+	tipoPiezas: {
+		"idTipoPiezaXXXXXX": {
+			id: "idTipoPiezaXXXXXX",
+			descripcion: "Engranaje espirilénguico"
+		}
+		
+	},
+	cotas:{
+		"idCotaXXXXXXXX": {
+			id: "idCotaXXXXXXXX",
+			idTipoPieza: "idTipoPiezaXXXXXX",
+			descripcion: "ancho del diente",
+			base: 50220,
+			tolMax: 50230,
+			tolMin: 50210
+		}
+	},
+	cotaSeleccionada: null,
+	
 	mediciones: []
 };
 
@@ -40,14 +59,18 @@ var onDeviceReady = function() {
 	
 	Vx.when({tipoDeMensaje:"vortex.debug.error"}, function(m){console.log(m);})
 	
+	//se selecciona la primer cota, me parece que hay que usar un simple vector...TODO: pensar eso
+	datos.cotaSeleccionada = datos.cotas[Object.keys(datos.cotas)[0]];
+	
 	
 	toolbar();
-	
 	
 	pantalla_medicion();
 	pantalla_lista_mediciones();
 	pantalla_configuracion();
 	pantalla_exportar();
+	
+	
 	
 	/* START POINT */
 	$('.pantalla').hide();

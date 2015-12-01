@@ -4,21 +4,25 @@ var gestor_medicion = {
 		
 		Vx.when({
 			tipoDeMensaje:"medicion"
-
+			
 		},function(mensaje){
 			
 			var medicion = {
 				index				: datos.mediciones.length,
 				fecha				: moment().format('YYYY-MM-DD hh:mm:ss'),
+				idTipoPieza			: datos.cotaSeleccionada.idTipoPieza,
+				idCota				: datos.cotaSeleccionada.id,
 				valor				: mensaje.valor,
 				unidad				: mensaje.unidad
 			};
 			
-			// DB: SE GUARDA EL DATO
-			datos.mediciones.push(medicion);
-			////
 			
+			datos.mediciones.push(medicion);
 			self.onMedicion(medicion);
+			
+			
+			//TODO: moveNextCota
+			
 		});
 		
 		
