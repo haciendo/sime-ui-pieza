@@ -1,3 +1,8 @@
+var mockup_handler_id_setInterval_medicion;
+var mockup_handler_id_setInterval_medicionTiempoReal;
+var mockup_handler_id_setInterval_stopTimers;
+
+
 $(function(){
 	
 		
@@ -31,32 +36,27 @@ $(function(){
 			},
 			registerReadCallback: function(read_callback, err_callback){
 				console.log("mock - serial.registerReadCallback");
-
-				///// TO DO:
-				/*
-				envíar mensajes de medicionTiempoReal y medicion
-				*/
 				
-				setInterval(function(){
-
-					read_callback(((Math.random() * 200.0) - 100).toFixed(3)+" mm\n");
+				
+				$('#marca_sime').on('click', function(){
+					read_callback(((Math.random() * 12) + datos.cotaSeleccionada.base).toFixed(0)+" mm\n");
 					console.log("mock - read_callback medicion");
-				}, 3000);
+					
+				});
+				
 				
 				var iSenoMock = 0
 				
 				setInterval(function(){
-					
-					read_callback(((Math.sin(iSenoMock/180*Math.PI) * 200.0) - 100).toFixed(3)+" mm tr\n");
-					
+					read_callback(((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0)+" mm tr\n");
+					// no logea, sería mucho
 					iSenoMock++;
 					
-					if(iSenoMock>180){
+					if(iSenoMock>360){
 						iSenoMock=0;
 					}
 					
-				}, 100);
-				
+				}, 10);
 				
 				
 			},

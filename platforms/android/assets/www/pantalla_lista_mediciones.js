@@ -19,7 +19,7 @@ var pantalla_lista_mediciones = function() {
 		var $medicion_item = $('#plantilla_medicion_item')
 							.clone()
 							.attr('id', 'medicion_item_' + medicion.index)
-							.text( medicion.valor + ' ' +  medicion.unidad );
+							.text( printMedicion(medicion) );
 		
 		
 		ui.find('#lista_mediciones>ul').append($medicion_item);

@@ -20,30 +20,101 @@
 #valorMedicion{
 	position: absolute;
 	width: 98%;
-	top: 50px;
+	top: 80px;
 	
 	text-align: center;
-	color: rgb(50, 50, 50);
+	color: rgb(50,50,50);
 	font-size: 100px;
 	font-weight: bold;
 	display: none;
-	
 }
+	
 
 
 #pantalla_medicion
 #valorMedicionTiempoReal{
 	position: absolute;
-	right: 10px;
-	left: 10px;
-	bottom: 50px;
+	width: 98%;
+	top: 80px;
 	
-	color: rgb(50, 50, 50);
-	font-size: 60px;
+	text-align: center;
+	color: rgb(255,255,255);
+	font-size: 100px;
 	font-weight: bold;
-	
 }
 
+
+
+#pantalla_medicion
+#cotaMedicion{
+	color: rgb(50,50,50);
+	display: none;
+}
+#pantalla_medicion
+#tipoPiezaMedicion{
+	color: rgb(50,50,50);
+	display: none;
+}
+
+
+
+#pantalla_medicion
+#cotaSeleccionada{
+	color: rgb(255,255,255);
+}
+
+#pantalla_medicion
+#tipoPiezaSeleccionada{
+	color: rgb(255,255,255);
+}
+
+
+#cotaAnterior{
+	color: rgb(255,255,255);
+}
+
+
+
+#pantalla_medicion
+div.tipoPieza{
+	position: absolute;
+	top: 10px;
+	left: 5px;
+	height: 50px;
+	font-size: 20px;
+}
+
+#pantalla_medicion
+div.cota{
+	position: absolute;
+	top: 40px;
+	left: 5px;
+	height: 50px;
+	font-size: 20px;
+}
+
+
+#pantalla_medicion
+#dialMedicionTiempoReal{
+	position: absolute;
+	left: 1%;
+	top: 190px;
+		
+	width: 98%;
+	height: 80px;
+}
+
+
+#pantalla_medicion
+#dialMedicion{
+	position: absolute;
+	left: 1%;
+	top: 190px;
+	
+	width: 98%;
+	height: 80px;
+	display: none;
+}
 
 
 #pantalla_medicion

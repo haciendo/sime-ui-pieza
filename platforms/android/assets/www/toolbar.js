@@ -55,7 +55,7 @@ var toolbar = function(){
 	/********* options_list ITEMS ****************/
 	
 	$options_list.find('#link_salir').on('click', function(){
-		window.plugin.backgroundMode.disable();
+		cordova.plugins.backgroundMode.disable();
 		navigator.app.exitApp();
 	});
 	

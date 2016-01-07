@@ -42,43 +42,55 @@
 	font-size: 100px;
 	font-weight: bold;
 }
-	
+
+
+
 #pantalla_medicion
 #cotaMedicion{
-	position: absolute;
-	top: 5px;
-	left: 5px;
-	right: 5px;
-	height: 50px;
 	color: rgb(50,50,50);
-	font-size: 20px;
+	display: none;
+}
+#pantalla_medicion
+#tipoPiezaMedicion{
+	color: rgb(50,50,50);
 	display: none;
 }
 
 
+
 #pantalla_medicion
 #cotaSeleccionada{
-	position: absolute;
-	top: 5px;
-	left: 5px;
-	right: 5px;
-	height: 50px;
 	color: rgb(255,255,255);
-	font-size: 20px;
 }
+
+#pantalla_medicion
+#tipoPiezaSeleccionada{
+	color: rgb(255,255,255);
+}
+
+
+#cotaAnterior{
+	color: rgb(255,255,255);
+}
+
+
+
 #pantalla_medicion
 div.tipoPieza{
 	position: absolute;
-	top: 0px;
-	left: 0px;
+	top: 10px;
+	left: 5px;
+	height: 50px;
+	font-size: 20px;
 }
 
 #pantalla_medicion
 div.cota{
 	position: absolute;
-	bottom: 0px;
-	left: 0px;
-	
+	top: 40px;
+	left: 5px;
+	height: 50px;
+	font-size: 20px;
 }
 
 

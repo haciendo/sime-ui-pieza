@@ -18,44 +18,31 @@
 		
 		
         
-		<title>SIME - UI Minimo</title>
+		<title>SIME - Pieza</title>
 	</head>
 	
-	<body>
+	<body onselectstart='return false'>
 		<div id="pantalla_medicion" class="pantalla">
 			<div class="custom_toolbar">
 				<div id="btn_lista_mediciones" class="toolbar_button"></div>
 			</div>
 			<div id="overlay_medicion"></div>
 			
-			<div id="cotaSeleccionada">
-				<div class="tipoPieza">
-					
-				</div>
-				<div class="cota">
-					
-				</div>
-			</div>
-			<div id="cotaMedicion">
-				<div class="tipoPieza">
-					
-				</div>
-				<div class="cota">
-					
-				</div>
-			</div>
 			
-			<div id="valorMedicion">
-				00.000
-			</div>
-			<div id="valorMedicionTiempoReal">
-				00.000
-			</div>
 			
-			<svg id="dialMedicion" >
-			</svg>
-			<svg id="dialMedicionTiempoReal" >
-			</svg>
+			<div id="tipoPiezaSeleccionada" class="tipoPieza"></div>
+			<div id="tipoPiezaMedicion" class="tipoPieza"></div>
+			
+			<div id="cotaSeleccionada" class="cota"></div>
+			<div id="cotaAnterior" class="cota"></div>
+			<div id="cotaMedicion" class="cota"></div>
+			
+			<div id="valorMedicionTiempoReal">00.000</div>
+			<div id="valorMedicion">00.000</div>
+			
+			<svg id="dialMedicionTiempoReal" ></svg>
+			<svg id="dialMedicion" ></svg>
+			
 		</div>
 		<div id="pantalla_configuracion" class="pantalla">
 			<div class="custom_toolbar">
@@ -123,6 +110,8 @@
 	<script type="text/javascript" src="lib/Cryptico.min.js"></script>
 	<script type="text/javascript" src="lib/socket.io.js"></script>
 	<script type="text/javascript" src="lib/vortex.min.js"></script>
+	<script type="text/javascript" src="lib/hammer.min.js"></script>
+
 	
 	<script type="text/javascript" src="lib/moment.js"></script>
 	<script type="text/javascript" src="lib/snap.svg-min.js"></script>
@@ -139,13 +128,13 @@
 	
 	<script type="text/javascript" src="toolbar.js"></script> 
 	<script type="text/javascript" src="gui_dial.js"></script>
+	<script type="text/javascript" src="gestor_medicion.js"></script>
 	<script type="text/javascript" src="pantalla_medicion.js"></script>
 	<script type="text/javascript" src="pantalla_lista_mediciones.js"></script>
 	<script type="text/javascript" src="pantalla_configuracion.js"></script>
 	<script type="text/javascript" src="pantalla_exportar.js"></script>
 	
 	<script type="text/javascript" src="adaptador_usb.js"></script>
-	<script type="text/javascript" src="gestor_medicion.js"></script>
 	
 	<script type="text/javascript" src="cordova.js"></script>
 </html>

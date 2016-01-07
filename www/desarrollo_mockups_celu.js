@@ -36,21 +36,19 @@ $(function(){
 			},
 			registerReadCallback: function(read_callback, err_callback){
 				console.log("mock - serial.registerReadCallback");
-
-				mockup_handler_id_setInterval_medicion = setInterval(function(){
-					
-					read_callback(((Math.random() * 25) + 50205).toFixed(0)+" mm\n");
+				
+				
+				$('#marca_sime').on('click', function(){
+					read_callback(((Math.random() * 12) + datos.cotaSeleccionada.base).toFixed(0)+" mm\n");
 					console.log("mock - read_callback medicion");
 					
-					
-					
-				}, 9000);
+				});
+				
 				
 				var iSenoMock = 0
 				
-				mockup_handler_id_setInterval_medicionTiempoReal = setInterval(function(){
-					
-					read_callback(((Math.sin(iSenoMock/180*Math.PI) * 25) + 50205).toFixed(0)+" mm tr\n");
+				setInterval(function(){
+					read_callback(((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0)+" mm tr\n");
 					// no logea, sería mucho
 					iSenoMock++;
 					
@@ -60,10 +58,6 @@ $(function(){
 					
 				}, 10);
 				
-				mockup_handler_id_setInterval_stopTimers = setTimeout(function(){
-					clearInterval(mockup_handler_id_setInterval_medicion);
-					clearInterval(mockup_handler_id_setInterval_medicionTiempoReal);
-				}, 50000);
 				
 			},
 			requestPermission: function(success_callback, err_callback){

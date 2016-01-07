@@ -20,5 +20,6 @@ div.pantalla{
 	left:0px;
 	right:0px;
 	background-color: rgb(246, 178, 107);
+	overflow: hidden;
 }
 

@@ -21,8 +21,60 @@ $(function() {
 
 
 
-
 var datos = {
+	tipoPiezas: {
+		"idTipoPiezaXXXXXX": {
+			id: "idTipoPiezaXXXXXX",
+			descripcion: "Engranaje espirilénguico"
+		}/*,
+		"idTipoPiezaHHHHHHHH": {
+			id: "idTipoPiezaHHHHHHHH",
+			descripcion: "Pitorro del totorocho"
+		}*/
+		
+		
+	},
+	cotas:{
+		"idCotaXXXXXXXX": {
+			index: 0,
+			id: "idCotaXXXXXXXX",
+			idTipoPieza: "idTipoPiezaXXXXXX",
+			descripcion: "ancho del diente",
+			base: 50220,
+			tolMax: 50230,
+			tolMin: 50210
+		},
+		"idCotaYYYYYYYY": {
+			index: 1,
+			id: "idCotaYYYYYYYY",
+			idTipoPieza: "idTipoPiezaXXXXXX",
+			descripcion: "radio",
+			base: 32000,
+			tolMax: 32020,
+			tolMin: 31990
+		},
+		"idCotaZZZZZZZZZ": {
+			index: 2,
+			id: "idCotaZZZZZZZZZ",
+			idTipoPieza: "idTipoPiezaXXXXXX",
+			descripcion: "espesor de la corona",
+			base: 100,
+			tolMax: 120,
+			tolMin: 90
+		}/*,
+		"idCotaHHHHHHHHHH": {
+			index: 2,
+			id: "idCotaHHHHHHHHHH",
+			idTipoPieza: "idTipoPiezaHHHHHHHH",
+			descripcion: "espesor de la corona",
+			base: 100,
+			tolMax: 120,
+			tolMin: 90
+		}*/
+		
+	},
+	cotaAnterior: null,
+	cotaSeleccionada: null,
 	mediciones: []
 };
 
@@ -42,12 +94,14 @@ var onDeviceReady = function() {
 	
 	
 	toolbar();
-	
+	gestor_medicion.start();
 	
 	pantalla_medicion();
 	pantalla_lista_mediciones();
 	pantalla_configuracion();
 	pantalla_exportar();
+	
+	
 	
 	/* START POINT */
 	$('.pantalla').hide();
@@ -55,9 +109,10 @@ var onDeviceReady = function() {
 	
 	
 	/***************/
-	
-	window.plugin.backgroundMode.enable();
-	
+	if(window.isphone){
+		console.log(cordova.plugins);
+		cordova.plugins.backgroundMode.enable();
+	}
 };
 
 

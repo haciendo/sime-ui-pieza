@@ -1,3 +1,15 @@
+var mapaUnidad = {
+	"u"		: 0.0001	,
+	"mm"	: 0.001     ,
+	"cm"	: 0.01      ,
+	"m"		: 1
+};
+var printMedicion=function(medicion){
+	return (mapaUnidad[medicion.unidad] * medicion.valor).toFixed(3) + ' ' + medicion.unidad;
+};
+
+
+
 var gestor_medicion = {
 	start: function(){
 		var self = this;
@@ -21,7 +33,8 @@ var gestor_medicion = {
 			self.onMedicion(medicion);
 			
 			
-			//TODO: moveNextCota
+			self.moveCotaNext();
+			//self.moveCotaPrevious();
 			
 		});
 		
@@ -61,10 +74,68 @@ var gestor_medicion = {
 				evento(param);
 			});
 		}
+	},
+	
+	onChangeCota_vEventos: [],
+	onChangeCota: function(param){
+		if(typeof param == "function"){
+			this.onChangeCota_vEventos.push(param);
+		}else{
+			_.each(this.onChangeCota_vEventos, function(evento){
+				evento(param);
+			});
+		}
+	},
+	onMoveCotaNext_vEventos: [],
+	onMoveCotaNext: function(param){
+		if(typeof param == "function"){
+			this.onMoveCotaNext_vEventos.push(param);
+		}else{
+			_.each(this.onMoveCotaNext_vEventos, function(evento){
+				evento(param);
+			});
+		}
+	},
+	onMoveCotaPrevious_vEventos: [],
+	onMoveCotaPrevious: function(param){
+		if(typeof param == "function"){
+			this.onMoveCotaPrevious_vEventos.push(param);
+		}else{
+			_.each(this.onMoveCotaPrevious_vEventos, function(evento){
+				evento(param);
+			});
+		}
+	},
+	
+	moveCotaNext: function(){
+		
+		var  self = this;
+		var newCotaIndex = datos.cotaSeleccionada.index + 1;
+		
+		if(newCotaIndex > Object.keys(datos.cotas).length-1){
+			newCotaIndex = 0;
+		}
+		datos.cotaAnterior = datos.cotaSeleccionada;
+		datos.cotaSeleccionada = datos.cotas[Object.keys(datos.cotas)[newCotaIndex]];
+		
+		self.onMoveCotaNext(datos.cotaSeleccionada);
+		self.onChangeCota(datos.cotaSeleccionada);
+	},
+	moveCotaPrevious: function(){
+		
+		var  self = this;
+		var newCotaIndex = datos.cotaSeleccionada.index - 1;
+		
+		if(newCotaIndex < 0){
+			newCotaIndex = Object.keys(datos.cotas).length-1;
+		}
+		
+		
+		datos.cotaAnterior = datos.cotaSeleccionada;
+		datos.cotaSeleccionada = datos.cotas[Object.keys(datos.cotas)[newCotaIndex]];
+		
+		self.onMoveCotaPrevious(datos.cotaSeleccionada);
+		self.onChangeCota(datos.cotaSeleccionada);
 	}
+
 };
-
-$(function(){
-	gestor_medicion.start();
-});
-
