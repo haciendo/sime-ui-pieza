@@ -162,6 +162,7 @@ $(function(){
 	 * borrar al implementar en phoneGap
 	 **************************************************/
 	if(window.isphone){
+		/*
 		setTimeout(function(){
 			// DEBUG
 			Vx.send({
@@ -185,7 +186,7 @@ $(function(){
 				unidad: "cm"
 			});
 		}, 3000);
-		
+		*/
 		
 	}
 	

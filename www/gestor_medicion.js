@@ -1,3 +1,4 @@
+
 var mapaUnidad = {
 	"u"		: 0.0001	,
 	"mm"	: 0.001     ,
@@ -13,6 +14,8 @@ var printMedicion=function(medicion){
 var gestor_medicion = {
 	start: function(){
 		var self = this;
+
+		
 		
 		Vx.when({
 			tipoDeMensaje:"medicion"
@@ -86,6 +89,8 @@ var gestor_medicion = {
 			});
 		}
 	},
+	
+	
 	onMoveCotaNext_vEventos: [],
 	onMoveCotaNext: function(param){
 		if(typeof param == "function"){
@@ -96,6 +101,25 @@ var gestor_medicion = {
 			});
 		}
 	},
+	moveCotaNext: function(){
+		
+		var  self = this;
+		var newCotaIndex = datos.cotaSeleccionada.index + 1;
+		
+		var cotas = datos.tipoPiezas[datos.cotaSeleccionada.idTipoPieza].cotas;
+		
+		
+		if(newCotaIndex > Object.keys(cotas).length-1){
+			newCotaIndex = 0;
+		}
+		datos.cotaAnterior = datos.cotaSeleccionada;
+		datos.cotaSeleccionada = cotas[Object.keys(cotas)[newCotaIndex]];
+		
+		
+		self.onMoveCotaNext(datos.cotaSeleccionada);
+		self.onChangeCota(datos.cotaSeleccionada);
+	},
+	
 	onMoveCotaPrevious_vEventos: [],
 	onMoveCotaPrevious: function(param){
 		if(typeof param == "function"){
@@ -106,36 +130,99 @@ var gestor_medicion = {
 			});
 		}
 	},
-	
-	moveCotaNext: function(){
-		
-		var  self = this;
-		var newCotaIndex = datos.cotaSeleccionada.index + 1;
-		
-		if(newCotaIndex > Object.keys(datos.cotas).length-1){
-			newCotaIndex = 0;
-		}
-		datos.cotaAnterior = datos.cotaSeleccionada;
-		datos.cotaSeleccionada = datos.cotas[Object.keys(datos.cotas)[newCotaIndex]];
-		
-		self.onMoveCotaNext(datos.cotaSeleccionada);
-		self.onChangeCota(datos.cotaSeleccionada);
-	},
 	moveCotaPrevious: function(){
 		
 		var  self = this;
 		var newCotaIndex = datos.cotaSeleccionada.index - 1;
 		
+		
+		var cotas = datos.tipoPiezas[datos.cotaSeleccionada.idTipoPieza].cotas;
+		
+		
 		if(newCotaIndex < 0){
-			newCotaIndex = Object.keys(datos.cotas).length-1;
+			newCotaIndex = Object.keys(cotas).length-1;
 		}
 		
 		
 		datos.cotaAnterior = datos.cotaSeleccionada;
-		datos.cotaSeleccionada = datos.cotas[Object.keys(datos.cotas)[newCotaIndex]];
+		
+		datos.cotaSeleccionada = cotas[Object.keys(cotas)[newCotaIndex]];
 		
 		self.onMoveCotaPrevious(datos.cotaSeleccionada);
 		self.onChangeCota(datos.cotaSeleccionada);
+	},
+	
+	
+	
+	
+	
+	onMoveTipoPiezaNext_vEventos: [],
+	onMoveTipoPiezaNext: function(param){
+		if(typeof param == "function"){
+			this.onMoveTipoPiezaNext_vEventos.push(param);
+		}else{
+			_.each(this.onMoveTipoPiezaNext_vEventos, function(evento){
+				evento(param);
+			});
+		}
+	},
+	moveTipoPiezaNext: function(){
+		
+		var  self = this;
+		
+		
+		var tipoPiezaSeleccionada = datos.tipoPiezas[datos.cotaSeleccionada.idTipoPieza];
+		
+		var newPiezaIndex = tipoPiezaSeleccionada.index + 1;
+		
+		
+		if(newPiezaIndex > Object.keys(datos.tipoPiezas).length-1){
+			newPiezaIndex = 0;
+		}
+		datos.cotaAnterior = datos.cotaSeleccionada;
+		
+		
+		var tipoPieza = datos.tipoPiezas[Object.keys(datos.tipoPiezas)[newPiezaIndex]];
+		var cotas = tipoPieza.cotas;
+		datos.cotaSeleccionada = cotas[Object.keys(cotas)[0]];
+		
+			
+		
+		self.onMoveTipoPiezaNext(datos.cotaSeleccionada);
+		self.onChangeCota(datos.cotaSeleccionada);
+	},
+	
+	onMoveTipoPiezaPrevious_vEventos: [],
+	onMoveTipoPiezaPrevious: function(param){
+		if(typeof param == "function"){
+			this.onMoveTipoPiezaPrevious_vEventos.push(param);
+		}else{
+			_.each(this.onMoveTipoPiezaPrevious_vEventos, function(evento){
+				evento(param);
+			});
+		}
+	},
+	moveTipoPiezaPrevious: function(){
+		
+		var self = this;
+		var tipoPiezaSeleccionada = datos.tipoPiezas[datos.cotaSeleccionada.idTipoPieza];
+		var newPiezaIndex = tipoPiezaSeleccionada.index - 1;
+		
+		var cotas = datos.tipoPiezas[datos.cotaSeleccionada.idTipoPieza].cotas;
+		
+		if(newPiezaIndex < 0){
+			newPiezaIndex = Object.keys(datos.tipoPiezas).length-1;
+		}
+		datos.cotaAnterior = datos.cotaSeleccionada;
+		
+		var tipoPieza = datos.tipoPiezas[Object.keys(datos.tipoPiezas)[newPiezaIndex]];
+		var cotas = tipoPieza.cotas;
+		datos.cotaSeleccionada = cotas[Object.keys(cotas)[0]];
+		
+		self.onMoveTipoPiezaPrevious(datos.cotaSeleccionada);
+		self.onChangeCota(datos.cotaSeleccionada);
 	}
+	
+	
 
 };

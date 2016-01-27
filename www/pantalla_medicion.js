@@ -25,8 +25,16 @@ var pantalla_medicion = function() {
 	mc.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
 	mc.on("swipeleft swiperight", function(ev) {
-		//TODO: cambio de pieza
-		myElement.textContent = ev.type +"  cambio de pieza.";
+		if( $('#cotaSeleccionada').is(':animated') ) {
+			return
+		}
+		
+		if(ev.type=="swipeleft"){
+			gestor_medicion.moveTipoPiezaNext();
+		}
+		if(ev.type=="swiperight"){
+			gestor_medicion.moveTipoPiezaPrevious();
+		}
 	});
 	
 	mc.on("swipeup swipedown", function(ev) {
@@ -45,29 +53,38 @@ var pantalla_medicion = function() {
 	
 	/***********************************************/
 	/***********************************************/
-	gestor_medicion.onChangeCota(function(){
-		var tipoPieza = ui.find('#tipoPiezaSeleccionada');
+	gestor_medicion.onChangeCota(function(_cotaSeleccionada){
+		var tipoPiezaSeleccionada = ui.find('#tipoPiezaSeleccionada');
+		var tipoPiezaAnterior = ui.find('#tipoPiezaAnterior');
+		
 		var cotaSeleccionada = ui.find('#cotaSeleccionada');
 		var cotaAnterior = ui.find('#cotaAnterior');
-		tipoPieza.text("Pieza: " + datos.tipoPiezas[datos.cotaSeleccionada.idTipoPieza].descripcion);
+		
+		
+		tipoPiezaSeleccionada.text("Pieza: " + datos.tipoPiezas[datos.cotaSeleccionada.idTipoPieza].descripcion);
 		cotaSeleccionada.text("Cota: " + datos.cotaSeleccionada.descripcion);
+		
 		if(datos.cotaAnterior){
 			cotaAnterior.text("Cota: " + datos.cotaAnterior.descripcion);
+			tipoPiezaAnterior.text("Pieza: " + datos.tipoPiezas[datos.cotaAnterior.idTipoPieza].descripcion);
+		}else{
+			debugger;
 		}
 	});
 	
 	
-	var TIEMPO_TRANSICION_COTA = 200;
+	var TIEMPO_TRANSICION_COTA = 400;
+	var TIEMPO_TRANSICION_TIPOPIEZA = 600;
 	
 	
 	gestor_medicion.onMoveCotaNext(function(){
 		var cotaSeleccionada = ui.find('#cotaSeleccionada');
 		var cotaAnterior = ui.find('#cotaAnterior');
-		
 		cotaAnterior.show();
-		cotaAnterior.css({top: 40, opacity: 0.9});
 		
-		cotaSeleccionada.css({top: 80, opacity: 0});
+		cotaAnterior.css({top: 40, left: 5,  opacity: 0.9});
+		
+		cotaSeleccionada.css({top: ui.height(), left: 5, opacity: 0});
 		
 		
 		cotaAnterior.animate({
@@ -84,15 +101,17 @@ var pantalla_medicion = function() {
 		
 
 	});
-	gestor_medicion.onMoveCotaPrevious(function(cotaSeleccionada){
+	
+	
+	gestor_medicion.onMoveCotaPrevious(function(_cotaSeleccionada){
 		var cotaSeleccionada = ui.find('#cotaSeleccionada');
 		var cotaAnterior = ui.find('#cotaAnterior');
 		
 		cotaAnterior.show();
 		
-		cotaSeleccionada.css({top: 0, opacity: 0});
+		cotaAnterior.css({top: 40, left: 5, opacity: 0.9});
 		
-		cotaAnterior.css({top: 40, opacity: 0.9});
+		cotaSeleccionada.css({top: 0, left: 5, opacity: 0});
 		
 		cotaSeleccionada.animate({
 			top: 40,
@@ -100,7 +119,7 @@ var pantalla_medicion = function() {
 		}, TIEMPO_TRANSICION_COTA);
 		
 		cotaAnterior.animate({
-			top: 80,
+			top: ui.height(),
 			opacity: 0
 		}, TIEMPO_TRANSICION_COTA, function(){
 			cotaAnterior.hide();
@@ -108,8 +127,70 @@ var pantalla_medicion = function() {
 	});
 	
 	
-	//se selecciona la primer cota
-	datos.cotaSeleccionada = datos.cotas[Object.keys(datos.cotas)[0]];
+	
+	
+	gestor_medicion.onMoveTipoPiezaNext(function(){
+		var tipoPiezaSeleccionada = ui.find('#tipoPiezaSeleccionada, #cotaSeleccionada');
+		var tipoPiezaAnterior = ui.find('#tipoPiezaAnterior, #cotaAnterior');
+		
+		
+		tipoPiezaAnterior.show();
+		ui.find('#cotaAnterior').css({top: 40});
+		ui.find('#cotaSeleccionada').css({top: 40});
+		tipoPiezaAnterior.css({left: 5, opacity: 0.9});
+		
+		tipoPiezaSeleccionada.css({left: ui.width(), opacity: 0});
+		
+		
+		
+		tipoPiezaAnterior.animate({
+			left: -tipoPiezaAnterior.width(),
+			opacity: 0
+		}, TIEMPO_TRANSICION_TIPOPIEZA, function(){
+			tipoPiezaAnterior.hide();
+		});
+		
+		
+		tipoPiezaSeleccionada.animate({
+			left: 5,
+			opacity: 0.9
+		}, TIEMPO_TRANSICION_TIPOPIEZA);
+		
+	});
+	gestor_medicion.onMoveTipoPiezaPrevious(function(_cotaSeleccionada){
+		var tipoPiezaSeleccionada = ui.find('#tipoPiezaSeleccionada, #cotaSeleccionada');
+		var tipoPiezaAnterior = ui.find('#tipoPiezaAnterior, #cotaAnterior');
+		
+		tipoPiezaAnterior.show();
+		ui.find('#cotaAnterior').css({top: 40});
+		ui.find('#cotaSeleccionada').css({top: 40});
+		
+		tipoPiezaAnterior.css({left: 5, opacity: 0.9});
+		
+		tipoPiezaSeleccionada.css({left: -tipoPiezaAnterior.width(), opacity: 0});
+		
+		
+		
+		tipoPiezaAnterior.animate({
+			left: ui.width(),
+			opacity: 0
+		}, TIEMPO_TRANSICION_TIPOPIEZA, function(){
+			tipoPiezaAnterior.hide();
+		});
+		
+		
+		tipoPiezaSeleccionada.animate({
+			left: 5,
+			opacity: 0.9
+		}, TIEMPO_TRANSICION_TIPOPIEZA);
+	});
+	
+	
+	
+	//se selecciona la primer pieza y primer cota
+	var cotas = datos.tipoPiezas[Object.keys(datos.tipoPiezas)[0]].cotas;
+	datos.cotaSeleccionada = cotas[Object.keys(cotas)[0]];
+	datos.cotaAnterior = datos.cotaSeleccionada;
 	gestor_medicion.onChangeCota(datos.cotaSeleccionada);
 	
 	
@@ -147,7 +228,7 @@ var pantalla_medicion = function() {
 
 		
 		tipoPiezaMedicion.text("Pieza: " + datos.tipoPiezas[medicion.idTipoPieza].descripcion);
-		cotaMedicion.text("Cota: " + datos.cotas[medicion.idCota].descripcion);
+		cotaMedicion.text("Cota: " + datos.tipoPiezas[medicion.idTipoPieza].cotas[medicion.idCota].descripcion);
 		
 		
 		var color;

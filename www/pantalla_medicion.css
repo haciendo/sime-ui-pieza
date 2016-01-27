@@ -68,8 +68,13 @@
 	color: rgb(255,255,255);
 }
 
-
+#pantalla_medicion
 #cotaAnterior{
+	color: rgb(255,255,255);
+}
+
+#pantalla_medicion
+#tipoPiezaAnterior{
 	color: rgb(255,255,255);
 }
 
