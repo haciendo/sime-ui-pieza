@@ -97,13 +97,15 @@ var onDeviceReady = function() {
 	
 	
 	toolbar();
+	
 	gestor_medicion.start();
 	
 	pantalla_medicion();
 	pantalla_lista_mediciones();
 	pantalla_configuracion();
 	pantalla_exportar();
-	
+	pantalla_abm_tipoPieza();
+	pantalla_abm_cota.start();
 	
 	
 	/* START POINT */
@@ -117,7 +119,6 @@ var onDeviceReady = function() {
 		cordova.plugins.backgroundMode.enable();
 	}
 };
-
 
 
 

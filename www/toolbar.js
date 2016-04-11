@@ -25,9 +25,11 @@ var toolbar = function(){
 		
 	};
 	mueveBrillo();
+	/*
 	setInterval(function(){
 		mueveBrillo();
 	},20000);
+	*/
 	/*****************************************************/
 	
 	$('.medir').on('click', function(e){
@@ -67,6 +69,14 @@ var toolbar = function(){
 		
 		$('.pantalla').hide();
 		$('#pantalla_configuracion').show();
+	});
+	
+	
+	$options_list.find('#link_pantalla_abm_tipoPieza').on('click', function(){
+		$options_list.hide();
+		
+		$('.pantalla').hide();
+		$('#pantalla_abm_tipoPieza').show();
 	});
 	
 	/*************************/

@@ -84,7 +84,7 @@ var pantalla_medicion = function() {
 		
 		cotaAnterior.css({top: 40, left: 5,  opacity: 0.9});
 		
-		cotaSeleccionada.css({top: ui.height(), left: 5, opacity: 0});
+		cotaSeleccionada.css({top: ui.height() - 100, left: 5, opacity: 0});
 		
 		
 		cotaAnterior.animate({
@@ -119,7 +119,7 @@ var pantalla_medicion = function() {
 		}, TIEMPO_TRANSICION_COTA);
 		
 		cotaAnterior.animate({
-			top: ui.height(),
+			top: ui.height() - 100,
 			opacity: 0
 		}, TIEMPO_TRANSICION_COTA, function(){
 			cotaAnterior.hide();

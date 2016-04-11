@@ -36,7 +36,7 @@ var pantalla_exportar = function() {
 			
 			this.write(sTablaMediciones,
 				function(){
-					window.plugins.socialsharing.share('Acá tenés el archivo', 'Archivito de mediciones', self.path);
+					window.plugins.socialsharing.share('Archivo generado', 'Archivo de mediciones', self.path);
 					ui.find('#btn_exportar').removeClass( "btn_presionado");
 				}
 			);

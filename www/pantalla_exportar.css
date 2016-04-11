@@ -31,30 +31,11 @@
 }
 
 
-
-
-
-
-
 #pantalla_exportar
 #fileName_container{
 	
-	border: solid 1px rgb(190, 169, 147);
-	background-color: rgb(252, 222, 147);
-	
-	position: absolute;
-	height: 25px;
 	left: 25px;
 	right: 25px;
 	top: 30%;
-}
-
-#pantalla_exportar
-#fileName{
-	border: transparent;
-	background-color: transparent;
-	height: 100%;
-	width: 100%;
-	
 }
 
