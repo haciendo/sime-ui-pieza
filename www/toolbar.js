@@ -45,14 +45,14 @@ var toolbar = function(){
 	$options.on('click', function(e){
 		e.stopPropagation();
 		$options_list.show();
-		$('.custom_toolbar').hide();
+		//$('.custom_toolbar').hide();
 		
 	});
 	
 	$('html').click(function(e) {
 		e.stopPropagation();
 		$options_list.hide();
-		$('.custom_toolbar').show();
+		//$('.custom_toolbar').show();
 	});
 	/********* options_list ITEMS ****************/
 	

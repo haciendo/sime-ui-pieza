@@ -1,7 +1,5 @@
-var mockup_handler_id_setInterval_medicion;
 var mockup_handler_id_setInterval_medicionTiempoReal;
-var mockup_handler_id_setInterval_stopTimers;
-
+//clearInterval(mockup_handler_id_setInterval_medicionTiempoReal)
 
 $(function(){
 	
@@ -47,7 +45,7 @@ $(function(){
 				
 				var iSenoMock = 0
 				
-				setInterval(function(){
+				mockup_handler_id_setInterval_medicionTiempoReal = setInterval(function(){
 					read_callback(((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0)+" mm tr\n");
 					// no logea, sería mucho
 					iSenoMock++;

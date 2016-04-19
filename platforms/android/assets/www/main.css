@@ -20,6 +20,126 @@ div.pantalla{
 	left:0px;
 	right:0px;
 	background-color: rgb(246, 178, 107);
-	overflow: hidden;
+	/*overflow: hidden;*/
 }
+
+
+
+
+div.list{
+	overflow-x: hidden;
+	overflow-y: scroll;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	
+	border-top: solid 2px rgb(223, 164, 103);
+	border-left: solid 2px rgb(150,150,150);
+}
+
+
+li.list_item{
+	background-color: rgb(200,200,200);
+	color: rgb(70,70,70);
+	text-align: left;
+	height: 20px;
+	padding-top: 4px;
+	border-bottom: solid 1px rgb(190,190,190);
+}
+
+
+li.input_field{
+	color: rgb(70,70,70);
+	text-align: left;
+	height: 50px;
+}
+
+div.overlay{
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	opacity:0.5;
+	background-color:gray;
+	display:none;
+}
+
+
+
+div.input_container {
+    border: solid 1px rgb(190, 169, 147);
+    background-color: rgb(252, 222, 147);
+    position: absolute;
+    margin-top: 15px;
+    left: 15px;
+    right: 15px;
+}
+
+
+div.input_container
+input{
+	border: transparent;
+	background-color: transparent;
+	height: 100%;
+	width: 100%;
+	font-size: 15px;
+}
+
+
+
+div.btn_agregar{
+	font-size: 36px;
+    font-weight: bold;
+    color: white;
+    
+    right: 25px;
+}
+
+div.btn_aceptar{
+	font-size: 28px;
+    font-weight: bold;
+    color: green;
+    
+    right: 60px;
+	
+    padding-top: 6px;
+}
+
+div.btn_cancelar{
+	font-size: 28px;
+    font-weight: bold;
+    color: red;
+    
+    right: 25px;
+	
+    padding-top: 6px;
+}
+
+
+
+
+div.detail{
+	position:absolute;
+	
+	left: 25px;
+	right: 25px;
+	top: 0px;
+	background-color: rgb(246, 178, 107);
+	border: solid 2px rgb(190, 169, 147);
+	border-radius: 0px 0px 6px 6px;
+}
+
+div.list{
+	position:absolute;
+	top: 0px;
+}
+
+div.overlay{
+	position:absolute;
+	top: 0px;
+}
+
 

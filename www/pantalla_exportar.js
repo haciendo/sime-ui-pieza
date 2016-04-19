@@ -10,6 +10,7 @@ var pantalla_exportar = function() {
 		self.defaultFileName = 'mediciones'+moment().format('__YYYY_MM_DD_hh_mm_ss') +'.csv';
 		ui.find("#fileName").attr('placeholder', self.defaultFileName);
 		
+		$('#titulo').text('Exportar');
 	});
 	
 	ui.find('#btn_exportar').on('touchstart', function(){

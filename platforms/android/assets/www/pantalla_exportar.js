@@ -10,6 +10,7 @@ var pantalla_exportar = function() {
 		self.defaultFileName = 'mediciones'+moment().format('__YYYY_MM_DD_hh_mm_ss') +'.csv';
 		ui.find("#fileName").attr('placeholder', self.defaultFileName);
 		
+		$('#titulo').text('Exportar');
 	});
 	
 	ui.find('#btn_exportar').on('touchstart', function(){
@@ -36,7 +37,7 @@ var pantalla_exportar = function() {
 			
 			this.write(sTablaMediciones,
 				function(){
-					window.plugins.socialsharing.share('Acá tenés el archivo', 'Archivito de mediciones', self.path);
+					window.plugins.socialsharing.share('Archivo generado', 'Archivo de mediciones', self.path);
 					ui.find('#btn_exportar').removeClass( "btn_presionado");
 				}
 			);

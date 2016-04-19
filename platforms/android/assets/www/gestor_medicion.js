@@ -112,6 +112,7 @@ var gestor_medicion = {
 		if(newCotaIndex > Object.keys(cotas).length-1){
 			newCotaIndex = 0;
 		}
+		
 		datos.cotaAnterior = datos.cotaSeleccionada;
 		datos.cotaSeleccionada = cotas[Object.keys(cotas)[newCotaIndex]];
 		
@@ -142,7 +143,6 @@ var gestor_medicion = {
 		if(newCotaIndex < 0){
 			newCotaIndex = Object.keys(cotas).length-1;
 		}
-		
 		
 		datos.cotaAnterior = datos.cotaSeleccionada;
 		
@@ -186,7 +186,7 @@ var gestor_medicion = {
 		var cotas = tipoPieza.cotas;
 		datos.cotaSeleccionada = cotas[Object.keys(cotas)[0]];
 		
-			
+		
 		
 		self.onMoveTipoPiezaNext(datos.cotaSeleccionada);
 		self.onChangeCota(datos.cotaSeleccionada);
@@ -214,6 +214,7 @@ var gestor_medicion = {
 			newPiezaIndex = Object.keys(datos.tipoPiezas).length-1;
 		}
 		datos.cotaAnterior = datos.cotaSeleccionada;
+		
 		
 		var tipoPieza = datos.tipoPiezas[Object.keys(datos.tipoPiezas)[newPiezaIndex]];
 		var cotas = tipoPieza.cotas;

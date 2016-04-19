@@ -9,9 +9,9 @@ var pantalla_lista_mediciones = function() {
 	});
 	/***************************/
 	
-	
-	
-	ui.show();
+	ui.on('show', function(){
+		$('#titulo').text('Lista de mediciones');
+	});
 	
 	
 	gestor_medicion.onMedicion(function(medicion){

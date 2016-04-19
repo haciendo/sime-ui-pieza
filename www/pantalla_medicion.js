@@ -12,9 +12,7 @@ var pantalla_medicion = function() {
 	
 	
 	ui.on('show', function(){
-		
-		$('#titulo').text)('Midiendo');
-		
+		$('#titulo').text('Medir');
 	});
 	
 	ui.show();

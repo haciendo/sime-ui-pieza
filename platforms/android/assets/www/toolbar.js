@@ -25,9 +25,11 @@ var toolbar = function(){
 		
 	};
 	mueveBrillo();
+	/*
 	setInterval(function(){
 		mueveBrillo();
 	},20000);
+	*/
 	/*****************************************************/
 	
 	$('.medir').on('click', function(e){
@@ -43,14 +45,14 @@ var toolbar = function(){
 	$options.on('click', function(e){
 		e.stopPropagation();
 		$options_list.show();
-		$('.custom_toolbar').hide();
+		//$('.custom_toolbar').hide();
 		
 	});
 	
 	$('html').click(function(e) {
 		e.stopPropagation();
 		$options_list.hide();
-		$('.custom_toolbar').show();
+		//$('.custom_toolbar').show();
 	});
 	/********* options_list ITEMS ****************/
 	
@@ -67,6 +69,14 @@ var toolbar = function(){
 		
 		$('.pantalla').hide();
 		$('#pantalla_configuracion').show();
+	});
+	
+	
+	$options_list.find('#link_pantalla_abm_tipoPieza').on('click', function(){
+		$options_list.hide();
+		
+		$('.pantalla').hide();
+		$('#pantalla_abm_tipoPieza').show();
 	});
 	
 	/*************************/

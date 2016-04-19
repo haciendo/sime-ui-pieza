@@ -16,7 +16,7 @@
 #marca_sime{
 	
 	font-size: 35px;
-	color: white;
+	color: rgb(255,255,255);
 	position: absolute;
 	
 	text-align: center;
@@ -34,6 +34,19 @@
 	-webkit-transition:text-shadow 0.5s ease-in-out;
 	font-weight: bold; 
 }
+
+#titulo{
+	text-shadow: 0 0 5px rgb(250,250,250);
+	
+	font-size: 25px;
+	color: rgb(255,255,255);
+	position: absolute;
+	left: 110px;
+	top: 7px;
+
+}
+
+
 #brillo_toolbar{
 	z-index: 1;
 	position: absolute;
