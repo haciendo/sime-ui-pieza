@@ -85,8 +85,8 @@ $(function(){
 	});
 	
 	
-	//TODO: asignarle a todos el enter con el foco al siguiente
-	//TODO: buscar último item de los li y asignarle el evento enter para que haga click en aceptar
+	// TODO: asignarle a todos el enter con el foco al siguiente
+	// TODO: buscar último item de los li y asignarle el evento enter para que haga click en aceptar
 	
 	
 	

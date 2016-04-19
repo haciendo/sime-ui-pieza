@@ -11,7 +11,11 @@ var pantalla_medicion = function() {
 	/***************************/
 	
 	
-	
+	ui.on('show', function(){
+		
+		$('#titulo').text)('Midiendo');
+		
+	});
 	
 	ui.show();
 	
@@ -68,7 +72,7 @@ var pantalla_medicion = function() {
 			cotaAnterior.text("Cota: " + datos.cotaAnterior.descripcion);
 			tipoPiezaAnterior.text("Pieza: " + datos.tipoPiezas[datos.cotaAnterior.idTipoPieza].descripcion);
 		}else{
-			debugger;
+			console.log('###ERROR###');
 		}
 	});
 	
@@ -184,7 +188,6 @@ var pantalla_medicion = function() {
 			opacity: 0.9
 		}, TIEMPO_TRANSICION_TIPOPIEZA);
 	});
-	
 	
 	
 	//se selecciona la primer pieza y primer cota

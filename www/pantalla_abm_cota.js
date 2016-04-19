@@ -7,7 +7,13 @@ var pantalla_abm_cota = {
 		
 		
 		var ui = $('#pantalla_abm_cota');
-	
+		
+		
+		ui.on('show', function(){
+		
+			$('#titulo').text)('Cotas');
+			
+		});
 	
 		var btn_agregar  = ui.find('.btn_agregar');
 		var btn_aceptar  = ui.find('.btn_aceptar');
@@ -22,7 +28,7 @@ var pantalla_abm_cota = {
 		btn_aceptar.on('click', function(){
 			
 			var cota = {
-				index: 0, //TODO: calucular el index bien
+				index: Object.keys(datos.tipoPiezas[pantalla.tipoPieza.id].cotas).length,
 				id: "idCota" + Math.random(),
 				idTipoPieza: pantalla.tipoPieza.id,
 				descripcion: pantalla.ui.find('#descripcion').val(),

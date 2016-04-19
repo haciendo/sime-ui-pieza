@@ -2,6 +2,11 @@ var pantalla_abm_tipoPieza = function() {
 	
 	var ui = $('#pantalla_abm_tipoPieza');
 	
+	ui.on('show', function(){
+		
+		$('#titulo').text)('Piezas');
+		
+	});
 	
 	var btn_agregar  = ui.find('.btn_agregar');
 	var btn_aceptar  = ui.find('.btn_aceptar');
@@ -15,10 +20,9 @@ var pantalla_abm_tipoPieza = function() {
 	
 	btn_aceptar.on('click', function(){
 		var idTipoPieza = "idTipoPieza" + Math.random()
-		var newIndex = 0; // TODO
 		
 		var tipoPieza = {
-			index: newIndex,
+			index: Object.keys(datos.tipoPiezas).length,
 			id: idTipoPieza,
 			descripcion: ui.find('#descripcion').val(),
 			cotas:{}
@@ -40,12 +44,22 @@ var pantalla_abm_tipoPieza = function() {
 			
 			pantalla_abm_cota.setTipoPieza(tipoPieza)
 			
+			// TODO: animar slide a izq
 			pantalla_abm_cota.ui.show();
-			ui.hide();
+			pantalla_abm_cota.ui.css({
+				left: ui.width()
+			});
+			
+			
+			pantalla_abm_cota.ui.animate({
+				left: 0
+			}, 200, function(){
+				ui.hide();
+			});
+			
 			
 		});
 		
-		//TODO: animar slide a izq
 		ui.find('.list>ul').append($tipoPieza_item);
 		ui.find('#descripcion').val('');
 	});
