@@ -103,7 +103,7 @@ var onDeviceReady = function() {
 	pantalla_lista_mediciones();
 	pantalla_configuracion();
 	pantalla_exportar();
-	pantalla_abm_tipoPieza();
+	pantalla_abm_tipoPieza.start();
 	pantalla_abm_cota.start();
 	
 	
