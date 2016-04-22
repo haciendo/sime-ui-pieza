@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="pantalla_abm_tipoPieza.css" />
         <link rel="stylesheet" href="pantalla_abm_cota.css" />
         <link rel="stylesheet" href="pantalla_exportar.css" />
+        <link rel="stylesheet" href="pantalla_abm_instrumentos.css" />
 		
 		
         
@@ -135,6 +136,42 @@
 		</div>
 		
 		
+		<div id="pantalla_abm_instrumentos" class="pantalla">
+			<div class="custom_toolbar">
+				<div class="toolbar_button medir" ></div>
+				<div class="toolbar_button btn_agregar">+</div>
+				<div class="toolbar_button btn_aceptar">V</div>
+				<div class="toolbar_button btn_cancelar">X</div>
+			</div>       
+				
+            <div class="list">
+				<ul>
+					
+				</ul>
+			</div>
+			
+			
+			<div class="overlay">
+			</div>
+			
+			<div id="instrumento_detail" class="detail">
+				<ul>
+					<li class="input_field">
+						<div class="input_container"> 
+							<input id="codigo" placeholder="Codigo del instrumento"/>
+						</div>
+					</li>
+					
+					<li class="input_field">
+						<div class="input_container"> 
+							<input id="descripcion" placeholder="Descripción del instrumento"/>
+						</div>
+					</li>				
+					
+				</ul>
+				
+			</div>
+		</div>      
 		
 		
 		<div id="pantalla_exportar" class="pantalla">
@@ -176,6 +213,9 @@
 			<div id="link_pantalla_abm_tipoPieza" class="link_pantalla">
 				Piezas
 			</div>
+			<div id="link_pantalla_abm_instrumentos" class="link_pantalla">
+				Instrumentos
+			</div>
 			<div id="link_salir" class="link_pantalla">
 				Salir
 			</div>
@@ -193,6 +233,9 @@
 			<li id="plantilla_cota_item" class="list_item">
 				
 			</li>
+			<li id="plantilla_instrumento_item" class="list_item">
+				
+			</li>
 		</div>
 		
 	</body>
@@ -205,6 +248,8 @@
 	<script type="text/javascript" src="lib/vortex.min.js"></script>
 	<script type="text/javascript" src="lib/hammer.min.js"></script>
 
+<!--	esta es para conectar con el esp, hay que integrarla a vortex  -->
+	<script type="text/javascript" src="NodoConectorSocketCliente.js"></script>
 	
 	<script type="text/javascript" src="lib/moment.js"></script>
 	<script type="text/javascript" src="lib/snap.svg-min.js"></script>
@@ -223,14 +268,16 @@
 	<script type="text/javascript" src="toolbar.js"></script>
 	<script type="text/javascript" src="gui_dial.js"></script>
 	<script type="text/javascript" src="gestor_medicion.js"></script>
+	<script type="text/javascript" src="gestor_instrumentos.js"></script>
 	<script type="text/javascript" src="pantalla_medicion.js"></script>
 	<script type="text/javascript" src="pantalla_lista_mediciones.js"></script>
 	<script type="text/javascript" src="pantalla_configuracion.js"></script>
 	<script type="text/javascript" src="pantalla_exportar.js"></script>
 	<script type="text/javascript" src="pantalla_abm_tipoPieza.js"></script>
 	<script type="text/javascript" src="pantalla_abm_cota.js"></script>
+	<script type="text/javascript" src="pantalla_abm_instrumentos.js"></script>
 	
-	<script type="text/javascript" src="adaptador_usb.js"></script>
+<!--	<script type="text/javascript" src="adaptador_usb.js"></script>-->
 
 	
 	<script type="text/javascript" src="cordova.js"></script>
