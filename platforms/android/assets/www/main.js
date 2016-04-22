@@ -75,7 +75,12 @@ var datos = {
 		
 		
 	},
-	
+	instrumentos:{
+		"111": {
+			codigo: "111",
+			descripcion: "calibre mitutoyo"
+		}
+	},
 	cotaAnterior: null,
 	cotaSeleccionada: null,
 	mediciones: []
@@ -98,11 +103,14 @@ var onDeviceReady = function() {
 	toolbar();
 	
 	gestor_medicion.start();
+	gestor_instrumentos.start();
 	
 	pantalla_medicion();
 	pantalla_lista_mediciones();
 	pantalla_configuracion();
 	pantalla_exportar();
+	pantalla_abm_instrumentos();
+	
 	pantalla_abm_tipoPieza.start();
 	pantalla_abm_cota.start();
 	
@@ -111,6 +119,7 @@ var onDeviceReady = function() {
 	$('.pantalla').hide();
 	$('#pantalla_medicion').show();
 	
+	Vx.conectarCon(new NodoConectorSocketCliente('ws://192.168.4.1:1234'));
 	
 	/***************/
 	if(window.isphone){

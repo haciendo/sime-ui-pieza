@@ -79,6 +79,12 @@ var toolbar = function(){
 		$('#pantalla_abm_tipoPieza').show();
 	});
 	
+	$options_list.find('#link_pantalla_abm_instrumentos').on('click', function(){
+		$options_list.hide();
+		
+		$('.pantalla').hide();
+		$('#pantalla_abm_instrumentos').show();
+	});
 	/*************************/
 	
 };

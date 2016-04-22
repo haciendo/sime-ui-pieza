@@ -3,7 +3,47 @@ var mockup_handler_id_setInterval_medicionTiempoReal;
 
 $(function(){
 	
+	/**************************************************
+	 * Mock del instrumento 111
+	 * borrar al implementar en phoneGap
+	 **************************************************/
+	var iSenoMock = 0
+	mockup_handler_id_setInterval_medicionTiempoReal = setInterval(function(){		
+				
+		Vx.send({
+			tipoDeMensaje:"medicionTiempoReal",
+			instrumento: "111",
+			valor: ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0),
+			unidad: "mm"
+		});
 		
+		// no logea, sería mucho
+		iSenoMock++;
+
+		if(iSenoMock>360){
+			iSenoMock=0;
+		}
+
+	}, 10);
+	
+	$('#marca_sime').on('click', function(){
+		Vx.send({
+			tipoDeMensaje:"medicion",
+			instrumento: "111",
+			valor: ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0),
+			unidad: "mm"
+		});
+
+	});
+	
+	/**************************************************
+	 * FIN de Mock de instrumento
+	 **************************************************/
+	
+	
+	
+	
+	
 	/**************************************************
 	 * Mock del objeto serial
 	 * borrar al implementar en phoneGap
@@ -34,29 +74,6 @@ $(function(){
 			},
 			registerReadCallback: function(read_callback, err_callback){
 				console.log("mock - serial.registerReadCallback");
-				
-				
-				$('#marca_sime').on('click', function(){
-					read_callback(((Math.random() * 12) + datos.cotaSeleccionada.base).toFixed(0)+" mm\n");
-					console.log("mock - read_callback medicion");
-					
-				});
-				
-				
-				var iSenoMock = 0
-				
-				mockup_handler_id_setInterval_medicionTiempoReal = setInterval(function(){
-					read_callback(((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0)+" mm tr\n");
-					// no logea, sería mucho
-					iSenoMock++;
-					
-					if(iSenoMock>360){
-						iSenoMock=0;
-					}
-					
-				}, 10);
-				
-				
 			},
 			requestPermission: function(success_callback, err_callback){
 				console.log("mock - serial.requestPermission");
