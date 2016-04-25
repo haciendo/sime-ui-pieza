@@ -12,14 +12,24 @@ var printMedicion=function(medicion){
 
 
 var gestor_medicion = {
+	
 	start: function(){
 		var self = this;
 
+		gestor_instrumentos.onNuevoInstrumento(function(instrumento){
+            self.suscribirseAInstrumento(instrumento);
+		});
 		
+		_.each(datos.instrumentos, function(instrumento){
+			self.suscribirseAInstrumento(instrumento);
+		});
+	},
+	suscribirseAInstrumento: function(instrumento){
+        var self = this;
 		
 		Vx.when({
-			tipoDeMensaje:"medicion"
-			
+			tipoDeMensaje:"medicion",
+			instrumento: instrumento.codigo    
 		},function(mensaje){
 			
 			var medicion = {
@@ -43,8 +53,8 @@ var gestor_medicion = {
 		
 		
 		Vx.when({
-			tipoDeMensaje:"medicionTiempoReal"
-
+			tipoDeMensaje:"medicionTiempoReal",
+			instrumento: instrumento.codigo    
 		},function(mensaje){
 			
 			var medicion = {
@@ -55,9 +65,7 @@ var gestor_medicion = {
 			
 			self.onMedicionTiempoReal(medicion);
 		});
-		
-		
-	},
+    },
 	onMedicion_vEventos: [],
 	onMedicion: function(param){
 		if(typeof param == "function"){
