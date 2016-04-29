@@ -19,7 +19,10 @@ var gestor_medicion = {
 		gestor_instrumentos.onNuevoInstrumento(function(instrumento){
             self.suscribirseAInstrumento(instrumento);
 		});
+<<<<<<< HEAD
 		
+=======
+>>>>>>> 03487a5970d0083066481b6b1611c553885b6ed5
 		_.each(datos.instrumentos, function(instrumento){
 			self.suscribirseAInstrumento(instrumento);
 		});

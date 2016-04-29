@@ -95,8 +95,7 @@ var onDeviceReady = function() {
         //Vx.conectarCon(new NodoConectorSocket('https://sime-backend.herokuapp.com'));
         //Vx.conectarCon(new NodoConectorSocket('http://localhost:3000'));
         //
-
-
+	
         Vx.when({tipoDeMensaje:"vortex.debug.error"}, function(m){console.log(m);})
 
 
@@ -109,8 +108,9 @@ var onDeviceReady = function() {
         pantalla_lista_mediciones();
         pantalla_configuracion();
         pantalla_exportar();
-        pantalla_abm_tipoPieza();
         pantalla_abm_instrumentos();
+
+        pantalla_abm_tipoPieza.start();
         pantalla_abm_cota.start();
 
 
@@ -124,9 +124,8 @@ var onDeviceReady = function() {
         if(window.isphone){
             console.log(cordova.plugins);
             cordova.plugins.backgroundMode.enable();
-        }              
-                         
-    });	
+        }
+    });
 };
 
 
