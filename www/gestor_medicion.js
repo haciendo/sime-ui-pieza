@@ -43,6 +43,9 @@ var gestor_medicion = {
 			
 			
 			datos.mediciones.push(medicion);
+            
+            RepositorioLocal.save();
+            
 			self.onMedicion(medicion);
 			
 			

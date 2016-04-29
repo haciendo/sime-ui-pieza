@@ -29,7 +29,8 @@ var pantalla_abm_tipoPieza = function() {
 		};
 		
 		datos.tipoPiezas[tipoPieza.id] = tipoPieza;
-		
+		RepositorioLocal.save();
+        
 		var $tipoPieza_item = $('#plantilla_tipoPieza_item')
 							.clone()
 							.attr('id', 'item_' + tipoPieza.id)

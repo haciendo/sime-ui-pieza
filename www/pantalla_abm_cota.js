@@ -37,7 +37,8 @@ var pantalla_abm_cota = {
 			
 			
 			datos.tipoPiezas[cota.idTipoPieza].cotas[cota.id] = cota;
-			
+			RepositorioLocal.save();
+            
 			pantalla.appendCota(cota);
 			
 		});

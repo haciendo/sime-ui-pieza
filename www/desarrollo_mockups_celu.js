@@ -114,10 +114,13 @@ $(function(){
 		};
 		FileReader.prototype = {
 			readAsText: function(file){
+                var _this = this;
 				console.log('mock - FileReader.readAsText');
 				console.log('-file');
 				console.log(file);
-			}
+                setTimeout(function(){_this.onloadend();}, 1);                
+			},
+            result: localStorage.getItem("DatosSIME")
 		};
 		
 		window.requestFileSystem = function(paramConfig1, paramConfig2, success_callback, err_callback){
@@ -137,26 +140,29 @@ $(function(){
 										console.log('mock - writer.write');
 										console.log('-text');
 										console.log(text);
+                                        localStorage.setItem("DatosSIME", text);
 									}
 									
 								};
-								success_callback(writer);
+                                setTimeout(function(){success_callback(writer);}, 1);
 							},
 							file: function(success_callback, err_callback){
 								console.log('mock - fileEntry.file');
 								var file = {
 									fullPath: '//mock-fileEntry.fullPath//'
 								};
-								success_callback(file);
-								
+								setTimeout(function(){success_callback(file);}, 1);
 							},
 							remove: function(){
 								console.log('mock - fileEntry.remove');
 							}
 						};
 						
-						success_callback(fileEntry);
-					}
+						setTimeout(function(){success_callback(fileEntry);}, 1);
+					},
+                    toURL: function(){ 
+                        return "";
+                    }
 				}
 			};
 			
