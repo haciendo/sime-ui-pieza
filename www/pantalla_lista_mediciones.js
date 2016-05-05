@@ -13,16 +13,19 @@ var pantalla_lista_mediciones = function() {
 		$('#titulo').text('Lista de mediciones');
 	});
 	
-	
-	gestor_medicion.onMedicion(function(medicion){
-		
-		var $medicion_item = $('#plantilla_medicion_item')
+    var mostrarMedicion = function(medicion){
+      var $medicion_item = $('#plantilla_medicion_item')
 							.clone()
 							.attr('id', 'medicion_item_' + medicion.index)
 							.text( printMedicion(medicion) );
 		
 		
-		ui.find('#lista_mediciones>ul').append($medicion_item);
-		
+		ui.find('#lista_mediciones>ul').append($medicion_item);  
+    };
+	datos.mediciones.forEach(function(medicion){
+        mostrarMedicion(medicion);
+    });
+	gestor_medicion.onMedicion(function(medicion){
+		mostrarMedicion(medicion);		
 	});
 };
