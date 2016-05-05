@@ -100,26 +100,26 @@ var onDeviceReady = function() {
 	Vx.when({tipoDeMensaje:"vortex.debug.error"}, function(m){console.log(m);})
 	
 	
-	toolbar();
-	
+	toolbar.start();
 	gestor_medicion.start();
 	gestor_instrumentos.start();
 	
-	pantalla_medicion();
-	pantalla_lista_mediciones();
-	pantalla_configuracion();
-	pantalla_exportar();
-	pantalla_abm_instrumentos();
+	pantalla_medicion.start();
+	pantalla_lista_mediciones.start();
+	pantalla_configuracion.start();
+	pantalla_exportar.start();
+	pantalla_abm_instrumentos.start();
 	
 	pantalla_abm_tipoPieza.start();
 	pantalla_abm_cota.start();
 	
 	
 	/* START POINT */
-	$('.pantalla').hide();
-	$('#pantalla_medicion').show();
+	toolbar.invokeButtons.pantalla_medicion.click();
+	/* */
 	
 	Vx.conectarCon(new NodoConectorSocketCliente('ws://192.168.4.1:1234'));
+	
 	
 	/***************/
 	if(window.isphone){
