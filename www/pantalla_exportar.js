@@ -17,8 +17,7 @@ var pantalla_exportar = {
 			
 			$('#titulo').text('Exportar');
 			
-			
-			
+			toolbar.setCustomToolbarButtons(self.buttons);
 		});
 		
 		ui.find('#btn_exportar').on('touchstart', function(){

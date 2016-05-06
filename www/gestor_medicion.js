@@ -19,6 +19,7 @@ var gestor_medicion = {
 		gestor_instrumentos.onNuevoInstrumento(function(instrumento){
             self.suscribirseAInstrumento(instrumento);
 		});
+		
 		_.each(datos.instrumentos, function(instrumento){
 			self.suscribirseAInstrumento(instrumento);
 		});
@@ -42,6 +43,9 @@ var gestor_medicion = {
 			
 			
 			datos.mediciones.push(medicion);
+            
+            RepositorioLocal.save();
+            
 			self.onMedicion(medicion);
 			
 			
@@ -122,7 +126,7 @@ var gestor_medicion = {
 		
 		datos.cotaAnterior = datos.cotaSeleccionada;
 		datos.cotaSeleccionada = cotas[Object.keys(cotas)[newCotaIndex]];
-		
+		RepositorioLocal.save();
 		
 		self.onMoveCotaNext(datos.cotaSeleccionada);
 		self.onChangeCota(datos.cotaSeleccionada);
@@ -155,6 +159,8 @@ var gestor_medicion = {
 		
 		datos.cotaSeleccionada = cotas[Object.keys(cotas)[newCotaIndex]];
 		
+        RepositorioLocal.save();
+        
 		self.onMoveCotaPrevious(datos.cotaSeleccionada);
 		self.onChangeCota(datos.cotaSeleccionada);
 	},
@@ -194,7 +200,8 @@ var gestor_medicion = {
 		datos.cotaSeleccionada = cotas[Object.keys(cotas)[0]];
 		
 		
-		
+		RepositorioLocal.save();
+        
 		self.onMoveTipoPiezaNext(datos.cotaSeleccionada);
 		self.onChangeCota(datos.cotaSeleccionada);
 	},
@@ -227,6 +234,8 @@ var gestor_medicion = {
 		var cotas = tipoPieza.cotas;
 		datos.cotaSeleccionada = cotas[Object.keys(cotas)[0]];
 		
+        RepositorioLocal.save();
+        
 		self.onMoveTipoPiezaPrevious(datos.cotaSeleccionada);
 		self.onChangeCota(datos.cotaSeleccionada);
 	}

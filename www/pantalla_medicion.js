@@ -8,7 +8,6 @@ var pantalla_medicion = {
 		/**** custom_toolbar *******/
 		self.buttons.push(toolbar.invokeButtons.pantalla_lista_mediciones);
 		/***************************/
-		
 		self.ui.on('show', function(){
 			$('#titulo').text('Medir');
 			
@@ -203,11 +202,14 @@ var pantalla_medicion = {
 			color : 'rgb(255,255,255)'
 		});
 		
+		
 		$(window).on('resize', function(){
 			dialMedicion.start();
 			dialMedicionTiempoReal.start();
 		});
-		
+		debugger;
+		dialMedicion.start();
+		dialMedicionTiempoReal.start();
 		
 		gestor_medicion.onMedicionTiempoReal(function(medicion){
 			

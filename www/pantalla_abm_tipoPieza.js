@@ -31,10 +31,10 @@ var pantalla_abm_tipoPieza = {
 			};
 			
 			datos.tipoPiezas[tipoPieza.id] = tipoPieza;
+            RepositorioLocal.save();
 			pantalla.appendTipoPieza(tipoPieza);
 			
 		});
-		
 		
 		pantalla.refresh();
 	},

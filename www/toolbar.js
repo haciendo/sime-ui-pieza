@@ -8,37 +8,31 @@ var toolbar = {
 		
 		ui.show();
 		
-		
 		/**** invokeButtons *******/
 		var $btn_pantalla_lista_mediciones = $('#plantilla_toolbar_button')
 				.clone()
-				.attr('id', 'btn_pantalla_lista_mediciones')
-				.on('click', function(){
-					$('.pantalla').hide();
-					pantalla_lista_mediciones.ui.show();
-				});
-			
+				.attr('id', 'btn_pantalla_lista_mediciones');
+		$('body').delegate('#btn_pantalla_lista_mediciones', 'click', function (){
+			$('.pantalla').hide();
+			pantalla_lista_mediciones.ui.show();
+		});
 		/*********/
 		var $btn_pantalla_exportar = $('#plantilla_toolbar_button')
 				.clone()
 				.attr('id', 'btn_pantalla_exportar')
-				.on('click', function(){
-					$('.pantalla').hide();
-					pantalla_exportar.ui.show();
-				});
-		
+		$('body').delegate('#btn_pantalla_exportar', 'click', function (){
+			$('.pantalla').hide();
+			pantalla_exportar.ui.show();
+		});
 		/*********/
 		var $btn_pantalla_medicion = $('#plantilla_toolbar_button')
 				.clone()
 				.attr('id', 'btn_pantalla_medicion')
-				.on('click', function(){
-					$('.pantalla').hide();
-					pantalla_medicion.ui.show();
-				});
-		
+		$('body').delegate('#btn_pantalla_medicion', 'click', function (){
+			$('.pantalla').hide();
+			pantalla_medicion.ui.show();
+		});
 		/***************************/
-		
-		
 		
 		
 		

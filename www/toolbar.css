@@ -137,7 +137,7 @@ div.link_pantalla{
 
 
 #custom_toolbar{
-	top:0;
+	top:0px;
 	height: 40px;
 	display:inline-block;
 }

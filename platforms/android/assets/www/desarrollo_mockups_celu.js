@@ -7,6 +7,38 @@ $(function(){
 	 * Mock del instrumento 111
 	 * borrar al implementar en phoneGap
 	 **************************************************/
+<<<<<<< HEAD
+	if(!window.isphone){
+		var iSenoMock = 0
+		mockup_handler_id_setInterval_medicionTiempoReal = setInterval(function(){		
+
+			Vx.send({
+				tipoDeMensaje:"medicionTiempoReal",
+				instrumento: "111",
+				valor: ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0),
+				unidad: "mm"
+			});
+
+			// no logea, sería mucho
+			iSenoMock++;
+
+			if(iSenoMock>360){
+				iSenoMock=0;
+			}
+
+		}, 10);
+
+		$('#marca_sime').on('click', function(){
+			Vx.send({
+				tipoDeMensaje:"medicion",
+				instrumento: "111",
+				valor: ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0),
+				unidad: "mm"
+			});
+
+		});
+	};
+=======
 	var iSenoMock = 0
 	mockup_handler_id_setInterval_medicionTiempoReal = setInterval(function(){		
 				
@@ -36,6 +68,7 @@ $(function(){
 
 	});
 	
+>>>>>>> 03487a5970d0083066481b6b1611c553885b6ed5
 	/**************************************************
 	 * FIN de Mock de instrumento
 	 **************************************************/
