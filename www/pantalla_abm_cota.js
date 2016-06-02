@@ -49,10 +49,12 @@ var pantalla_abm_cota = {
 		
 		
 		self.ui.find('#tipoPieza_descripcion').on('click', function(){
+			
 			self.ui.css({
 				left: 0
 			});
 			
+			pantalla_abm_tipoPieza.ui.show();
 			
 			self.ui.animate({
 				left: self.ui.width()
@@ -73,8 +75,6 @@ var pantalla_abm_cota = {
 						.text( cota.descripcion );
 		
 		self.ui.find('.list>ul').append($cota_item);
-		
-		self.ui.find('#descripcion').val('');
 		
 	},
 	

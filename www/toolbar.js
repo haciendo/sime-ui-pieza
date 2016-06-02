@@ -213,6 +213,9 @@ var toolbar = {
 			click: function(){
 				ocultar();
 				opt.aceptar_callback();
+				debugger;
+				opt.parent.ui.find('>.detail>ul>li.input_field input').val('');
+				
 			}
 		});
 		

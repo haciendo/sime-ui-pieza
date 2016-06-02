@@ -68,7 +68,7 @@ var pantalla_abm_tipoPieza = {
 		});
 		
 		self.ui.find('.list>ul').append($tipoPieza_item);
-		self.ui.find('#descripcion').val('');
+		
 		
 	},
 	refresh: function(){
