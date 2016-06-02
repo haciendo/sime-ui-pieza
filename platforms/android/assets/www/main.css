@@ -56,17 +56,6 @@ li.input_field{
 	height: 50px;
 }
 
-div.overlay{
-	position: absolute;
-	left: 0px;
-	right: 0px;
-	top: 0px;
-	bottom: 0px;
-	opacity:0.5;
-	background-color:gray;
-	display:none;
-}
-
 
 
 div.input_container {
@@ -89,13 +78,11 @@ input{
 }
 
 
-
 div.btn_agregar{
 	font-size: 36px;
     font-weight: bold;
     color: white;
-    
-    right: 25px;
+    background:url(img/options.png) no-repeat center center;
 }
 
 div.btn_aceptar{
@@ -103,9 +90,7 @@ div.btn_aceptar{
     font-weight: bold;
     color: green;
     
-    right: 60px;
-	
-    padding-top: 6px;
+    background:url(img/options.png) no-repeat center center;
 }
 
 div.btn_cancelar{
@@ -113,9 +98,8 @@ div.btn_cancelar{
     font-weight: bold;
     color: red;
     
-    right: 25px;
+	background:url(img/options.png) no-repeat center center;
 	
-    padding-top: 6px;
 }
 
 
@@ -123,13 +107,14 @@ div.btn_cancelar{
 
 div.detail{
 	position:absolute;
-	
 	left: 25px;
 	right: 25px;
 	top: 0px;
 	background-color: rgb(246, 178, 107);
 	border: solid 2px rgb(190, 169, 147);
 	border-radius: 0px 0px 6px 6px;
+
+	display: none;
 }
 
 div.list{
@@ -137,9 +122,16 @@ div.list{
 	top: 0px;
 }
 
-div.overlay{
-	position:absolute;
-	top: 0px;
-}
 
+
+div.overlay{
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	opacity:0.5;
+	background-color:gray;
+	display:none;
+}
 

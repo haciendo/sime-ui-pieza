@@ -1,8 +1,14 @@
 var pantalla_configuracion = {
 	buttons:[],
-	start: function() {
-		
+	show: function(){
 		var self = this;
+		$('#titulo').text('Configuración');
+		toolbar.setCustomToolbarButtons(self.buttons);
+		self.ui.show();
+	},
+	start: function() {
+		var self = this;
+		
 		var ui = $('#pantalla_configuracion');
 		self.ui = ui;
 		
@@ -14,9 +20,5 @@ var pantalla_configuracion = {
 		
 		
 		
-		ui.on('show', function(){
-			$('#titulo').text('Configuración');
-			toolbar.setCustomToolbarButtons(self.buttons);
-		});
 	}
 };

@@ -6,44 +6,28 @@ var toolbar = {
 		var ui = $('#toolbar');
 		self.ui = ui;
 		
-		ui.show();
+		self.custom_toolbar = ui.find('#custom_toolbar');
 		
 		/**** invokeButtons *******/
-		var $btn_pantalla_lista_mediciones = $('#plantilla_toolbar_button')
-				.clone()
-				.attr('id', 'btn_pantalla_lista_mediciones');
-		$('body').delegate('#btn_pantalla_lista_mediciones', 'click', function (){
-			$('.pantalla').hide();
-			pantalla_lista_mediciones.ui.show();
-		});
-		/*********/
-		var $btn_pantalla_exportar = $('#plantilla_toolbar_button')
-				.clone()
-				.attr('id', 'btn_pantalla_exportar')
-		$('body').delegate('#btn_pantalla_exportar', 'click', function (){
-			$('.pantalla').hide();
-			pantalla_exportar.ui.show();
-		});
-		/*********/
-		var $btn_pantalla_medicion = $('#plantilla_toolbar_button')
-				.clone()
-				.attr('id', 'btn_pantalla_medicion')
-		$('body').delegate('#btn_pantalla_medicion', 'click', function (){
-			$('.pantalla').hide();
-			pantalla_medicion.ui.show();
-		});
-		/***************************/
-		
-		
-		
 		self.invokeButtons = {
-			pantalla_exportar: $btn_pantalla_exportar,
-			pantalla_lista_mediciones: $btn_pantalla_lista_mediciones,
-			pantalla_medicion: $btn_pantalla_medicion
+			pantalla_lista_mediciones: {
+				id: 'btn_pantalla_lista_mediciones',
+				parent: pantalla_lista_mediciones
+			},
+			pantalla_exportar: {
+				id: 'btn_pantalla_exportar',
+				parent: pantalla_exportar
+			},
+			pantalla_medicion: {
+				id: 'btn_pantalla_medicion',
+				parent: pantalla_medicion
+			}
 		}
-		/***************************/
 		
-
+		/*********/
+		
+		
+		
 		
 		/*****************************************************/
 		var mueveBrillo = function(){
@@ -99,21 +83,20 @@ var toolbar = {
 			$options_list.hide();
 			
 			$('.pantalla').hide();
-			pantalla_configuracion.ui.show();
+			pantalla_configuracion.show();
 		});
 		
 		$options_list.find('#link_pantalla_abm_tipoPieza').on('click', function(){
 			$options_list.hide();
-			
 			$('.pantalla').hide();
-			pantalla_abm_tipoPieza.ui.show();
+			pantalla_abm_tipoPieza.show();
 		});
 		
 		$options_list.find('#link_pantalla_abm_instrumentos').on('click', function(){
 			$options_list.hide();
 			
 			$('.pantalla').hide();
-			pantalla_abm_instrumentos.ui.show();
+			pantalla_abm_instrumentos.show();
 		});
 		/*************************/
 		
@@ -121,14 +104,130 @@ var toolbar = {
 		
 	},
 	setCustomToolbarButtons: function(vec){
-		this.ui.find('#custom_toolbar').empty();
+		var self = this;
+		self.custom_toolbar.empty();
+		self.addCustomToolbarButtons(vec);
+	},
+	addCustomToolbarButton: function(opt){
+		var self = this;
+		var $toolbar_button = $('#plantilla_toolbar_button')
+				.clone()
+				.attr('id', opt.id);
+				
+				
+		if(typeof(opt.class) !== "undefined"){
+			$toolbar_button.addClass(opt.class);
+		}
+		
+				
+		if(typeof(opt.click) !== "undefined"){
+			$('body').delegate('#'+opt.id, 'click', opt.click);
+		}else{
+			$('body').delegate('#'+opt.id, 'click', function (){
+				$('.pantalla').hide();
+				opt.parent.show();
+			});
+		}
+		
+		
+		this.ui.find('#custom_toolbar').append($toolbar_button);
+
+	},
+	addCustomToolbarButtons: function(vec){
 		for(i in vec){
 			this.addCustomToolbarButton(vec[i]);
 		}
 	},
-	addCustomToolbarButton: function($toolbar_button){
+	addCrudButtons: function(opt){
+		var self = this;
+		this.addCustomToolbarButton({
+			id: opt.parent.ui.attr('id') + '_btn_agregar',
+			parent: opt.parent,
+			class: 'btn_agregar',
+			click: function(e){
+				var ui = opt.parent.ui;
+				
+				ui.find('.detail').css({
+					height: 0
+				});
+				ui.find('.overlay').css({
+					opacity: 0
+				});
+				
+				
+				ui.find('.detail').show();
+				ui.find('>.overlay').show();
+				
+				ui.find('.detail').animate({
+					height: opt.parent.height_detail
+				}, 200);
+				ui.find('.overlay').animate({
+					opacity: 0.6
+				}, 200);
+				
+				
+				
+				self.custom_toolbar.find('.btn_agregar').hide();
+				self.custom_toolbar.find('.btn_aceptar').show();
+				self.custom_toolbar.find('.btn_cancelar').show();
+				
+				
+				opt.agregar_callback();
+			}
+		});
 		
-		this.ui.find('#custom_toolbar').append($toolbar_button);
+		
+		// TODO: asignarle a todos el enter con el foco al siguiente
+		// TODO: buscar último item de los li y asignarle el evento enter para que haga click en aceptar
+		
+		
+		
+		var ocultar =  function(){
+			var ui = opt.parent.ui;
+			
+			ui.find('.detail').animate({
+				height: 0
+			}, 200, function(){
+				ui.find('.detail').hide();
+			});
+			
+			
+			ui.find('.overlay').animate({
+				opacity: 0
+			}, 200, function(){
+				ui.find('.overlay').hide();
+			});
+			
+			
+			self.custom_toolbar.find('.btn_agregar').show();
+			self.custom_toolbar.find('.btn_aceptar').hide();
+			self.custom_toolbar.find('.btn_cancelar').hide();
+			
+		};
+		
+		
+		this.addCustomToolbarButton({
+			id: opt.parent.ui.attr('id') + '_btn_aceptar',
+			parent: opt.parent,
+			class: 'btn_aceptar',
+			click: function(){
+				ocultar();
+				opt.aceptar_callback();
+			}
+		});
+		
+		this.addCustomToolbarButton({
+			id: opt.parent.ui.attr('id') + '_btn_cancelar',
+			parent: opt.parent,
+			class: 'btn_cancelar',
+			click: function(){
+				ocultar();
+			}
+		});
+		
+		
+		self.custom_toolbar.find('.btn_aceptar').hide();
+		self.custom_toolbar.find('.btn_cancelar').hide();
 		
 	}
 	

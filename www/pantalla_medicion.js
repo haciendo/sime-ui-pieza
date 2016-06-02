@@ -1,5 +1,20 @@
 var pantalla_medicion = {
 	buttons:[],
+	dialMedicion: null,
+	dialMedicionTiempoReal: null,
+	show: function(){
+		var self = this;
+		$('#titulo').text('Medir');
+		
+		toolbar.setCustomToolbarButtons(self.buttons);
+		setTimeout(function(){
+			self.dialMedicion.start();
+			self.dialMedicionTiempoReal.start();
+		},1);
+		
+		self.ui.show();
+		
+	},
 	start: function() {
 		var self = this;
 		
@@ -8,11 +23,31 @@ var pantalla_medicion = {
 		/**** custom_toolbar *******/
 		self.buttons.push(toolbar.invokeButtons.pantalla_lista_mediciones);
 		/***************************/
-		self.ui.on('show', function(){
-			$('#titulo').text('Medir');
-			
-			toolbar.setCustomToolbarButtons(self.buttons);
+		
+		//se selecciona la primer pieza y primer cota
+		var cotas = datos.tipoPiezas[Object.keys(datos.tipoPiezas)[0]].cotas;
+		datos.cotaSeleccionada = cotas[Object.keys(cotas)[0]];
+		datos.cotaAnterior = datos.cotaSeleccionada;
+		
+		
+		self.dialMedicion = new gui_dial({
+			idDial : '#dialMedicion',
+			color :'rgb(50,50,50)'
 		});
+		self.dialMedicionTiempoReal = new gui_dial({
+			idDial : '#dialMedicionTiempoReal',
+			color : 'rgb(255,255,255)'
+		});
+		
+		
+		$(window).on('resize', function(){
+			self.dialMedicion.start();
+			self.dialMedicionTiempoReal.start();
+		});
+
+		self.dialMedicion.start();
+		self.dialMedicionTiempoReal.start();
+		
 		
 		/***********************************************/
 		/********************** GESTOS *****************/
@@ -184,39 +219,19 @@ var pantalla_medicion = {
 			}, TIEMPO_TRANSICION_TIPOPIEZA);
 		});
 		
-		
-		//se selecciona la primer pieza y primer cota
-		var cotas = datos.tipoPiezas[Object.keys(datos.tipoPiezas)[0]].cotas;
-		datos.cotaSeleccionada = cotas[Object.keys(cotas)[0]];
-		datos.cotaAnterior = datos.cotaSeleccionada;
+
 		gestor_medicion.onChangeCota(datos.cotaSeleccionada);
 		
 		
 		
-		var dialMedicion = new gui_dial({
-			idDial : '#dialMedicion',
-			color :'rgb(50,50,50)'
-		});
-		var dialMedicionTiempoReal = new gui_dial({
-			idDial : '#dialMedicionTiempoReal',
-			color : 'rgb(255,255,255)'
-		});
-		
-		
-		$(window).on('resize', function(){
-			dialMedicion.start();
-			dialMedicionTiempoReal.start();
-		});
-		debugger;
-		dialMedicion.start();
-		dialMedicionTiempoReal.start();
+
 		
 		gestor_medicion.onMedicionTiempoReal(function(medicion){
 			
 			
 			ui.find('#valorMedicionTiempoReal').text( printMedicion(medicion) );
 			
-			dialMedicionTiempoReal.setValue(medicion);
+			self.dialMedicionTiempoReal.setValue(medicion);
 			
 		});
 		gestor_medicion.onMedicion(function(medicion){
@@ -240,7 +255,7 @@ var pantalla_medicion = {
 				color= "rgb(0,255,0)";
 			}
 			
-			dialMedicion.setValue(medicion, color);
+			self.dialMedicion.setValue(medicion, color);
 			
 			
 			var ojetosMedicion = ui.find('#overlay_medicion, #valorMedicion, #cotaMedicion, #tipoPiezaMedicion, #dialMedicion');

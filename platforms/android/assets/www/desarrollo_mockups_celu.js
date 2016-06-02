@@ -7,27 +7,9 @@ $(function(){
 	 * Mock del instrumento 111
 	 * borrar al implementar en phoneGap
 	 **************************************************/
-<<<<<<< HEAD
 	if(!window.isphone){
 		var iSenoMock = 0
-		mockup_handler_id_setInterval_medicionTiempoReal = setInterval(function(){		
-
-			Vx.send({
-				tipoDeMensaje:"medicionTiempoReal",
-				instrumento: "111",
-				valor: ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0),
-				unidad: "mm"
-			});
-
-			// no logea, sería mucho
-			iSenoMock++;
-
-			if(iSenoMock>360){
-				iSenoMock=0;
-			}
-
-		}, 10);
-
+		
 		$('#marca_sime').on('click', function(){
 			Vx.send({
 				tipoDeMensaje:"medicion",
@@ -35,40 +17,27 @@ $(function(){
 				valor: ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0),
 				unidad: "mm"
 			});
+			
+			mockup_handler_id_setInterval_medicionTiempoReal = setInterval(function(){		
+
+				Vx.send({
+					tipoDeMensaje:"medicionTiempoReal",
+					instrumento: "111",
+					valor: ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0),
+					unidad: "mm"
+				});
+
+				// no logea, sería mucho
+				iSenoMock++;
+
+				if(iSenoMock>360){
+					iSenoMock=0;
+				}
+
+			}, 10);
 
 		});
 	};
-=======
-	var iSenoMock = 0
-	mockup_handler_id_setInterval_medicionTiempoReal = setInterval(function(){		
-				
-		Vx.send({
-			tipoDeMensaje:"medicionTiempoReal",
-			instrumento: "111",
-			valor: ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0),
-			unidad: "mm"
-		});
-		
-		// no logea, sería mucho
-		iSenoMock++;
-
-		if(iSenoMock>360){
-			iSenoMock=0;
-		}
-
-	}, 10);
-	
-	$('#marca_sime').on('click', function(){
-		Vx.send({
-			tipoDeMensaje:"medicion",
-			instrumento: "111",
-			valor: ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0),
-			unidad: "mm"
-		});
-
-	});
-	
->>>>>>> 03487a5970d0083066481b6b1611c553885b6ed5
 	/**************************************************
 	 * FIN de Mock de instrumento
 	 **************************************************/
@@ -81,7 +50,7 @@ $(function(){
 	 * Mock del objeto serial
 	 * borrar al implementar en phoneGap
 	 **************************************************/
-		
+	
 	if(!window.isphone){
 		console.log("mockeando objeto serial");
 		serial = {
@@ -146,10 +115,17 @@ $(function(){
 		};
 		FileReader.prototype = {
 			readAsText: function(file){
+                var _this = this;
 				console.log('mock - FileReader.readAsText');
 				console.log('-file');
 				console.log(file);
-			}
+                try{
+					setTimeout(function(){_this.onloadend();}, 1);
+				}catch(e){
+					// TODO: nada
+				}
+			},
+            result: localStorage.getItem("DatosSIME")
 		};
 		
 		window.requestFileSystem = function(paramConfig1, paramConfig2, success_callback, err_callback){
@@ -169,26 +145,29 @@ $(function(){
 										console.log('mock - writer.write');
 										console.log('-text');
 										console.log(text);
+                                        localStorage.setItem("DatosSIME", text);
 									}
 									
 								};
-								success_callback(writer);
+                                setTimeout(function(){success_callback(writer);}, 1);
 							},
 							file: function(success_callback, err_callback){
 								console.log('mock - fileEntry.file');
 								var file = {
 									fullPath: '//mock-fileEntry.fullPath//'
 								};
-								success_callback(file);
-								
+								setTimeout(function(){success_callback(file);}, 1);
 							},
 							remove: function(){
 								console.log('mock - fileEntry.remove');
 							}
 						};
 						
-						success_callback(fileEntry);
-					}
+						setTimeout(function(){success_callback(fileEntry);}, 1);
+					},
+                    toURL: function(){ 
+                        return "";
+                    }
 				}
 			};
 			

@@ -1,10 +1,4 @@
 #pantalla_medicion
-.custom_toolbar{
-	right: 40px;
-}
-
-
-#pantalla_medicion
 #overlay_medicion{
 	position: absolute;
 	left: 0px;

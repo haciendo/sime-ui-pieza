@@ -1,26 +1,8 @@
 var pantalla_abm_tipoPieza = {
-	start: function(){
-		var pantalla = this;
-		var ui = $('#pantalla_abm_tipoPieza');
-		pantalla.ui = ui;
+	show: function(){
+		var self = this;
 		
-		ui.on('show', function(){
-			
-			$('#titulo').text('Piezas');
-			
-		});
-		
-		var btn_agregar  = ui.find('.btn_agregar');
-		var btn_aceptar  = ui.find('.btn_aceptar');
-		var btn_cancelar = ui.find('.btn_cancelar');
-		
-		btn_agregar.on('click', function(){
-			
-			ui.find('#descripcion').focus();
-		});
-		
-		
-		btn_aceptar.on('click', function(){
+		var aceptar_callback = function(){
 			var idTipoPieza = "idTipoPieza" + Math.random()
 			
 			var tipoPieza = {
@@ -31,15 +13,42 @@ var pantalla_abm_tipoPieza = {
 			};
 			
 			datos.tipoPiezas[tipoPieza.id] = tipoPieza;
-			pantalla.appendTipoPieza(tipoPieza);
-			
+			RepositorioLocal.save();
+			self.appendTipoPieza(tipoPieza);
+		};
+		var agregar_callback = function(){
+			ui.find('#descripcion').focus();
+		};
+		
+		$('#titulo').text('Piezas');
+		
+		
+		
+		
+		
+		toolbar.custom_toolbar.empty();
+		toolbar.addCrudButtons({
+			parent: self,
+			aceptar_callback: aceptar_callback,
+			agregar_callback: agregar_callback
 		});
 		
+		self.ui.show();
 		
-		pantalla.refresh();
+		//TODO: un parche, des emparchar
+		if(typeof(self.height_detail) === "undefined"){
+			self.height_detail = self.ui.find('.detail').height();
+		}
+		
+		self.refresh();
+	},
+	start: function(){
+		var self = this;
+		self.ui = $('#pantalla_abm_tipoPieza');
+		
 	},
 	appendTipoPieza: function(tipoPieza){
-		var pantalla = this;
+		var self = this;
 		
 		var $tipoPieza_item = $('#plantilla_tipoPieza_item')
 							.clone()
@@ -56,17 +65,17 @@ var pantalla_abm_tipoPieza = {
 			
 		});
 		
-		pantalla.ui.find('.list>ul').append($tipoPieza_item);
-		pantalla.ui.find('#descripcion').val('');
+		self.ui.find('.list>ul').append($tipoPieza_item);
+		self.ui.find('#descripcion').val('');
 		
 	},
 	refresh: function(){
-		var pantalla = this;
-		pantalla.ui.find('.list>ul').empty();
+		var self = this;
+		self.ui.find('.list>ul').empty();
 		
 		for(key in datos.tipoPiezas){
 			var tipoPieza = datos.tipoPiezas[key];
-			pantalla.appendTipoPieza(tipoPieza);
+			self.appendTipoPieza(tipoPieza);
 		}
 	}
 };

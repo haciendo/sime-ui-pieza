@@ -33,9 +33,16 @@
 
 #pantalla_exportar
 #fileName_container{
-	
+	position:absolute;
 	left: 25px;
 	right: 25px;
 	top: 30%;
 }
+
+#pantalla_exportar
+#fileName{
+	width: 100%;
+}
+
+
 

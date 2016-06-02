@@ -45,14 +45,10 @@ ACLARACIÓN:
 
 $(function(){
 	
-	$('.custom_toolbar>.btn_agregar').show();
-	$('.custom_toolbar>.btn_aceptar').hide();
-	$('.custom_toolbar>.btn_cancelar').hide();
 	$('.detail').hide();
 	$('.overlay').hide();
 	
-	
-	$('.custom_toolbar>.btn_agregar').on('click', function(){
+	$('#toolbar>#custom_toolbar>.btn_agregar').on('click', function(){
 		var ui = $(this).parent().parent();
 		
 		var height_detail = ui.find('.detail').height();
@@ -120,12 +116,12 @@ $(function(){
 	};
 	
 	
-	$('.custom_toolbar>.btn_cancelar').on('click', function(){
+	$('#toolbar>#custom_toolbar>.btn_cancelar').on('click', function(){
 		ocultar.call(this);
 	});
 	
 	
-	$('.custom_toolbar>.btn_aceptar').on('click', function(){
+	$('#toolbar>#custom_toolbar>.btn_aceptar').on('click', function(){
 		ocultar.call(this);
 	});
 });

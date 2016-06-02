@@ -1,5 +1,11 @@
 var pantalla_lista_mediciones = {
 	buttons:[],
+	show: function(){
+		var self = this;
+		$('#titulo').text('Lista de mediciones');
+		toolbar.setCustomToolbarButtons(self.buttons);
+		self.ui.show();
+	},
 	start: function() {
 		var self = this;
 		
@@ -10,15 +16,6 @@ var pantalla_lista_mediciones = {
 		self.buttons.push(toolbar.invokeButtons.pantalla_medicion);
 		self.buttons.push(toolbar.invokeButtons.pantalla_exportar);
 		/***************************/
-		
-		
-		
-		
-		
-		ui.on('show', function(){
-			$('#titulo').text('Lista de mediciones');
-			toolbar.setCustomToolbarButtons(self.buttons);
-		});
 		
 		
 		gestor_medicion.onMedicion(function(medicion){

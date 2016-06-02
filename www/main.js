@@ -7,18 +7,6 @@ $(function() {
     }
 });
 
-
-// eventos en show y hide
-(function ($) {
-	$.each(['show', 'hide'], function (i, ev) {
-		var el = $.fn[ev];
-		$.fn[ev] = function () {
-			this.trigger(ev);
-			return el.apply(this, arguments);
-		};
-	});
-})(jQuery);
-
 //var datos = {
 //	tipoPiezas: {
 //		"idTipoPiezaXXXXXX": {
@@ -117,7 +105,7 @@ var onDeviceReady = function() {
 		
 		
 		/* START POINT */
-		pantalla_medicion.ui.show();
+		pantalla_medicion.show();
 		/* */
 		
 		Vx.conectarCon(new NodoConectorSocketCliente('ws://192.168.4.1:1234'));

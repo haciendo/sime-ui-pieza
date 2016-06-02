@@ -50,7 +50,7 @@ $(function(){
 	 * Mock del objeto serial
 	 * borrar al implementar en phoneGap
 	 **************************************************/
-		
+	
 	if(!window.isphone){
 		console.log("mockeando objeto serial");
 		serial = {

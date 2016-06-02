@@ -14,30 +14,6 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #toolbar
 #marca_sime{
 	
@@ -109,19 +85,16 @@
 
 
 
-#toolbar
 #options_list{
 	position: absolute;
 	top: 0px;
 	right: 0px;
 	width: 120px;
 	z-index:3;
-	display: none;
-	
+	display:none;
 	background-color: rgb(200, 200, 200);
 }
 
-#toolbar
 #options_list
 div.link_pantalla{
 	border: solid 1px;
@@ -178,3 +151,33 @@ div.link_pantalla{
 #btn_pantalla_exportar{
 	background:url(img/share.png) no-repeat center center;
 }
+
+
+div.btn_agregar{
+	font-size: 36px;
+    font-weight: bold;
+    color: white;
+    background:url(img/agregar.png) no-repeat center center;
+}
+
+div.btn_aceptar{
+	font-size: 28px;
+    font-weight: bold;
+    color: green;
+    
+    background:url(img/aceptar.png) no-repeat center center;
+}
+
+div.btn_cancelar{
+	font-size: 28px;
+    font-weight: bold;
+    color: red;
+    
+	background:url(img/cancelar.png) no-repeat center center;
+	
+}
+
+
+
+
+

@@ -1,5 +1,12 @@
 var pantalla_abm_instrumentos = {
 	buttons:[],
+	show: function(){		
+		var self = this;
+	
+		$('#titulo').text('Instrumentos');
+		toolbar.setCustomToolbarButtons(self.buttons);
+		self.ui.show();
+	},
 	start: function() {
 		var self = this;
 		var ui = $('#pantalla_abm_instrumentos');
@@ -12,10 +19,6 @@ var pantalla_abm_instrumentos = {
 		self.buttons.push(toolbar.invokeButtons.pantalla_medicion);
 		/***************************/
 		
-		ui.on('show', function(){		
-			$('#titulo').text('Instrumentos');
-			toolbar.setCustomToolbarButtons(self.buttons);
-		});
 		
 		
 		var btn_agregar  = ui.find('.btn_agregar');

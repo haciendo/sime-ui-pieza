@@ -1,5 +1,16 @@
 var pantalla_exportar = {
 	buttons:[],
+	show: function(){
+		var self = this;
+		
+		self.defaultFileName = 'mediciones'+moment().format('__YYYY_MM_DD_hh_mm_ss') +'.csv';
+		self.ui.find("#fileName").attr('placeholder', self.defaultFileName);
+		
+		$('#titulo').text('Exportar');
+		
+		toolbar.setCustomToolbarButtons(self.buttons);
+		self.ui.show();
+	},
 	start: function() {
 		var self = this;
 		var ui = $('#pantalla_exportar');
@@ -8,17 +19,6 @@ var pantalla_exportar = {
 		/**** custom_toolbar *******/
 		self.buttons.push(toolbar.invokeButtons.pantalla_medicion);
 		/***************************/
-		
-			
-		ui.on('show', function(){
-			
-			self.defaultFileName = 'mediciones'+moment().format('__YYYY_MM_DD_hh_mm_ss') +'.csv';
-			ui.find("#fileName").attr('placeholder', self.defaultFileName);
-			
-			$('#titulo').text('Exportar');
-			
-			toolbar.setCustomToolbarButtons(self.buttons);
-		});
 		
 		ui.find('#btn_exportar').on('touchstart', function(){
 			$(this).addClass( "btn_presionado");
