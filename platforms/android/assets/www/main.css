@@ -20,7 +20,7 @@ div.pantalla{
 	left:0px;
 	right:0px;
 	background-color: rgb(246, 178, 107);
-	/*overflow: hidden;*/
+	overflow: hidden;
 }
 
 
@@ -78,29 +78,6 @@ input{
 }
 
 
-div.btn_agregar{
-	font-size: 36px;
-    font-weight: bold;
-    color: white;
-    background:url(img/options.png) no-repeat center center;
-}
-
-div.btn_aceptar{
-	font-size: 28px;
-    font-weight: bold;
-    color: green;
-    
-    background:url(img/options.png) no-repeat center center;
-}
-
-div.btn_cancelar{
-	font-size: 28px;
-    font-weight: bold;
-    color: red;
-    
-	background:url(img/options.png) no-repeat center center;
-	
-}
 
 
 

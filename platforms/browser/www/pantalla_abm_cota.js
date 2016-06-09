@@ -1,102 +1,93 @@
 
 var pantalla_abm_cota = {
-	start: function(){
-		var pantalla = this;
+	show: function(){
+		var self = this;
 		
-		pantalla.ui = $('#pantalla_abm_cota');
-		
-		
-		var ui = $('#pantalla_abm_cota');
-		
-		
-<<<<<<< HEAD
-		ui.on('show', function(){
-			$('#titulo').text('Cotas');
-		});
-	
-		var btn_agregar  = ui.find('.btn_agregar');
-		var btn_aceptar  = ui.find('.btn_aceptar');
-		var btn_cancelar = ui.find('.btn_cancelar');
-		
-		btn_agregar.on('click', function(){
-=======
-		ui.find('.btn_agregar').on('click', function(){
->>>>>>> 03487a5970d0083066481b6b1611c553885b6ed5
-			
-			ui.find('#descripcion').focus();
-		});
-		
-		
-<<<<<<< HEAD
-		btn_aceptar.on('click', function(){
-=======
-		ui.find('.btn_aceptar').on('click', function(){
->>>>>>> 03487a5970d0083066481b6b1611c553885b6ed5
-			
+		var aceptar_callback = function(){
 			var cota = {
-				index: Object.keys(datos.tipoPiezas[pantalla.tipoPieza.id].cotas).length,
+				index: Object.keys(datos.tipoPiezas[self.tipoPieza.id].cotas).length,
 				id: "idCota" + Math.random(),
-				idTipoPieza: pantalla.tipoPieza.id,
-				descripcion: pantalla.ui.find('#descripcion').val(),
-				base:  1.0 * pantalla.ui.find('#base').val(),
-				tolMax: 1.0 * pantalla.ui.find('#tolMax').val(),
-				tolMin: 1.0 * pantalla.ui.find('#tolMin').val()
+				idTipoPieza: self.tipoPieza.id,
+				descripcion: self.ui.find('#descripcion').val(),
+				base:  1.0 * self.ui.find('#base').val(),
+				tolMax: 1.0 * self.ui.find('#tolMax').val(),
+				tolMin: 1.0 * self.ui.find('#tolMin').val()
 			};
 			
 			
 			datos.tipoPiezas[cota.idTipoPieza].cotas[cota.id] = cota;
-			
-			pantalla.appendCota(cota);
-			
-		});
+			RepositorioLocal.save();
+            
+			self.appendCota(cota);
+		};
+		var agregar_callback = function(){
+			self.ui.find('#descripcion').focus();
+		};
 		
-<<<<<<< HEAD
-=======
-		pantalla.ui.find('#tipoPieza_descripcion').on('click', function(){
-			pantalla.ui.css({
+		
+
+		toolbar.custom_toolbar.empty();
+		toolbar.addCrudButtons({
+			parent: self,
+			aceptar_callback: aceptar_callback,
+			agregar_callback: agregar_callback
+		});
+
+		self.ui.show();
+		
+		//TODO: un parche, des emparchar
+		if(typeof(self.height_detail) === "undefined"){
+			self.height_detail = self.ui.find('.detail').height();
+		}
+
+	},
+	
+	start: function(){
+		var self = this;
+		
+		self.ui = $('#pantalla_abm_cota');
+		
+		
+		self.ui.find('#tipoPieza_descripcion').on('click', function(){
+			
+			self.ui.css({
 				left: 0
 			});
 			
+			pantalla_abm_tipoPieza.ui.show();
 			
-			pantalla.ui.animate({
-				left: ui.width()
+			self.ui.animate({
+				left: self.ui.width()
 			}, 300, function(){
-				pantalla.ui.hide();
-				pantalla_abm_tipoPieza.ui.show();
+				self.ui.hide();
+				pantalla_abm_tipoPieza.show();
 			});
 		});
 		
 		
->>>>>>> 03487a5970d0083066481b6b1611c553885b6ed5
 	},
 	appendCota: function(cota){
-		var pantalla = this;
+		var self = this;
 		
 		var $cota_item = $('#plantilla_cota_item')
 						.clone()
 						.attr('id', 'item_' + cota.id)
 						.text( cota.descripcion );
 		
-		pantalla.ui.find('.list>ul').append($cota_item);
-		
-		pantalla.ui.find('#descripcion').val('');
+		self.ui.find('.list>ul').append($cota_item);
 		
 	},
 	
 	setTipoPieza: function(tipoPieza){
-		var pantalla = this;
+		var self = this;
 		
-<<<<<<< HEAD
-		
-		pantalla.ui.find('.list>ul').empty();
-=======
-		pantalla.ui.show();
-		pantalla.ui.css({
+		self.show();
+		self.ui.css({
 			left: pantalla_abm_tipoPieza.ui.width()
 		});
 		
 		
-		pantalla.ui.animate({
+		self.ui.animate({
 			left: 0
 		}, 300, function(){
 			pantalla_abm_tipoPieza.ui.hide();
@@ -104,19 +95,14 @@ var pantalla_abm_cota = {
 		});
 		
 		
-		pantalla.ui.find('.list>ul').empty();
-		pantalla.ui.find('#tipoPieza_descripcion').text('Pieza: ' + tipoPieza.descripcion);
->>>>>>> 03487a5970d0083066481b6b1611c553885b6ed5
+		self.ui.find('.list>ul').empty();
+		self.ui.find('#tipoPieza_descripcion').text('Pieza: ' + tipoPieza.descripcion);
 		
-		pantalla.tipoPieza = tipoPieza;
+		self.tipoPieza = tipoPieza;
 		
-		for(key in pantalla.tipoPieza.cotas){
-			var cota = pantalla.tipoPieza.cotas[key];
-			pantalla.appendCota(cota);
+		for(key in self.tipoPieza.cotas){
+			var cota = self.tipoPieza.cotas[key];
+			self.appendCota(cota);
 		}
-<<<<<<< HEAD
-		
-=======
->>>>>>> 03487a5970d0083066481b6b1611c553885b6ed5
 	}
 };

@@ -153,7 +153,7 @@ var toolbar = {
 				ui.find('.overlay').css({
 					opacity: 0
 				});
-				
+				// TODO: se puede calcular el opt.parent.height_detail en base a la cantidad de campos (:1_todo_ref:)
 				
 				ui.find('.detail').show();
 				ui.find('>.overlay').show();
@@ -177,7 +177,7 @@ var toolbar = {
 		});
 		
 		
-		// TODO: asignarle a todos el enter con el foco al siguiente
+		// TODO: asignarle a todos el enter que haga el foco al siguiente
 		// TODO: buscar último item de los li y asignarle el evento enter para que haga click en aceptar
 		
 		
@@ -213,7 +213,6 @@ var toolbar = {
 			click: function(){
 				ocultar();
 				opt.aceptar_callback();
-				debugger;
 				opt.parent.ui.find('>.detail>ul>li.input_field input').val('');
 				
 			}

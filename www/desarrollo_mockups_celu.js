@@ -122,7 +122,7 @@ $(function(){
                 try{
 					setTimeout(function(){_this.onloadend();}, 1);
 				}catch(e){
-					// TODO: nada
+					console.log('Error en setTimeout(function(){_this.onloadend();}, 1);');
 				}
 			},
             result: localStorage.getItem("DatosSIME")

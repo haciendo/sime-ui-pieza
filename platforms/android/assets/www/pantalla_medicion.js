@@ -24,6 +24,12 @@ var pantalla_medicion = {
 		self.buttons.push(toolbar.invokeButtons.pantalla_lista_mediciones);
 		/***************************/
 		
+		//se selecciona la primer pieza y primer cota
+		var cotas = datos.tipoPiezas[Object.keys(datos.tipoPiezas)[0]].cotas;
+		datos.cotaSeleccionada = cotas[Object.keys(cotas)[0]];
+		datos.cotaAnterior = datos.cotaSeleccionada;
+		
+		
 		self.dialMedicion = new gui_dial({
 			idDial : '#dialMedicion',
 			color :'rgb(50,50,50)'
@@ -213,11 +219,7 @@ var pantalla_medicion = {
 			}, TIEMPO_TRANSICION_TIPOPIEZA);
 		});
 		
-		
-		//se selecciona la primer pieza y primer cota
-		var cotas = datos.tipoPiezas[Object.keys(datos.tipoPiezas)[0]].cotas;
-		datos.cotaSeleccionada = cotas[Object.keys(cotas)[0]];
-		datos.cotaAnterior = datos.cotaSeleccionada;
+
 		gestor_medicion.onChangeCota(datos.cotaSeleccionada);
 		
 		

@@ -8,7 +8,7 @@ var pantalla_abm_tipoPieza = {
 			var tipoPieza = {
 				index: Object.keys(datos.tipoPiezas).length,
 				id: idTipoPieza,
-				descripcion: ui.find('#descripcion').val(),
+				descripcion: self.ui.find('#descripcion').val(),
 				cotas:{}
 			};
 			
@@ -17,7 +17,7 @@ var pantalla_abm_tipoPieza = {
 			self.appendTipoPieza(tipoPieza);
 		};
 		var agregar_callback = function(){
-			ui.find('#descripcion').focus();
+			self.ui.find('#descripcion').focus();
 		};
 		
 		$('#titulo').text('Piezas');
@@ -35,7 +35,9 @@ var pantalla_abm_tipoPieza = {
 		
 		self.ui.show();
 		
-		//TODO: un parche, des emparchar
+		toolbar.addCustomToolbarButton(	toolbar.invokeButtons.pantalla_medicion	);
+		
+		// TODO: un parche, des emparchar (:1_todo_ref:)
 		if(typeof(self.height_detail) === "undefined"){
 			self.height_detail = self.ui.find('.detail').height();
 		}
@@ -63,10 +65,12 @@ var pantalla_abm_tipoPieza = {
 			
 			pantalla_abm_cota.setTipoPieza(tipoPieza)
 			
+			
+			
 		});
 		
 		self.ui.find('.list>ul').append($tipoPieza_item);
-		self.ui.find('#descripcion').val('');
+		
 		
 	},
 	refresh: function(){

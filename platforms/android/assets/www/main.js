@@ -103,7 +103,6 @@ var onDeviceReady = function() {
 		pantalla_abm_cota.start();
 		
 		
-		
 		/* START POINT */
 		pantalla_medicion.show();
 		/* */
@@ -113,7 +112,6 @@ var onDeviceReady = function() {
 		
 		/***************/
 		if(window.isphone){
-			console.log(cordova.plugins);
 			cordova.plugins.backgroundMode.enable();
 		}
 	});

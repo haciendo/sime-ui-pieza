@@ -26,9 +26,6 @@
 	
 	<body onselectstart='return false'>
 		<div id="pantalla_medicion" class="pantalla">
-			<div class="custom_toolbar">
-				<div id="btn_lista_mediciones" class="toolbar_button"></div>
-			</div>
 			<div id="overlay_medicion"></div>
 			
 			<div id="tipoPiezaSeleccionada" class="tipoPieza"></div>
@@ -47,19 +44,10 @@
 			
 		</div>
 		<div id="pantalla_configuracion" class="pantalla">
-			<div class="custom_toolbar">
-				<div class="toolbar_button medir" ></div>
-			</div>
 			Configuración	
 		</div>
 		
 		<div id="pantalla_abm_tipoPieza" class="pantalla">
-			<div class="custom_toolbar">
-				<div class="toolbar_button medir" ></div>
-				<div class="toolbar_button btn_agregar">+</div>
-				<div class="toolbar_button btn_aceptar">V</div>
-				<div class="toolbar_button btn_cancelar">X</div>
-			</div>
 			
 			<div class="list">
 				<ul>
@@ -85,19 +73,9 @@
 		</div>
 		
 		<div id="pantalla_abm_cota" class="pantalla">
-			<div class="custom_toolbar">
-				<div class="toolbar_button medir" ></div>
-				<div class="toolbar_button btn_agregar">+</div>
-				<div class="toolbar_button btn_aceptar">V</div>
-				<div class="toolbar_button btn_cancelar">X</div>
-			</div>
-<<<<<<< HEAD
-			
-=======
 			<div id="tipoPieza_descripcion">
 				DEBUG TEXT
 			</div>
->>>>>>> 03487a5970d0083066481b6b1611c553885b6ed5
 			<div class="list">
 				<ul>
 					
@@ -204,11 +182,8 @@
 		</div>
 		<div id="toolbar">
 			<div id="marca_sime">SIME</div>
-<<<<<<< HEAD
-			<div id="titulo">Titulo</div>
-=======
 			<div id="titulo"></div>
->>>>>>> 03487a5970d0083066481b6b1611c553885b6ed5
+			<div id="custom_toolbar"></div>
 			<div id="options" class="toolbar_button"></div>
 			
 		</div>
@@ -233,7 +208,8 @@
 		
 		
 		<div id="plantillas">
-		
+			<div id="plantilla_toolbar_button" class="toolbar_button"></div>
+			
 			<li id="plantilla_medicion_item" class="list_item">
 				
 			</li>
@@ -265,20 +241,18 @@
 	<script type="text/javascript" src="lib/snap.svg-min.js"></script>
 	<script type="text/javascript" src="lib/SocialSharing.js"></script>
 	
-	<script type="text/javascript" src="lib/CrudHelper.js"></script>
+	<!-- script type="text/javascript" src="lib/CrudHelper.js"></script -->
 	<script type="text/javascript" src="lib/DivConsola.js"></script>
 	<script type="text/javascript" src="lib/isphone.js"></script>
 	
-<<<<<<< HEAD
-<!--	<script type="text/javascript" src="desarrollo_mockups_celu.js"></script>-->
-=======
 	<script type="text/javascript" src="desarrollo_mockups_celu.js"></script>
->>>>>>> 03487a5970d0083066481b6b1611c553885b6ed5
 	
 	<script type="text/javascript" src="lib/FileHelper.js"></script>
 	
+	<script type="text/javascript" src="RepositorioLocal.js"></script>
+    
 	<script type="text/javascript" src="main.js"></script>
-	
+    
 	<script type="text/javascript" src="toolbar.js"></script>
 	<script type="text/javascript" src="gui_dial.js"></script>
 	<script type="text/javascript" src="gestor_medicion.js"></script>

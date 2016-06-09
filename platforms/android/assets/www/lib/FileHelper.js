@@ -21,7 +21,6 @@ var FileHelper = function(opt, succesCallback){
 			
 			fileSystem.root.getFile(self.fileName, {create: true, exclusive: false},
 				function (fileEntry) {
-
 					
 					self.path = fileSystem.root.toURL() + self.fileName;
 					

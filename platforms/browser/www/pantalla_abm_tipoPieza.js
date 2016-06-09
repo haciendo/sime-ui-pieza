@@ -1,35 +1,54 @@
-<<<<<<< HEAD
-var pantalla_abm_tipoPieza = function() {
-	
-	var ui = $('#pantalla_abm_tipoPieza');
-	
-	ui.on('show', function(){
+var pantalla_abm_tipoPieza = {
+	show: function(){
+		var self = this;
+		
+		var aceptar_callback = function(){
+			var idTipoPieza = "idTipoPieza" + Math.random()
+			
+			var tipoPieza = {
+				index: Object.keys(datos.tipoPiezas).length,
+				id: idTipoPieza,
+				descripcion: self.ui.find('#descripcion').val(),
+				cotas:{}
+			};
+			
+			datos.tipoPiezas[tipoPieza.id] = tipoPieza;
+			RepositorioLocal.save();
+			self.appendTipoPieza(tipoPieza);
+		};
+		var agregar_callback = function(){
+			self.ui.find('#descripcion').focus();
+		};
 		
 		$('#titulo').text('Piezas');
 		
-	});
-	
-	var btn_agregar  = ui.find('.btn_agregar');
-	var btn_aceptar  = ui.find('.btn_aceptar');
-	var btn_cancelar = ui.find('.btn_cancelar');
-	
-	btn_agregar.on('click', function(){
 		
-		ui.find('#descripcion').focus();
-	});
-	
-	
-	btn_aceptar.on('click', function(){
-		var idTipoPieza = "idTipoPieza" + Math.random()
 		
-		var tipoPieza = {
-			index: Object.keys(datos.tipoPiezas).length,
-			id: idTipoPieza,
-			descripcion: ui.find('#descripcion').val(),
-			cotas:{}
-		};
 		
-		datos.tipoPiezas[tipoPieza.id] = tipoPieza;
+		
+		toolbar.custom_toolbar.empty();
+		toolbar.addCrudButtons({
+			parent: self,
+			aceptar_callback: aceptar_callback,
+			agregar_callback: agregar_callback
+		});
+		
+		self.ui.show();
+		
+		//TODO: un parche, des emparchar
+		if(typeof(self.height_detail) === "undefined"){
+			self.height_detail = self.ui.find('.detail').height();
+		}
+		
+		self.refresh();
+	},
+	start: function(){
+		var self = this;
+		self.ui = $('#pantalla_abm_tipoPieza');
+		
+	},
+	appendTipoPieza: function(tipoPieza){
+		var self = this;
 		
 		var $tipoPieza_item = $('#plantilla_tipoPieza_item')
 							.clone()
@@ -40,101 +59,25 @@ var pantalla_abm_tipoPieza = function() {
 		
 		$tipoPieza_item.on('click', function(){
 			
-			
 			var tipoPieza = datos.tipoPiezas[$(this).attr('id').replace('item_','')];
 			
 			pantalla_abm_cota.setTipoPieza(tipoPieza)
 			
-			pantalla_abm_cota.ui.show();
-			pantalla_abm_cota.ui.css({
-				left: ui.width()
-			});
-			
-			
-			pantalla_abm_cota.ui.animate({
-				left: 0
-			}, 400, function(){
-				ui.hide();
-			});
 			
 			
 		});
 		
-		ui.find('.list>ul').append($tipoPieza_item);
-		ui.find('#descripcion').val('');
-	});
-	
-=======
-var pantalla_abm_tipoPieza = {
-	start: function(){
-		
-		var ui = $('#pantalla_abm_tipoPieza');
-		this.ui = ui;
-		
-		ui.on('show', function(){
-			
-			$('#titulo').text('Piezas');
-			
-		});
-		
-		var btn_agregar  = ui.find('.btn_agregar');
-		var btn_aceptar  = ui.find('.btn_aceptar');
-		var btn_cancelar = ui.find('.btn_cancelar');
-		
-		btn_agregar.on('click', function(){
-			
-			ui.find('#descripcion').focus();
-		});
+		self.ui.find('.list>ul').append($tipoPieza_item);
 		
 		
-		btn_aceptar.on('click', function(){
-			var idTipoPieza = "idTipoPieza" + Math.random()
-			
-			var tipoPieza = {
-				index: Object.keys(datos.tipoPiezas).length,
-				id: idTipoPieza,
-				descripcion: ui.find('#descripcion').val(),
-				cotas:{}
-			};
-			
-			datos.tipoPiezas[tipoPieza.id] = tipoPieza;
-			
-			var $tipoPieza_item = $('#plantilla_tipoPieza_item')
-								.clone()
-								.attr('id', 'item_' + tipoPieza.id)
-								.text( tipoPieza.descripcion );
-			
-			
-			
-			$tipoPieza_item.on('click', function(){
-				
-				
-				var tipoPieza = datos.tipoPiezas[$(this).attr('id').replace('item_','')];
-				
-				pantalla_abm_cota.setTipoPieza(tipoPieza)
-				
-				
-				
-			});
-			
-			ui.find('.list>ul').append($tipoPieza_item);
-			ui.find('#descripcion').val('');
-		});
 	},
-	
-	setTipoPieza: function(tipoPieza){
-		var pantalla = this;
+	refresh: function(){
+		var self = this;
+		self.ui.find('.list>ul').empty();
 		
-		
-		pantalla.ui.find('.list>ul').empty();
-		pantalla.ui.find('#tipoPieza_descripcion').text('Pieza: ' + tipoPieza.descripcion);
-		
-		pantalla.tipoPieza = tipoPieza;
-		
-		for(key in pantalla.tipoPieza.cotas){
-			var cota = pantalla.tipoPieza.cotas[key];
-			pantalla.appendCota(cota);
+		for(key in datos.tipoPiezas){
+			var tipoPieza = datos.tipoPiezas[key];
+			self.appendTipoPieza(tipoPieza);
 		}
 	}
->>>>>>> 03487a5970d0083066481b6b1611c553885b6ed5
 };

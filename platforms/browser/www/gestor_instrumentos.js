@@ -7,6 +7,7 @@ var gestor_instrumentos = {
         instrumento.codigo = codigo;
         instrumento.descripcion = descripcion;
         datos.instrumentos[codigo] = instrumento;
+        RepositorioLocal.save();
         this.onNuevoInstrumento(instrumento);
         return instrumento;
     },

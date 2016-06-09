@@ -21,26 +21,27 @@ var pantalla_abm_cota = {
 			self.appendCota(cota);
 		};
 		var agregar_callback = function(){
-			ui.find('#descripcion').focus();
+			self.ui.find('#descripcion').focus();
 		};
 		
 		
-		
+
 		toolbar.custom_toolbar.empty();
 		toolbar.addCrudButtons({
 			parent: self,
 			aceptar_callback: aceptar_callback,
 			agregar_callback: agregar_callback
 		});
-		
+
 		self.ui.show();
 		
-		//TODO: un parche, des emparchar
+		toolbar.addCustomToolbarButton(	toolbar.invokeButtons.pantalla_medicion	);
+		
+		// TODO: un parche, des emparchar (:1_todo_ref:)
 		if(typeof(self.height_detail) === "undefined"){
 			self.height_detail = self.ui.find('.detail').height();
 		}
-		
-		self.setTipoPieza();
+
 	},
 	
 	start: function(){
@@ -49,18 +50,16 @@ var pantalla_abm_cota = {
 		self.ui = $('#pantalla_abm_cota');
 		
 		
-		var ui = $('#pantalla_abm_cota');
-		
-		
-		
 		self.ui.find('#tipoPieza_descripcion').on('click', function(){
+			
 			self.ui.css({
 				left: 0
 			});
 			
+			pantalla_abm_tipoPieza.ui.show();
 			
 			self.ui.animate({
-				left: ui.width()
+				left: self.ui.width()
 			}, 300, function(){
 				self.ui.hide();
 				pantalla_abm_tipoPieza.show();
@@ -78,8 +77,6 @@ var pantalla_abm_cota = {
 						.text( cota.descripcion );
 		
 		self.ui.find('.list>ul').append($cota_item);
-		
-		self.ui.find('#descripcion').val('');
 		
 	},
 	
