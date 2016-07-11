@@ -116,7 +116,7 @@ var pantalla_medicion = {
 			var cotaAnterior = ui.find('#cotaAnterior');
 			cotaAnterior.show();
 			
-			cotaAnterior.css({top: 40, left: 5,  opacity: 0.9});
+			cotaAnterior.css({top: 103, left: 5,  opacity: 0.9});
 			
 			cotaSeleccionada.css({top: ui.height() - 100, left: 5, opacity: 0});
 			
@@ -129,7 +129,7 @@ var pantalla_medicion = {
 			});
 			
 			cotaSeleccionada.animate({
-				top: 40,
+				top: 103,
 				opacity: 0.9
 			}, TIEMPO_TRANSICION_COTA);
 			
@@ -143,12 +143,12 @@ var pantalla_medicion = {
 			
 			cotaAnterior.show();
 			
-			cotaAnterior.css({top: 40, left: 5, opacity: 0.9});
+			cotaAnterior.css({top: 103, left: 5, opacity: 0.9});
 			
 			cotaSeleccionada.css({top: 0, left: 5, opacity: 0});
 			
 			cotaSeleccionada.animate({
-				top: 40,
+				top: 103,
 				opacity: 0.9
 			}, TIEMPO_TRANSICION_COTA);
 			
@@ -169,8 +169,8 @@ var pantalla_medicion = {
 			
 			
 			tipoPiezaAnterior.show();
-			ui.find('#cotaAnterior').css({top: 40});
-			ui.find('#cotaSeleccionada').css({top: 40});
+			ui.find('#cotaAnterior').css({top: 103});
+			ui.find('#cotaSeleccionada').css({top: 103});
 			tipoPiezaAnterior.css({left: 5, opacity: 0.9});
 			
 			tipoPiezaSeleccionada.css({left: ui.width(), opacity: 0});
@@ -196,8 +196,8 @@ var pantalla_medicion = {
 			var tipoPiezaAnterior = ui.find('#tipoPiezaAnterior, #cotaAnterior');
 			
 			tipoPiezaAnterior.show();
-			ui.find('#cotaAnterior').css({top: 40});
-			ui.find('#cotaSeleccionada').css({top: 40});
+			ui.find('#cotaAnterior').css({top: 103});
+			ui.find('#cotaSeleccionada').css({top: 103});
 			
 			tipoPiezaAnterior.css({left: 5, opacity: 0.9});
 			
