@@ -263,7 +263,7 @@ var pantalla_medicion = {
 			
 			
 			/////////////////////////////////////////
-			ojetosMedicion.show();
+			//ojetosMedicion.show();
 			ojetosMedicion.css({opacity: 1});
 			
 			//////////////////////////////////////////
@@ -273,7 +273,7 @@ var pantalla_medicion = {
 			ojetosMedicion.animate({
 				opacity: 0
 			}, 1000, function(){
-				ojetosMedicion.hide();
+				//ojetosMedicion.hide();
 			});
 			/////////////////////////////////
 			
