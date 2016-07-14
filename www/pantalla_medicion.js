@@ -266,6 +266,7 @@ var pantalla_medicion = {
 			ojetosMedicion.show();
 			ojetosMedicion.css({opacity: 1});
 			
+            
 			//////////////////////////////////////////
 			ojetosMedicion.animate({
 				opacity: 0.8
