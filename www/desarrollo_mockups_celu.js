@@ -9,7 +9,7 @@ $(function(){
 	 **************************************************/
 	if(!window.isphone){
 		var iSenoMock = 0
-		
+		var empezo_tiempo_real = false;
 		$('#marca_sime').on('click', function(){
 			Vx.send({
 				tipoDeMensaje:"medicion",
@@ -18,23 +18,26 @@ $(function(){
 				unidad: "mm"
 			});
 			
-			mockup_handler_id_setInterval_medicionTiempoReal = setInterval(function(){		
-
-				Vx.send({
-					tipoDeMensaje:"medicionTiempoReal",
-					instrumento: "111",
-					valor: ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0),
-					unidad: "mm"
-				});
-
-				// no logea, sería mucho
-				iSenoMock++;
-
-				if(iSenoMock>360){
-					iSenoMock=0;
-				}
-
-			}, 10);
+            if(!empezo_tiempo_real){
+                empezo_tiempo_real = true;
+                mockup_handler_id_setInterval_medicionTiempoReal = setInterval(function(){		
+    
+                    Vx.send({
+                        tipoDeMensaje:"medicionTiempoReal",
+                        instrumento: "111",
+                        valor: ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0),
+                        unidad: "mm"
+                    });
+    
+                    // no logea, sería mucho
+                    iSenoMock++;
+    
+                    if(iSenoMock>360){
+                        iSenoMock=0;
+                    }
+    
+                }, 10);
+            }
 
 		});
 	};

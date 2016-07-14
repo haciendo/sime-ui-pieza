@@ -38,15 +38,15 @@ var pantalla_medicion = {
 			idDial : '#dialMedicionTiempoReal',
 			color : 'rgb(255,255,255)'
 		});
-		
+		self.dialMedicion.ui.css({opacity: 0});
 		
 		$(window).on('resize', function(){
 			self.dialMedicion.start();
 			self.dialMedicionTiempoReal.start();
 		});
 
-		self.dialMedicion.start();
-		self.dialMedicionTiempoReal.start();
+		//self.dialMedicion.start();
+		//self.dialMedicionTiempoReal.start();
 		
 		
 		/***********************************************/
@@ -263,7 +263,7 @@ var pantalla_medicion = {
 			
 			
 			/////////////////////////////////////////
-			//ojetosMedicion.show();
+			ojetosMedicion.show();
 			ojetosMedicion.css({opacity: 1});
 			
 			//////////////////////////////////////////
