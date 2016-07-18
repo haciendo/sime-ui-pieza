@@ -11,30 +11,27 @@
 
 
 #pantalla_medicion
-#valorMedicion{
+.valorMedicion{
 	position: absolute;
 	width: 98%;
-	top: 80px;
+	top: 70px;
 	
 	text-align: center;
-	color: rgb(50,50,50);
 	font-size: 100px;
 	font-weight: bold;
+}
+#pantalla_medicion
+#valorMedicion{
+	
+	color: rgb(50,50,50);
 	display: none;
 }
-	
 
 
 #pantalla_medicion
 #valorMedicionTiempoReal{
-	position: absolute;
-	width: 98%;
-	top: 80px;
-	
-	text-align: center;
 	color: rgb(255,255,255);
 	font-size: 100px;
-	font-weight: bold;
 }
 
 
@@ -86,7 +83,7 @@ div.tipoPieza{
 #pantalla_medicion
 div.cota{
 	position: absolute;
-	top: 100px;
+	top: 40px;
 	left: 5px;
 	height: 50px;
 	font-size: 20px;
@@ -94,24 +91,24 @@ div.cota{
 
 
 #pantalla_medicion
-#dialMedicionTiempoReal{
+.dialMedicion{
 	position: absolute;
 	left: 1%;
-	top: 190px;
+	top: 175px;
 		
 	width: 98%;
 	height: 80px;
 }
 
+#pantalla_medicion
+#dialMedicionTiempoReal{
+
+}
+
+
 
 #pantalla_medicion
 #dialMedicion{
-	position: absolute;
-	left: 1%;
-	top: 190px;
-	
-	width: 98%;
-	height: 80px;
 	display: none;
 }
 

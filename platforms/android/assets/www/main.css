@@ -15,7 +15,7 @@ ul {
 div.pantalla{
     display: none;
     position: absolute;
-    top: 100px;
+    top: 137px;
     bottom: 0px;
 	left:0px;
 	right:0px;
@@ -44,7 +44,7 @@ li.list_item{
 	background-color: rgb(200,200,200);
 	color: rgb(70,70,70);
 	text-align: left;
-	height: 20px;
+	height: 50px;
 	padding-top: 4px;
 	border-bottom: solid 1px rgb(190,190,190);
 }
