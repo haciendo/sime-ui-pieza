@@ -9,11 +9,11 @@ var pantalla_abm_instrumentos = {
 	},
 	start: function() {
 		var self = this;
-		var ui = $('#pantalla_abm_instrumentos');
-		var txt_codigo = ui.find('#codigo');
-		var txt_descripcion = ui.find('#descripcion');
+		self.ui = $('#pantalla_abm_instrumentos');
+		var txt_codigo = self.ui.find('#codigo');
+		var txt_descripcion = self.ui.find('#descripcion');
 		
-		var lista_instrumentos = ui.find('#lista_instrumentos ul');
+		var lista_instrumentos = self.ui.find('#lista_instrumentos ul');
 		
 		/**** custom_toolbar *******/
 		self.buttons.push(toolbar.invokeButtons.pantalla_medicion);
@@ -21,12 +21,12 @@ var pantalla_abm_instrumentos = {
 		
 		
 		
-		var btn_agregar  = ui.find('.btn_agregar');
-		var btn_aceptar  = ui.find('.btn_aceptar');
-		var btn_cancelar = ui.find('.btn_cancelar');
+		var btn_agregar  = self.ui.find('.btn_agregar');
+		var btn_aceptar  = self.ui.find('.btn_aceptar');
+		var btn_cancelar = self.ui.find('.btn_cancelar');
 		
 		btn_agregar.on('click', function(){		
-			ui.find('#codigo').focus();
+			self.ui.find('#codigo').focus();
 		});
 		
 		var agregarInstrumentoEnPantalla = function(instrumento){
@@ -35,13 +35,13 @@ var pantalla_abm_instrumentos = {
 								.attr('id', 'item_' + instrumento.codigo)
 								.text( instrumento.descripcion );
 		
-			ui.find('.list>ul').append($instrumento_item);			
+			self.ui.find('.list>ul').append($instrumento_item);			
 		};
 		
 		btn_aceptar.on('click', function(){		
 			var instrumento = gestor_instrumentos.addInstrumento(txt_codigo.val(), txt_descripcion.val());   
 			txt_codigo.val("");
-					
+			
 			agregarInstrumentoEnPantalla(instrumento);
 			txt_codigo.val('');
 			txt_descripcion.val('');
