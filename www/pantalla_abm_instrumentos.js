@@ -24,7 +24,7 @@ var pantalla_abm_instrumentos = {
 		var btn_agregar  = self.ui.find('.btn_agregar');
 		var btn_aceptar  = self.ui.find('.btn_aceptar');
 		var btn_cancelar = self.ui.find('.btn_cancelar');
-		
+		    
 		btn_agregar.on('click', function(){		
 			self.ui.find('#codigo').focus();
 		});
@@ -34,7 +34,9 @@ var pantalla_abm_instrumentos = {
 								.clone()
 								.attr('id', 'item_' + instrumento.codigo)
 								.text( instrumento.descripcion );
-		
+            $instrumento_item.click(function(){
+                pantalla_instrumento.setInstrumento(instrumento);
+            });
 			self.ui.find('.list>ul').append($instrumento_item);			
 		};
 		

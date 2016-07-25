@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="pantalla_abm_cota.css" />
         <link rel="stylesheet" href="pantalla_exportar.css" />
         <link rel="stylesheet" href="pantalla_abm_instrumentos.css" />
+        <link rel="stylesheet" href="pantalla_instrumento.css" />
 		
 		
         
@@ -172,7 +173,27 @@
 				</ul>
 			</div>
 		</div>
-		<div id="toolbar">
+        
+        <div id="pantalla_instrumento" class="pantalla">
+            <div>
+                <div class="titulo_propiedad">
+                    Código:
+                </div>
+                <div id="codigo_instrumento">
+                </div>
+            </div>
+            
+            <div>
+                <div class="titulo_propiedad">
+                    Descripción:
+                </div>
+                <div id="descripcion_instrumento">
+                </div>  
+            </div>
+           
+        </div>
+		
+        <div id="toolbar">
 			<div id="marca_sime">S I M E</div>
 			<div id="titulo"></div>
 			<div id="custom_toolbar"></div>
@@ -259,6 +280,7 @@
 	<script type="text/javascript" src="pantalla_abm_tipoPieza.js"></script>
 	<script type="text/javascript" src="pantalla_abm_cota.js"></script>
 	<script type="text/javascript" src="pantalla_abm_instrumentos.js"></script>
+	<script type="text/javascript" src="pantalla_instrumento.js"></script>
 	
 <!--	<script type="text/javascript" src="adaptador_usb.js"></script>-->
 
