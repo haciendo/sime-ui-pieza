@@ -1,9 +1,29 @@
-#pantalla_instrumento .titulo_propiedad{
-    display: inline-block;
+#pantalla_instrumento .nombre_atributo{
+    position:absolute;
+    top: 15px;
+    right: 71%;
+    color: gray;
 }
-#pantalla_instrumento #codigo_instrumento{
-    display: inline-block;
+#pantalla_instrumento .valor_atributo{
+    position:absolute;
+    top: 15px;
+    left: 31%;
 }
-#pantalla_instrumento #descripcion_instrumento{
-    display: inline-block;
+#pantalla_instrumento .contenedor_atributo{
+    position: relative;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+@media (max-width: 600px) {
+    #pantalla_instrumento .nombre_atributo{
+        left: 4px;
+        top: 4px;
+        font-size: 14px;
+    }
+    #pantalla_instrumento .valor_atributo{
+        left: 4px;
+        bottom: 4px;
+        top: initial;
+    }
 }

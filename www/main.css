@@ -12,6 +12,14 @@ ul {
 	display: none;
 }
 
+.alto_pulgar{
+    height: 50px;
+}
+
+.ancho_pulgar{
+    width: 50px;
+}
+
 div.pantalla{
     display: none;
     position: absolute;
