@@ -11,7 +11,7 @@ if(typeof(require) != "undefined"){
 var NodoConectorSocketCliente = function(url){
     this.url = url;  
     this.initSocket();    
-    this.verbose = true;
+    this.verbose = false;
 };
 
 NodoConectorSocketCliente.prototype.initSocket = function(){

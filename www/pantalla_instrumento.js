@@ -23,7 +23,16 @@ var pantalla_instrumento = {
 		var self = this;
 		
 		self.ui = $('#pantalla_instrumento');	
+        self.ctrl_codigo_instrumento = self.ui.find("#codigo_instrumento");
+        self.ctrl_descripcion_instrumento = self.ui.find("#descripcion_instrumento");
         
+        new Hammer(self.ctrl_codigo_instrumento.parent()[0]).on('press', function(ev) {
+            console.log("apretó");
+        });   
+        new Hammer(self.ctrl_descripcion_instrumento.parent()[0]).on('press', function(ev) {
+            console.log("apretó");
+        });   
+    
 	},
 	
 	setInstrumento: function(instrumento){
@@ -42,7 +51,7 @@ var pantalla_instrumento = {
 		
 		self.instrumento = instrumento;
         
-        self.ui.find("#codigo_instrumento").text(instrumento.codigo);
-        self.ui.find("#descripcion_instrumento").text(instrumento.descripcion);
+        self.ctrl_codigo_instrumento.text(instrumento.codigo);
+        self.ctrl_descripcion_instrumento.text(instrumento.descripcion);
 	}
 };
