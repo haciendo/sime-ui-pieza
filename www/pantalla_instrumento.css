@@ -33,9 +33,15 @@
         top: 4px;
         font-size: 14px;
     }
-    #pantalla_instrumento .valor_atributo{
+    #pantalla_instrumento .lbl_valor_atributo{
         left: 4px;
         bottom: 4px;
         top: initial;
+    }
+    #pantalla_instrumento .txt_valor_atributo{
+        left: 4px;
+        bottom: 4px;
+        top: initial;
+        width: 98%;
     }
 }
