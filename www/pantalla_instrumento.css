@@ -4,10 +4,21 @@
     right: 71%;
     color: gray;
 }
-#pantalla_instrumento .valor_atributo{
+#pantalla_instrumento .lbl_valor_atributo{
     position:absolute;
     top: 15px;
     left: 31%;    
+}
+#pantalla_instrumento .txt_valor_atributo{
+    position: absolute;
+    top: 3px;
+    left: 31%;
+    display: none;
+    width: 69%;
+    background-color: #c8c8c8;
+    border: none;
+    bottom: 0px;
+    font-size: 18px;
 }
 #pantalla_instrumento .contenedor_atributo{
     position: relative;

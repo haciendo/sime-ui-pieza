@@ -21,4 +21,8 @@ var gestor_instrumentos = {
 			});
 		}
 	},
+    modificarInstrumento: function(instrumento){
+        datos.instrumentos[instrumento.codigo] = instrumento;
+        RepositorioLocal.save();
+    }
 };
