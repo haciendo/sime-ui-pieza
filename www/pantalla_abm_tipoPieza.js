@@ -25,13 +25,18 @@ var pantalla_abm_tipoPieza = {
 		
 		
 		
-		
+		/*
 		toolbar.custom_toolbar.empty();
 		toolbar.addCrudButtons({
 			parent: self,
 			aceptar_callback: aceptar_callback,
 			agregar_callback: agregar_callback
 		});
+		*/
+		
+		
+		
+		
 		
 		self.ui.show();
 		
@@ -63,7 +68,7 @@ var pantalla_abm_tipoPieza = {
 			
 			var tipoPieza = datos.tipoPiezas[$(this).attr('id').replace('item_','')];
 			
-			pantalla_abm_cota.setTipoPieza(tipoPieza)
+			pantalla_abm_tipoPieza_detalle.setTipoPieza(tipoPieza)
 			
 			
 			

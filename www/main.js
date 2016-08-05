@@ -101,7 +101,7 @@ var onDeviceReady = function() {
 		pantalla_instrumento.start();
 		
 		pantalla_abm_tipoPieza.start();
-		pantalla_abm_cota.start();
+		pantalla_abm_tipoPieza_detalle.start();
 		
 		
 		/* START POINT */

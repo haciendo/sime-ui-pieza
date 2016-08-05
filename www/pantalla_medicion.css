@@ -76,7 +76,7 @@ div.tipoPieza{
 	position: absolute;
 	top: 10px;
 	left: 5px;
-	height: 50px;
+	height: 3em;
 	font-size: 20px;
 }
 
@@ -85,7 +85,7 @@ div.cota{
 	position: absolute;
 	top: 40px;
 	left: 5px;
-	height: 50px;
+	height: 3em;
 	font-size: 20px;
 }
 

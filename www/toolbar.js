@@ -130,8 +130,10 @@ var toolbar = {
 		}
 		
 		
-		this.ui.find('#custom_toolbar').append($toolbar_button);
-
+		//TODO: debug
+		opt.parent.ui.append($toolbar_button);
+		//this.ui.find('#custom_toolbar').append($toolbar_button);
+		
 	},
 	addCustomToolbarButtons: function(vec){
 		for(i in vec){

@@ -6,7 +6,7 @@
 	left:0px;
 	right:0px;
 	top:0px;
-	height:99px;
+	height:6em;
 	border-bottom: solid 2px rgb(255, 255, 255);
 	background-color: rgb(246, 178, 107);
 	overflow: hidden;
@@ -171,6 +171,11 @@ div.link_pantalla{
 }
  
 div.btn_agregar{
+	position: absolute;
+	right: 1em;
+	top: 0.2em;
+	height: 1em;
+	width: 1em;
 	font-size: 36px;
     font-weight: bold;
     color: white;
