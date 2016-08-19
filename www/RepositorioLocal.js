@@ -53,7 +53,8 @@ var datos = {
         }
     },
     instrumentos:{
-        "111": {
+        1: {
+            id: 1,
             codigo: "111",
             descripcion: "calibre mitutoyo"
         }

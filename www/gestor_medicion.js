@@ -15,19 +15,28 @@ var gestor_medicion = {
 	
 	start: function(){
 		var self = this;
-
+        
+        this.pedido_medicion = {remove: function(){}}; 
+        this.pedido_medicion_tr = {remove: function(){}}; 
+        
 		gestor_instrumentos.onNuevoInstrumento(function(instrumento){
-            self.suscribirseAInstrumento(instrumento);
+            self.seleccionarInstrumento(instrumento);
 		});
 		
+        gestor_instrumentos.onInstrumentoModificado(function(instrumento){
+             if(self.instrumentoSeleccionado.id == instrumento.id) self.seleccionarInstrumento(instrumento);
+        });
 		_.each(datos.instrumentos, function(instrumento){
-			self.suscribirseAInstrumento(instrumento);
-		});
+			self.seleccionarInstrumento(instrumento);
+		});        
 	},
-	suscribirseAInstrumento: function(instrumento){
+	seleccionarInstrumento: function(instrumento){
         var self = this;
 		
-		Vx.when({
+        this.instrumentoSeleccionado = instrumento;
+        
+        this.pedido_medicion.remove();
+		this.pedido_medicion = Vx.when({
 			tipoDeMensaje:"medicion",
 			instrumento: instrumento.codigo    
 		},function(mensaje){
@@ -55,7 +64,8 @@ var gestor_medicion = {
 		});
 		
 		
-		Vx.when({
+		this.pedido_medicion_tr.remove();
+		this.pedido_medicion_tr = Vx.when({
 			tipoDeMensaje:"medicionTiempoReal",
 			instrumento: instrumento.codigo    
 		},function(mensaje){
@@ -238,8 +248,33 @@ var gestor_medicion = {
         
 		self.onMoveTipoPiezaPrevious(datos.cotaSeleccionada);
 		self.onChangeCota(datos.cotaSeleccionada);
-	}
-	
-	
-
+	},
+    onMoveInstrumentoNext_vEventos: [],
+	onMoveInstrumentoNext: function(param){
+		if(typeof param == "function"){
+			this.onMoveInstrumentoNext_vEventos.push(param);
+		}else{
+			_.each(this.onMoveInstrumentoNext_vEventos, function(evento){
+				evento(param);
+			});
+		}
+	},
+    moveInstrumentoNext: function(){
+        
+        
+    },
+    onMoveInstrumentoPrevious_vEventos: [],
+	onMoveInstrumentoPrevious: function(param){
+		if(typeof param == "function"){
+			this.onMoveInstrumentoPrevious_vEventos.push(param);
+		}else{
+			_.each(this.onMoveInstrumentoPrevious_vEventos, function(evento){
+				evento(param);
+			});
+		}
+	},
+    moveInstrumentoPrevious: function(){
+        
+        
+    }
 };

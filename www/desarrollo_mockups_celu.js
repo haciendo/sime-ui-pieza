@@ -114,14 +114,14 @@ $(function(){
 		
 		/*GLOBAL*/
 		FileReader = function(){
-			console.log('mock - FileReader()');
+			//console.log('mock - FileReader()');
 		};
 		FileReader.prototype = {
 			readAsText: function(file){
                 var _this = this;
-				console.log('mock - FileReader.readAsText');
-				console.log('-file');
-				console.log(file);
+				//console.log('mock - FileReader.readAsText');
+				//console.log('-file');
+				//console.log(file);
                 try{
 					setTimeout(function(){_this.onloadend();}, 1);
 				}catch(e){
@@ -132,22 +132,22 @@ $(function(){
 		};
 		
 		window.requestFileSystem = function(paramConfig1, paramConfig2, success_callback, err_callback){
-			console.log('mock - window.requestFileSystem');
+			//console.log('mock - window.requestFileSystem');
 			
 			var fileSystem = {
 				root: {
 					getFile: function(fileName, opt, success_callback, err_callback){
-						console.log('mock - fileSystem.root.getFile');
+						//console.log('mock - fileSystem.root.getFile');
 						
 						var fileEntry = {
 							createWriter: function(success_callback, err_callback){
-								console.log('mock - fileEntry.createWriter');
+								//console.log('mock - fileEntry.createWriter');
 								
 								var writer = {
 									write: function(text){
-										console.log('mock - writer.write');
-										console.log('-text');
-										console.log(text);
+										//console.log('mock - writer.write');
+										//console.log('-text');
+										//console.log(text);
                                         localStorage.setItem("DatosSIME", text);
 									}
 									
@@ -155,14 +155,14 @@ $(function(){
                                 setTimeout(function(){success_callback(writer);}, 1);
 							},
 							file: function(success_callback, err_callback){
-								console.log('mock - fileEntry.file');
+								//console.log('mock - fileEntry.file');
 								var file = {
 									fullPath: '//mock-fileEntry.fullPath//'
 								};
 								setTimeout(function(){success_callback(file);}, 1);
 							},
 							remove: function(){
-								console.log('mock - fileEntry.remove');
+								//console.log('mock - fileEntry.remove');
 							}
 						};
 						

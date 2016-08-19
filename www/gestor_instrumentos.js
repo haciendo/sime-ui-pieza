@@ -1,12 +1,9 @@
 var gestor_instrumentos = {
 	start: function(){
     },
-    addInstrumento: function(codigo, descripcion){
-        if(datos.instrumentos[codigo]) return {error: "Ya existe un instrumento con ese código"};
-        var instrumento = {};
-        instrumento.codigo = codigo;
-        instrumento.descripcion = descripcion;
-        datos.instrumentos[codigo] = instrumento;
+    addInstrumento: function(instrumento){        
+        instrumento.id = _.max(datos.instrumentos.keys) + 1;        
+        datos.instrumentos[instrumento.id] = instrumento;
         RepositorioLocal.save();
         this.onNuevoInstrumento(instrumento);
         return instrumento;
@@ -22,9 +19,9 @@ var gestor_instrumentos = {
 		}
 	},    
     modificarInstrumento: function(instrumento){
-        datos.instrumentos[instrumento.codigo] = instrumento;
+        datos.instrumentos[instrumento.id] = instrumento;
         RepositorioLocal.save();
-        this.onInstrumentoModificado();
+        this.onInstrumentoModificado(instrumento);
     },
     onInstrumentoModificado_vEventos: [],
 	onInstrumentoModificado: function(param){
@@ -35,5 +32,5 @@ var gestor_instrumentos = {
 				evento(param);
 			});
 		}
-	},
+	}
 };

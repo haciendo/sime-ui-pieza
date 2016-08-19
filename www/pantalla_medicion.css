@@ -9,6 +9,21 @@
 	display:none;
 }
 
+#overlay_swipe_izquierda{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	bottom: 0px;
+    width:50%;
+}
+
+#overlay_swipe_derecha{
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+    width:50%;
+}
 
 #pantalla_medicion
 .valorMedicion{

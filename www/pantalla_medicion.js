@@ -53,13 +53,13 @@ var pantalla_medicion = {
 		/***********************************************/
 		/********************** GESTOS *****************/
 
-		var myElement = document.getElementById('pantalla_medicion');
+		var overlay_swipe_izquierda = document.getElementById('overlay_swipe_izquierda');
 		
-		var mc = new Hammer(myElement);
+		var gestos_izquierda = new Hammer(overlay_swipe_izquierda);
 
-		mc.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+		gestos_izquierda.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
-		mc.on("swipeleft swiperight", function(ev) {
+		gestos_izquierda.on("swipeleft swiperight", function(ev) {
 			if( $('#cotaSeleccionada').is(':animated') ) {
 				return
 			}
@@ -72,7 +72,7 @@ var pantalla_medicion = {
 			}
 		});
 		
-		mc.on("swipeup swipedown", function(ev) {
+		gestos_izquierda.on("swipeup swipedown", function(ev) {
 			if( $('#cotaSeleccionada').is(':animated') ) {
 				return
 			}
@@ -82,6 +82,26 @@ var pantalla_medicion = {
 			}
 			if(ev.type=="swipedown"){
 				gestor_medicion.moveCotaPrevious();
+			}
+
+		});
+        
+        var overlay_swipe_derecha = document.getElementById('overlay_swipe_derecha');
+		
+		var gestos_derecha = new Hammer(overlay_swipe_izquierda);
+
+		gestos_derecha.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+
+		gestos_derecha.on("swipeup swipedown", function(ev) {
+			if( $('#instrumentoSeleccionado').is(':animated') ) {
+				return
+			}
+			
+			if(ev.type=="swipeup"){
+				gestor_instrumentos.moveInstrumentoNext();
+			}
+			if(ev.type=="swipedown"){
+				gestor_instrumentos.moveInstrumentoPrevious();
 			}
 
 		});
@@ -310,7 +330,7 @@ var pantalla_medicion = {
 		ui.find('#superficieClick').click(function(){
 			Vx.send({
 				tipoDeMensaje:"medicion",
-				instrumento: "111",
+				instrumento: gestor_medicion.instrumentoSuscripto.codigo,
 				valor: ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0),
 				unidad: "mm"
 			});
@@ -321,7 +341,7 @@ var pantalla_medicion = {
     
                     Vx.send({
                         tipoDeMensaje:"medicionTiempoReal",
-                        instrumento: "111",
+                        instrumento: gestor_medicion.instrumentoSuscripto.codigo,
                         valor: ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0),
                         unidad: "mm"
                     });
