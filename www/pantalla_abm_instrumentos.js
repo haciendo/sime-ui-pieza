@@ -24,8 +24,10 @@ var pantalla_abm_instrumentos = {
 		var btn_agregar  = self.ui.find('.btn_agregar');
 		var btn_aceptar  = self.ui.find('.btn_aceptar');
 		var btn_cancelar = self.ui.find('.btn_cancelar');
-		    
-		btn_agregar.on('click', function(){		
+		
+		
+		
+		btn_agregar.on('click', function(){
 			self.ui.find('#codigo').focus();
 		});
 		

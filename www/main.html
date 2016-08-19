@@ -69,38 +69,39 @@
 					
 				</ul>
 			</div>
-			
-			
-			<div class="overlay">
-			</div>
-			
-			<div id="tipoPieza_detail" class="detail">
-				<ul>
-					<li class="input_field">
-						<div class="input_container"> 
-							<input id="descripcion" placeholder="Descripción de la pieza"/>
-						</div>
-					</li>
-				</ul>
-				
-			</div>
-			
+
 		</div>
 		
 		<div id="pantalla_abm_tipoPieza_detalle" class="pantalla">
-			<div id="tipoPieza_descripcion">
-				DEBUG TEXT
-			</div>
+			<ul>
 			
-			<div class="list">
-				<ul>
+				<li id="descripcion" class="contenedor_atributo alto_pulgar list_item">
+					<div class="nombre_atributo">
+						Descripción
+					</div>
+					<div class="lbl_valor_atributo">
+					</div>
+					<input class="txt_valor_atributo" type="text"/>                    
+				</li>
+				<li id="cotas" class="contenedor_atributo_lista">
+					<div class="nombre_atributo">
+						Cotas
+					</div>
 					
-				</ul>
-			</div>
-			
-			
-			<div class="overlay">
-			</div>
+					<ul>
+						<li>oooooo</li>
+						<li>iiiiii</li>
+						<li>oooooo</li>
+						<li>uuuuuu</li>
+						<li>oooooo</li>
+						<li>======</li>
+					</ul>
+					
+				</li>
+			</ul>
+		</div>
+		
+		<div id="pantalla_abm_cota_detalle" class="pantalla">
 			
 			<div id="cota_detail" class="detail">
 				<ul>
@@ -164,7 +165,27 @@
 				
 			</div>
 		</div>
-		
+		<div id="pantalla_instrumento" class="pantalla">
+            <ul>
+                <li class="contenedor_atributo alto_pulgar list_item">
+                    <div class="nombre_atributo">
+                        Código
+                    </div>
+                    <div id="lbl_codigo_instrumento" class="lbl_valor_atributo">
+                    </div>
+                    <input id="txt_codigo_instrumento" class="txt_valor_atributo" type="text"/>                    
+                </li>
+                
+                <li class="contenedor_atributo alto_pulgar list_item">
+                    <div class="nombre_atributo alto_pulgar">
+                        Descripción
+                    </div>
+                    <div id="lbl_descripcion_instrumento" class="lbl_valor_atributo">
+                    </div>  
+                    <input id="txt_descripcion_instrumento" class="txt_valor_atributo" type="text"/>
+                </li>
+           </ul>
+        </div>
 		
 		<div id="pantalla_exportar" class="pantalla">
 			<div class="custom_toolbar">
@@ -189,31 +210,13 @@
 			</div>
 		</div>
         
-        <div id="pantalla_instrumento" class="pantalla">
-            <ul>
-                <li class="contenedor_atributo alto_pulgar list_item">
-                    <div class="nombre_atributo">
-                        Código
-                    </div>
-                    <div id="lbl_codigo_instrumento" class="lbl_valor_atributo">
-                    </div>
-                    <input id="txt_codigo_instrumento" class="txt_valor_atributo" type="text"/>                    
-                </li>
-                
-                <li class="contenedor_atributo alto_pulgar list_item">
-                    <div class="nombre_atributo alto_pulgar">
-                        Descripción
-                    </div>
-                    <div id="lbl_descripcion_instrumento" class="lbl_valor_atributo">
-                    </div>  
-                    <input id="txt_descripcion_instrumento" class="txt_valor_atributo" type="text"/>
-                </li>
-           </ul>
-        </div>
+       
 		
         <div id="toolbar">
 			<div id="marca_sime">S I M E</div>
-			<div id="titulo"></div>
+			<div id="titulo" class="animacion_comentariado_">
+					...loading...
+			</div>
 			<div id="custom_toolbar"></div>
 			<div id="options" class="toolbar_button"></div>
 			
@@ -252,6 +255,8 @@
 			</li>
 			<li id="plantilla_instrumento_item" class="list_item">
 				
+			</li>
+			<li id="plantilla_list_item" class="list_item">
 			</li>
 		</div>
 		

@@ -25,7 +25,6 @@ var pantalla_medicion = {
 		self.buttons.push(toolbar.invokeButtons.pantalla_lista_mediciones);
 		/***************************/
 		
-		//se selecciona la primer pieza y primer cota
 		var cotas = datos.tipoPiezas[Object.keys(datos.tipoPiezas)[0]].cotas;
 		datos.cotaSeleccionada = cotas[Object.keys(cotas)[0]];
 		datos.cotaAnterior = datos.cotaSeleccionada;

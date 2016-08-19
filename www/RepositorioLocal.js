@@ -1,6 +1,6 @@
 var datos = {
-    tipoPiezas: {
-        "idTipoPiezaXXXXXX": {
+    tipoPiezas: {/*
+		"idTipoPiezaXXXXXX": {
             index: 0,
             id: "idTipoPiezaXXXXXX",
             descripcion: "Engranaje espirilénguico",
@@ -33,7 +33,8 @@ var datos = {
                     tolMin: 90
                 }
             }
-        },
+        
+		},
         "idTipoPiezaHHHHHHHH": {
             index: 1,
             id: "idTipoPiezaHHHHHHHH",
@@ -51,7 +52,7 @@ var datos = {
 
             }
         }
-    },
+    */},
     instrumentos:{
         "111": {
             codigo: "111",
