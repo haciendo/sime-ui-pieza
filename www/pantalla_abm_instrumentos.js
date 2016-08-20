@@ -39,7 +39,11 @@ var pantalla_abm_instrumentos = {
             $instrumento_item.click(function(){
                 pantalla_instrumento.setInstrumento(instrumento);
             });
-			self.ui.find('.list>ul').append($instrumento_item);			
+			self.ui.find('.list>ul').append($instrumento_item);	
+            
+            gestor_instrumentos.onInstrumentoModificado(function(){
+                $instrumento_item.text(instrumento.descripcion);
+            });
 		};
 		
 		btn_aceptar.on('click', function(){		

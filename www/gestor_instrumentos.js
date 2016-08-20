@@ -20,9 +20,20 @@ var gestor_instrumentos = {
 				evento(param);
 			});
 		}
-	},
+	},    
     modificarInstrumento: function(instrumento){
         datos.instrumentos[instrumento.codigo] = instrumento;
         RepositorioLocal.save();
-    }
+        this.onInstrumentoModificado();
+    },
+    onInstrumentoModificado_vEventos: [],
+	onInstrumentoModificado: function(param){
+		if(typeof param == "function"){
+			this.onInstrumentoModificado_vEventos.push(param);
+		}else{
+			_.each(this.onInstrumentoModificado_vEventos, function(evento){
+				evento(param);
+			});
+		}
+	},
 };
