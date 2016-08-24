@@ -13,17 +13,17 @@ ul {
 }
 
 .alto_pulgar{
-    height: 50px;
+    height: 3em;
 }
 
 .ancho_pulgar{
-    width: 50px;
+    width: 3em;
 }
 
 div.pantalla{
     display: none;
     position: absolute;
-    top: 99px;
+    top: 6em;
     bottom: 0px;
 	left:0px;
 	right:0px;
@@ -52,16 +52,18 @@ li.list_item{
 	background-color: rgb(200,200,200);
 	color: rgb(70,70,70);
 	text-align: left;
-	height: 50px;
+	height: 3em;
 	padding-top: 4px;
 	border-bottom: solid 1px rgb(190,190,190);
 }
 
 
+
+
 li.input_field{
 	color: rgb(70,70,70);
 	text-align: left;
-	height: 50px;
+	height: 3em;
 }
 
 

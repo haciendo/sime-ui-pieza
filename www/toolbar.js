@@ -122,16 +122,20 @@ var toolbar = {
 				
 		if(typeof(opt.click) !== "undefined"){
 			$('body').delegate('#'+opt.id, 'click', opt.click);
+		/*
+		/// TODO: SE COMENTA: refactorizar el llamado a esta opción
+		
 		}else{
 			$('body').delegate('#'+opt.id, 'click', function (){
 				$('.pantalla').hide();
 				opt.parent.show();
 			});
+		*/
 		}
 		
 		
 		this.ui.find('#custom_toolbar').append($toolbar_button);
-
+		
 	},
 	addCustomToolbarButtons: function(vec){
 		for(i in vec){

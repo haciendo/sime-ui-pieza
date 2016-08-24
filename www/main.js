@@ -20,9 +20,42 @@ var onDeviceReady = function() {
 	
 	RepositorioLocal.load(function(){
 		
+		/*CONFIGURACION para primera ejecución*/
+		if(Object.keys(datos.tipoPiezas).length == 0){
+			var tipoPieza = {
+				index: 0,
+				id: "idTipoPiezaCero",
+				descripcion: "sin piezas",
+				cotas:{}
+			};
+			
+			datos.tipoPiezas[tipoPieza.id] = tipoPieza;
+			RepositorioLocal.save();
+			pantalla_abm_tipoPieza.appendTipoPieza(tipoPieza);
+			
+		}else if( Object.keys(datos.tipoPiezas[Object.keys(datos.tipoPiezas)[0]].cotas).length == 0){
+			var cota = {
+				index: 0,
+				id: "idCota0",
+				idTipoPieza: "idTipoPiezaCero",
+				descripcion: 'sin cotas',
+				base:  10,
+				tolMax: 11,
+				tolMin: 9
+			};
+			
+			
+			datos.tipoPiezas[cota.idTipoPieza].cotas[cota.id] = cota;
+			RepositorioLocal.save();
+            
+			pantalla_abm_tipoPieza_detalle.appendCota(cota);
+			
+		}
+		/**/
+		
 		gestor_medicion.start();
 		gestor_instrumentos.start();
-    
+		
 		toolbar.start();
 		pantalla_medicion.start();
 		pantalla_lista_mediciones.start();
@@ -32,7 +65,7 @@ var onDeviceReady = function() {
 		pantalla_instrumento.start();
 		
 		pantalla_abm_tipoPieza.start();
-		pantalla_abm_cota.start();
+		pantalla_abm_tipoPieza_detalle.start();
 		
 		
 		/* START POINT */
