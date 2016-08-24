@@ -329,7 +329,7 @@ var pantalla_medicion = {
 		ui.find('#superficieClick').click(function(){
 			Vx.send({
 				tipoDeMensaje:"medicion",
-				instrumento: gestor_medicion.instrumentoSuscripto.codigo,
+				instrumento: gestor_medicion.instrumentoSeleccionado.codigo,
 				valor: ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0),
 				unidad: "mm"
 			});
@@ -340,7 +340,7 @@ var pantalla_medicion = {
     
                     Vx.send({
                         tipoDeMensaje:"medicionTiempoReal",
-                        instrumento: gestor_medicion.instrumentoSuscripto.codigo,
+                        instrumento: gestor_medicion.instrumentoSeleccionado.codigo,
                         valor: ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0),
                         unidad: "mm"
                     });

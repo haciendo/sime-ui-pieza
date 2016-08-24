@@ -65,14 +65,14 @@ var onDeviceReady = function() {
 		pantalla_instrumento.start();
 		
 		pantalla_abm_tipoPieza.start();
-		pantalla_abm_tipoPieza_detalle.start();
+		//pantalla_abm_tipoPieza_detalle.start();
 		
 		
 		/* START POINT */
 		pantalla_medicion.show();
 		/* */
 		
-		Vx.conectarCon(new NodoConectorSocketCliente('ws://192.168.4.1:1234'));
+		//Vx.conectarCon(new NodoConectorSocketCliente('ws://192.168.4.1:1234'));
 		
 		
 		/***************/
