@@ -4,57 +4,6 @@
 
 
 #pantalla_abm_tipoPieza_detalle
-#tipoPieza_descripcion{
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	right: 0px;
-	bottom: 0px;
-	padding: 25px 0px 0px 10px;
-	font-size: 20px;
-	
-	color: rgb(255,255,255);
-}
-#pantalla_abm_tipoPieza_detalle
-.list{
-	position:absolute;
-	top: 71px;
-}
-
-
-#pantalla_abm_tipoPieza_detalle
-.nombre_atributo{
-    position:absolute;
-    top: 15px;
-    right: 71%;
-    color: gray;
-}
-#pantalla_abm_tipoPieza_detalle
-.lbl_valor_atributo{
-    position:absolute;
-    top: 15px;
-    left: 31%;    
-}
-#pantalla_abm_tipoPieza_detalle
-.txt_valor_atributo{
-    position: absolute;
-    top: 3px;
-    left: 31%;
-    display: none;
-    width: 69%;
-    background-color: #c8c8c8;
-    border: none;
-    bottom: 0px;
-    font-size: 18px;
-}
-#pantalla_abm_tipoPieza_detalle
-.contenedor_atributo{
-    position: relative;
-    box-sizing: border-box;
-    font-size: 18px;
-    cursor: pointer;
-}
-#pantalla_abm_tipoPieza_detalle
 .contenedor_atributo_lista{
     position: relative;
     box-sizing: border-box;

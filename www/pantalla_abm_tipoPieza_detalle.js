@@ -48,7 +48,7 @@ var pantalla_abm_tipoPieza_detalle = {
 		if(!callback){
 			callback = function(){
 				
-				var cota = datos.tipoPiezas[cota.tipoPieza.id].cotas[$(this).attr('id').replace('item_','')];
+				var cota = datos.tipoPiezas[self.tipoPieza.id].cotas[$(this).attr('id').replace('item_','')];
 				
 				pantalla_abm_cota_detalle.setCota(cota);
 				pantalla_abm_cota_detalle.show_right_to_left();

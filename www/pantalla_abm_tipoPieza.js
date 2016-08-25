@@ -2,16 +2,6 @@ var pantalla_abm_tipoPieza = {
 	show: function(){
 		var self = this;
 		
-		/*
-		toolbar.custom_toolbar.empty();
-		toolbar.addCrudButtons({
-			parent: self,
-			aceptar_callback: aceptar_callback,
-			agregar_callback: agregar_callback
-		});
-		*/
-		
-		
 		$('#titulo').text('Piezas');
 		
 		

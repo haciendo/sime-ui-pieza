@@ -135,6 +135,7 @@ var onDeviceReady = function() {
 		
 		pantalla_abm_tipoPieza.start();
 		pantalla_abm_tipoPieza_detalle.start();
+		pantalla_abm_cota_detalle.start();
 		
 		
 		/* START POINT */

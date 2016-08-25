@@ -27,7 +27,8 @@ div.pantalla{
     bottom: 0px;
 	left:0px;
 	right:0px;
-	background-color: rgb(246, 178, 107);
+	/*background-color: rgb(246, 178, 107);*/
+	background-color: #c8c8c8;
 	overflow: hidden;
 }
 
@@ -56,39 +57,6 @@ li.list_item{
 	padding-top: 4px;
 	border-bottom: solid 1px rgb(190,190,190);
 }
-
-
-
-
-li.input_field{
-	color: rgb(70,70,70);
-	text-align: left;
-	height: 3em;
-}
-
-
-
-div.input_container {
-    border: solid 1px rgb(190, 169, 147);
-    background-color: rgb(252, 222, 147);
-    position: absolute;
-    margin-top: 15px;
-    left: 15px;
-    right: 15px;
-}
-
-
-div.input_container
-input{
-	border: transparent;
-	background-color: transparent;
-	height: 100%;
-	width: 100%;
-	font-size: 15px;
-}
-
-
-
 
 
 
@@ -122,3 +90,53 @@ div.overlay{
 	display:none;
 }
 
+
+.nombre_atributo{
+    position:absolute;
+    top: 15px;
+    right: 71%;
+    color: gray;
+}
+.lbl_valor_atributo{
+    position:absolute;
+    top: 15px;
+    left: 31%;    
+}
+.txt_valor_atributo{
+    position: absolute;
+    top: 3px;
+    left: 31%;
+    display: none;
+    width: 69%;
+    background-color: #c8c8c8;
+    border: none;
+    bottom: 0px;
+    font-size: 18px;
+}
+.contenedor_atributo{
+    position: relative;
+    box-sizing: border-box;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+
+@media (max-width: 600px) {
+    .nombre_atributo{
+        left: 4px;
+        top: 4px;
+        font-size: 14px;
+    }
+    .lbl_valor_atributo{
+        left: 4px;
+        bottom: 4px;
+        top: initial;
+    }
+    .txt_valor_atributo{
+        left: 4px;
+        bottom: 4px;
+        top: initial;
+        width: 98%;
+    }
+}
