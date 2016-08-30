@@ -1,5 +1,5 @@
 
-var pantalla_abm_tipoPieza_detalle = {
+var pantalla_abm_tipoPieza_detalle =  $.extend(true, {}, pantalla, {
 	show: function(){
 		var self = this;
 		
@@ -9,7 +9,9 @@ var pantalla_abm_tipoPieza_detalle = {
 		toolbar.addCustomToolbarButton(	{
             id: 'btn_volver',
             click: function(){
-				pantalla_abm_tipoPieza.show_left_to_right();
+				pantalla_abm_tipoPieza.show_left_to_right(function(){
+					$('#titulo').text('Piezas');
+				});
 			}
         });
 		toolbar.addCustomToolbarButton(	toolbar.invokeButtons.pantalla_medicion	);
@@ -51,7 +53,9 @@ var pantalla_abm_tipoPieza_detalle = {
 				var cota = datos.tipoPiezas[self.tipoPieza.id].cotas[$(this).attr('id').replace('item_','')];
 				
 				pantalla_abm_cota_detalle.setCota(cota);
-				pantalla_abm_cota_detalle.show_right_to_left();
+				pantalla_abm_cota_detalle.show_right_to_left(function(){
+					$('#titulo').text('Cota: ' + cota.descripcion);
+				});
 				
 				
 			};
@@ -60,29 +64,6 @@ var pantalla_abm_tipoPieza_detalle = {
 		$cota_item.on('click', callback);
 		
 		self.ui.find('#cotas>ul').append($cota_item);
-		
-	},
-	show_right_to_left: function(onEnd_callback){
-		var self = this;
-		self.ui.css({
-			left: $('div.pantalla:visible').first().width()
-		});
-		
-		$('.pantalla').not( "#"+self.ui.attr('id') ).css( "zIndex", 0 );
-		self.ui.css( "zIndex", 1 );
-		
-		self.ui.show();
-		self.ui.animate({
-			left: 0
-		}, 300, function(){
-			
-			if(onEnd_callback) onEnd_callback();
-			
-			$('#titulo').text('Pieza: ' + self.tipoPieza.descripcion);
-			
-			$('.pantalla').not( "#"+self.ui.attr('id') ).hide();
-			self.show();
-		});
 		
 	},
 	setTipoPieza: function(tipoPieza){
@@ -131,7 +112,9 @@ var pantalla_abm_tipoPieza_detalle = {
 			self.appendCota(cota);
 			
 			pantalla_abm_cota_detalle.setCota(cota);
-			pantalla_abm_cota_detalle.show_right_to_left();
+			pantalla_abm_cota_detalle.show_right_to_left(function(){
+				$('#titulo').text('Cota: ' + cota.descripcion);
+			});
 		});
 
 	}
@@ -139,4 +122,4 @@ var pantalla_abm_tipoPieza_detalle = {
 	
 	
 	
-};
+});

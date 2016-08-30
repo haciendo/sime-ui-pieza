@@ -1,5 +1,5 @@
 
-var pantalla_abm_cota_detalle = {
+var pantalla_abm_cota_detalle = $.extend(true, {}, pantalla, {
 	show: function(){
 		var self = this;
 		
@@ -8,17 +8,17 @@ var pantalla_abm_cota_detalle = {
 		toolbar.addCustomToolbarButton(	{
             id: 'btn_volver',
             click: function(){
-				pantalla_abm_tipoPieza_detalle.show_left_to_right();
+				pantalla_abm_tipoPieza_detalle.show_left_to_right(function(){
+					
+					$('#titulo').text('Pieza: ' + datos.tipoPiezas[self.cota.idTipoPieza].descripcion);
+					
+				});
 			}
         });
 		toolbar.addCustomToolbarButton(	toolbar.invokeButtons.pantalla_medicion	);
 		
-		
-		
-		
 		self.ui.show();
 	},
-	
 	start: function(){
 		var self = this;
 		
@@ -47,29 +47,6 @@ var pantalla_abm_cota_detalle = {
 			RepositorioLocal.save();
         });
 	},
-	show_right_to_left: function(onEnd_callback){
-		var self = this;
-		self.ui.css({
-			left: $('div.pantalla:visible').first().width()
-		});
-		
-		$('.pantalla').not( "#"+self.ui.attr('id') ).css( "zIndex", 0 );
-		self.ui.css( "zIndex", 1 );
-		
-		self.ui.show();
-		self.ui.animate({
-			left: 0
-		}, 300, function(){
-			
-			if(onEnd_callback) onEnd_callback();
-			
-			$('#titulo').text('Pieza: ' + self.cota.descripcion);
-			
-			$('.pantalla').not( "#"+self.ui.attr('id') ).hide();
-			self.show();
-		});
-		
-	},
 	setCota: function(cota){
 		var self = this;
 		
@@ -82,4 +59,4 @@ var pantalla_abm_cota_detalle = {
 		
 		
 	}
-};
+});
