@@ -1,16 +1,6 @@
-var pantalla_abm_tipoPieza = {
+var pantalla_abm_tipoPieza = $.extend(true, {}, pantalla, {
 	show: function(){
 		var self = this;
-		
-		/*
-		toolbar.custom_toolbar.empty();
-		toolbar.addCrudButtons({
-			parent: self,
-			aceptar_callback: aceptar_callback,
-			agregar_callback: agregar_callback
-		});
-		*/
-		
 		
 		$('#titulo').text('Piezas');
 		
@@ -21,31 +11,6 @@ var pantalla_abm_tipoPieza = {
 		
 		self.refresh();
 		self.ui.show();
-	},
-	show_left_to_right: function(onEnd_callback){
-		
-		var self = this;
-		self.ui.css({
-			left: -1 * $('div.pantalla:visible').first().width(),
-			width: $('div.pantalla:visible').first().width()
-		});
-		
-		$('.pantalla').not( "#"+self.ui.attr('id') ).css( "zIndex", 0 );
-		self.ui.css( "zIndex", 1 );
-		
-		
-		self.ui.show();
-		self.ui.animate({
-			left: 0
-		}, 300, function(){
-			
-			if(onEnd_callback) onEnd_callback();
-			
-			$('.pantalla').not( "#"+self.ui.attr('id') ).hide();
-			
-			self.show();
-		});
-		
 	},
 	start: function(){
 		var self = this;
@@ -70,7 +35,9 @@ var pantalla_abm_tipoPieza = {
 				var tipoPieza = datos.tipoPiezas[$(this).attr('id').replace('item_','')];
 				
 				pantalla_abm_tipoPieza_detalle.setTipoPieza(tipoPieza);
-				pantalla_abm_tipoPieza_detalle.show_right_to_left();
+				pantalla_abm_tipoPieza_detalle.show_right_to_left(function(){
+					$('#titulo').text('Pieza: ' + tipoPieza.descripcion);
+				});
 				
 				
 			};
@@ -112,8 +79,10 @@ var pantalla_abm_tipoPieza = {
 			self.appendTipoPieza(tipoPieza);
 			
 			pantalla_abm_tipoPieza_detalle.setTipoPieza(tipoPieza);
-			pantalla_abm_tipoPieza_detalle.show_right_to_left();
+			pantalla_abm_tipoPieza_detalle.show_right_to_left(function(){
+				$('#titulo').text('Pieza: ' + tipoPieza.descripcion);
+			});
 		});
 
 	}
-};
+});

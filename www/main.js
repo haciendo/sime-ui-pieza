@@ -19,36 +19,28 @@ var onDeviceReady = function() {
 	Vx.when({tipoDeMensaje:"vortex.debug.error"}, function(m){console.log(m);})
 	
 	RepositorioLocal.load(function(){
-		
 		/*CONFIGURACION para primera ejecución*/
 		if(Object.keys(datos.tipoPiezas).length == 0){
 			var tipoPieza = {
 				index: 0,
 				id: "idTipoPiezaCero",
 				descripcion: "sin piezas",
-				cotas:{}
+				cotas:{
+					"idCota0": {
+						index: 0,
+						id: "idCota0",
+						idTipoPieza: "idTipoPiezaCero",
+						descripcion: 'sin cotas',
+						base:  10,
+						tolMax: 11,
+						tolMin: 9
+					}
+				}
 			};
 			
 			datos.tipoPiezas[tipoPieza.id] = tipoPieza;
+			
 			RepositorioLocal.save();
-			pantalla_abm_tipoPieza.appendTipoPieza(tipoPieza);
-			
-		}else if( Object.keys(datos.tipoPiezas[Object.keys(datos.tipoPiezas)[0]].cotas).length == 0){
-			var cota = {
-				index: 0,
-				id: "idCota0",
-				idTipoPieza: "idTipoPiezaCero",
-				descripcion: 'sin cotas',
-				base:  10,
-				tolMax: 11,
-				tolMin: 9
-			};
-			
-			
-			datos.tipoPiezas[cota.idTipoPieza].cotas[cota.id] = cota;
-			RepositorioLocal.save();
-            
-			pantalla_abm_tipoPieza_detalle.appendCota(cota);
 			
 		}
 		/**/
@@ -65,8 +57,9 @@ var onDeviceReady = function() {
 		pantalla_instrumento.start();
 		
 		pantalla_abm_tipoPieza.start();
-		//pantalla_abm_tipoPieza_detalle.start();
-		
+
+		pantalla_abm_tipoPieza_detalle.start();
+		pantalla_abm_cota_detalle.start();		
 		
 		/* START POINT */
 		pantalla_medicion.show();

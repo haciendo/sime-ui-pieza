@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="pantalla_configuracion.css" />
         <link rel="stylesheet" href="pantalla_abm_tipoPieza.css" />
         <link rel="stylesheet" href="pantalla_abm_tipoPieza_detalle.css" />
+        <link rel="stylesheet" href="pantalla_abm_cota_detalle.css" />
         <link rel="stylesheet" href="pantalla_exportar.css" />
         <link rel="stylesheet" href="pantalla_abm_instrumentos.css" />
         <link rel="stylesheet" href="pantalla_instrumento.css" />
@@ -41,7 +42,9 @@
 			<div id="cotaAnterior" class="cota"></div>
 			<div id="cotaMedicion" class="cota"></div>
 			
-            <div id="instrumentoSeleccionado" class="instrumentoSeleccionado"></div>
+            <div id="instrumentoSeleccionado" class="instrumento"></div>
+            <div id="instrumentoAnterior" class="instrumento"></div>
+			<div id="instrumentoSiguiente" class="instrumento"></div>
             
 			<div id="valorMedicionTiempoReal" class="valorMedicion">00.000</div>
 			<div id="valorMedicion" class="valorMedicion">00.000</div>
@@ -107,36 +110,42 @@
 		
 		<div id="pantalla_abm_cota_detalle" class="pantalla">
 			
-			<div id="cota_detail" class="detail">
-				<ul>
-					<li class="input_field">
-						<div class="input_container"> 
-							<input id="descripcion" placeholder="Descripción de la cota"/>
-						</div>
-					</li>
-					
-					<li class="input_field">
-						<div class="input_container"> 
-							<input id="base" type="number" placeholder="Base"/>
-						</div>
-					</li>
-					
-					<li class="input_field">
-						<div class="input_container"> 
-							<input id="tolMax" type="number" placeholder="Tolerancia máxima"/>
-						</div>
-					</li>
-					
-					<li class="input_field">
-						<div class="input_container"> 
-							<input id="tolMin" type="number" placeholder="Tolerancia mínima"/>
-						</div>
-					</li>
-					
-					
-				</ul>
-				
-			</div>
+			<li id="descripcion" class="contenedor_atributo alto_pulgar list_item">
+				<div class="nombre_atributo">
+					Descripción:
+				</div>
+				<div class="lbl_valor_atributo">
+				</div>
+				<input class="txt_valor_atributo" type="text"/>                    
+			</li>
+			
+			<li id="base" class="contenedor_atributo alto_pulgar list_item">
+				<div class="nombre_atributo">
+					Base:
+				</div>
+				<div class="lbl_valor_atributo">
+				</div>
+				<input class="txt_valor_atributo" type="text"/>                    
+			</li>
+			
+			
+			<li id="tolMax" class="contenedor_atributo alto_pulgar list_item">
+				<div class="nombre_atributo">
+					Tolerancia máxima:
+				</div>
+				<div class="lbl_valor_atributo">
+				</div>
+				<input class="txt_valor_atributo" type="text"/>                    
+			</li>
+			
+			<li id="tolMin" class="contenedor_atributo alto_pulgar list_item">
+				<div class="nombre_atributo">
+					Tolerancia mínima:
+				</div>
+				<div class="lbl_valor_atributo">
+				</div>
+				<input class="txt_valor_atributo" type="text"/>                    
+			</li>
 			
 		</div>
 		
@@ -156,8 +165,7 @@
 					<li class="input_field">
 						<div class="input_container"> 
 							<input id="codigo" placeholder="Codigo del instrumento"/>
-						</div>
-					</li>
+						</div>					</li>
 					
 					<li class="input_field">
 						<div class="input_container"> 
@@ -168,6 +176,8 @@
 				</ul>
 				
 			</div>
+			
+			
 		</div>
 		<!--
 		<div id="pantalla_instrumento" class="pantalla">
@@ -323,12 +333,15 @@
 	<script type="text/javascript" src="gui_dial.js"></script>
 	<script type="text/javascript" src="gestor_medicion.js"></script>
 	<script type="text/javascript" src="gestor_instrumentos.js"></script>
+	<script type="text/javascript" src="pantalla.js"></script>
 	<script type="text/javascript" src="pantalla_medicion.js"></script>
 	<script type="text/javascript" src="pantalla_lista_mediciones.js"></script>
 	<script type="text/javascript" src="pantalla_configuracion.js"></script>
 	<script type="text/javascript" src="pantalla_exportar.js"></script>
 	<script type="text/javascript" src="pantalla_abm_tipoPieza.js"></script>
 	<script type="text/javascript" src="pantalla_abm_tipoPieza_detalle.js"></script>
+	<script type="text/javascript" src="pantalla_abm_cota_detalle.js"></script>
+	
 	<script type="text/javascript" src="pantalla_abm_instrumentos.js"></script>
 	<script type="text/javascript" src="pantalla_instrumento.js"></script>
 	

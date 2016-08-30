@@ -19,16 +19,16 @@ var gestor_medicion = {
         this.pedido_medicion = {remove: function(){}}; 
         this.pedido_medicion_tr = {remove: function(){}}; 
         
-		gestor_instrumentos.onNuevoInstrumento(function(instrumento){
-            self.seleccionarInstrumento(instrumento);
-		});
-		
+//		gestor_instrumentos.onNuevoInstrumento(function(instrumento){
+//            self.seleccionarInstrumento(instrumento);
+//		});
+//		
         gestor_instrumentos.onInstrumentoModificado(function(instrumento){
              if(self.instrumentoSeleccionado.id == instrumento.id) self.seleccionarInstrumento(instrumento);
         });
-		_.each(datos.instrumentos, function(instrumento){
-			self.seleccionarInstrumento(instrumento);
-		});        
+		//_.each(datos.instrumentos, function(instrumento){
+            if(datos.instrumentos[0]) self.seleccionarInstrumento(datos.instrumentos[0]);
+		//});        
 	},
 	seleccionarInstrumento: function(instrumento){
         var self = this;
@@ -260,8 +260,9 @@ var gestor_medicion = {
 		}
 	},
     moveInstrumentoNext: function(){
+        var  self = this;		
         
-        
+		self.onMoveInstrumentoNext(self.instrumentoSeleccionado);
     },
     onMoveInstrumentoPrevious_vEventos: [],
 	onMoveInstrumentoPrevious: function(param){

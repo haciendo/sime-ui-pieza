@@ -48,6 +48,7 @@ var pantalla_medicion = {
 		//self.dialMedicion.start();
 		//self.dialMedicionTiempoReal.start();
 		
+        $("#instrumentoSeleccionado").text("Instrumento: " + gestor_medicion.instrumentoSeleccionado.descripcion);
 		
 		/***********************************************/
 		/********************** GESTOS *****************/
@@ -97,10 +98,10 @@ var pantalla_medicion = {
 			}
 			
 			if(ev.type=="swipeup"){
-				gestor_instrumentos.moveInstrumentoNext();
+				gestor_medicion.moveInstrumentoNext();
 			}
 			if(ev.type=="swipedown"){
-				gestor_instrumentos.moveInstrumentoPrevious();
+				gestor_medicion.moveInstrumentoPrevious();
 			}
 
 		});
