@@ -250,32 +250,57 @@ var gestor_medicion = {
 		self.onChangeCota(datos.cotaSeleccionada);
 	},
     onMoveInstrumentoNext_vEventos: [],
-	onMoveInstrumentoNext: function(param){
-		if(typeof param == "function"){
-			this.onMoveInstrumentoNext_vEventos.push(param);
+	onMoveInstrumentoNext: function(p1, p2){
+		if(typeof p1 == "function"){
+			this.onMoveInstrumentoNext_vEventos.push(p1);
 		}else{
 			_.each(this.onMoveInstrumentoNext_vEventos, function(evento){
-				evento(param);
+				evento(p1, p2);
 			});
 		}
 	},
     moveInstrumentoNext: function(){
         var  self = this;		
+        var proximo_instrumento;
+        var instrumento_actual = self.instrumentoSeleccionado;
+        var keys_instrumentos = _.keys(datos.instrumentos);
+        for(var i=0; i<keys_instrumentos.length; i++){
+            var instrumento_iteracion = datos.instrumentos[keys_instrumentos[i]];
+            if(instrumento_iteracion.id == self.instrumentoSeleccionado.id){
+                if(i==keys_instrumentos.length-1) proximo_instrumento = datos.instrumentos[keys_instrumentos[0]];
+                else proximo_instrumento = datos.instrumentos[keys_instrumentos[i+1]];
+                break;
+            }
+        }
         
-		self.onMoveInstrumentoNext(self.instrumentoSeleccionado);
+        self.seleccionarInstrumento(proximo_instrumento);
+		self.onMoveInstrumentoNext(instrumento_actual, proximo_instrumento);
     },
     onMoveInstrumentoPrevious_vEventos: [],
-	onMoveInstrumentoPrevious: function(param){
-		if(typeof param == "function"){
-			this.onMoveInstrumentoPrevious_vEventos.push(param);
+	onMoveInstrumentoPrevious: function(p1, p2){
+		if(typeof p1 == "function"){
+			this.onMoveInstrumentoPrevious_vEventos.push(p1);
 		}else{
 			_.each(this.onMoveInstrumentoPrevious_vEventos, function(evento){
-				evento(param);
+				evento(p1, p2);
 			});
 		}
 	},
     moveInstrumentoPrevious: function(){
-        
+        var  self = this;		
+        var instrumento_anterior;
+        var instrumento_actual = self.instrumentoSeleccionado;
+        var keys_instrumentos = _.keys(datos.instrumentos);
+        for(var i=0; i<keys_instrumentos.length; i++){
+            var instrumento_iteracion = datos.instrumentos[keys_instrumentos[i]];
+            if(instrumento_iteracion.id == self.instrumentoSeleccionado.id){
+                if(i==0) instrumento_anterior = datos.instrumentos[keys_instrumentos[keys_instrumentos.length-1]];
+                else instrumento_anterior = datos.instrumentos[keys_instrumentos[i-1]];
+                break;
+            }
+        }
+        self.seleccionarInstrumento(instrumento_anterior);
+		self.onMoveInstrumentoPrevious(instrumento_actual, instrumento_anterior);
         
     }
 };

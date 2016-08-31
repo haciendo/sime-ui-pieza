@@ -95,6 +95,11 @@
 }
 
 #pantalla_medicion
+#instrumentoAnterior{
+	color: rgb(255,255,255);
+}
+
+#pantalla_medicion
 div.tipoPieza{
 	position: absolute;
 	top: 10px;

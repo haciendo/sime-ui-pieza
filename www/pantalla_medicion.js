@@ -88,7 +88,7 @@ var pantalla_medicion = {
         
         var overlay_swipe_derecha = document.getElementById('overlay_swipe_derecha');
 		
-		var gestos_derecha = new Hammer(overlay_swipe_izquierda);
+		var gestos_derecha = new Hammer(overlay_swipe_derecha);
 
 		gestos_derecha.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
@@ -130,6 +130,7 @@ var pantalla_medicion = {
 		
 		var TIEMPO_TRANSICION_COTA = 400;
 		var TIEMPO_TRANSICION_TIPOPIEZA = 600;
+		var TIEMPO_TRANSICION_INSTRUMENTO = 400;
 		
 		
 		gestor_medicion.onMoveCotaNext(function(){
@@ -243,7 +244,57 @@ var pantalla_medicion = {
 
 		gestor_medicion.onChangeCota(datos.cotaSeleccionada);
 		
+        
+		gestor_medicion.onMoveInstrumentoNext(function(anterior, seleccionado){
+			var div_instrumento_seleccionado = ui.find('#instrumentoSeleccionado');
+			var div_instrumento_anterior = ui.find('#instrumentoAnterior');
+			div_instrumento_anterior.show();
+			
+            div_instrumento_seleccionado.text("Instrumento: " + seleccionado.descripcion);
+            div_instrumento_anterior.text("Instrumento: " + anterior.descripcion);
+            
+			div_instrumento_anterior.css({top: 10, right: 5,  opacity: 0.9});			
+			div_instrumento_seleccionado.css({top: ui.height() - 100, right: 5, opacity: 0});		
+			
+			div_instrumento_anterior.animate({
+				top: 0,
+				opacity: 0
+			}, TIEMPO_TRANSICION_INSTRUMENTO, function(){
+				div_instrumento_anterior.hide();
+			});
+			
+			div_instrumento_seleccionado.animate({
+				top: 10,
+				opacity: 0.9
+			}, TIEMPO_TRANSICION_INSTRUMENTO);			
+
+		});
 		
+		
+		gestor_medicion.onMoveInstrumentoPrevious(function(anterior, seleccionado){
+			var div_instrumento_seleccionado = ui.find('#instrumentoSeleccionado');
+			var div_instrumento_anterior = ui.find('#instrumentoAnterior');
+			
+			div_instrumento_anterior.show();
+			
+            div_instrumento_seleccionado.text("Instrumento: " + seleccionado.descripcion);
+            div_instrumento_anterior.text("Instrumento: " + anterior.descripcion);
+            
+			div_instrumento_anterior.css({top: 10, right: 5, opacity: 0.9});			
+			div_instrumento_seleccionado.css({top: 0, right: 5, opacity: 0});
+			
+			div_instrumento_seleccionado.animate({
+				top: 10,
+				opacity: 0.9
+			}, TIEMPO_TRANSICION_INSTRUMENTO);
+			
+			div_instrumento_anterior.animate({
+				top: ui.height() - 100,
+				opacity: 0
+			}, TIEMPO_TRANSICION_INSTRUMENTO, function(){
+				div_instrumento_anterior.hide();
+			});
+		});
 		
 
 		
