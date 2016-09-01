@@ -7,20 +7,30 @@ var toolbar = {
 		self.ui = ui;
 		
 		self.custom_toolbar = ui.find('#custom_toolbar');
+
 		
 		/**** invokeButtons *******/
 		self.invokeButtons = {
 			pantalla_lista_mediciones: {
 				id: 'btn_pantalla_lista_mediciones',
-				parent: pantalla_lista_mediciones
+				click: function(){
+					$('.pantalla').hide();
+					pantalla_lista_mediciones.show();
+				}
 			},
 			pantalla_exportar: {
 				id: 'btn_pantalla_exportar',
-				parent: pantalla_exportar
+				click: function(){
+					$('.pantalla').hide();
+					pantalla_exportar.show();
+				}
 			},
 			pantalla_medicion: {
 				id: 'btn_pantalla_medicion',
-				parent: pantalla_medicion
+				click: function(){
+					$('.pantalla').hide();
+					pantalla_medicion.show();
+				}
 			}
 		}
 		
@@ -122,6 +132,7 @@ var toolbar = {
 				
 		if(typeof(opt.click) !== "undefined"){
 			$('body').delegate('#'+opt.id, 'click', opt.click);
+		
 		/*
 		/// TODO: SE COMENTA: refactorizar el llamado a esta opción
 		

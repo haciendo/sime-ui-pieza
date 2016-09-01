@@ -74,6 +74,11 @@ var pantalla_abm_tipoPieza = $.extend(true, {}, pantalla, {
 				cotas:{}
 			};
 			
+			
+			if(typeof(datos.tipoPiezas["idTipoPiezaCero"]) != "undefined"){
+				delete datos.tipoPiezas["idTipoPiezaCero"];
+			};
+			
 			datos.tipoPiezas[tipoPieza.id] = tipoPieza;
 			RepositorioLocal.save();
 			self.appendTipoPieza(tipoPieza);

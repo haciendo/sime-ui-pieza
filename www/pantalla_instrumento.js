@@ -9,8 +9,12 @@ var pantalla_instrumento = {
 		
 		toolbar.addCustomToolbarButton(	{
             id:'btn_volver',
-            parent:pantalla_abm_instrumentos
-        });
+			click: function(){
+				$('.pantalla').hide();
+				self.show();
+			}
+		});
+		
 		toolbar.addCustomToolbarButton(	toolbar.invokeButtons.pantalla_medicion	);
         
 		// TODO: un parche, des emparchar (:1_todo_ref:)
