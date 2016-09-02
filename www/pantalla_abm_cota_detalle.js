@@ -52,11 +52,10 @@ var pantalla_abm_cota_detalle = $.extend(true, {}, pantalla, {
 		
 		self.cota = cota;
 		
-		self.ui.find('#descripcion>.lbl_valor_atributo').text(cota.descripcion);
-		self.ui.find('#descripcion>.txt_valor_atributo').val(cota.descripcion);
-		
-		
-		
+		self.ctrl_descripcion.val(cota.descripcion);
+		self.ctrl_base.val(cota.base);
+		self.ctrl_tolMax.val(cota.tolMax);
+		self.ctrl_tolMin.val(cota.tolMin);
 		
 	}
 });

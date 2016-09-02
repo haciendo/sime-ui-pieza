@@ -17,10 +17,6 @@ var pantalla_instrumento = {
 		
 		toolbar.addCustomToolbarButton(	toolbar.invokeButtons.pantalla_medicion	);
         
-		// TODO: un parche, des emparchar (:1_todo_ref:)
-		if(typeof(self.height_detail) === "undefined"){
-			self.height_detail = self.ui.find('.detail').height();
-		}
 	},
 	
 	start: function(){

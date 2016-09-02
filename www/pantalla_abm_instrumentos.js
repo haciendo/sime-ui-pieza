@@ -32,7 +32,7 @@ var pantalla_abm_instrumentos = {
 		});
 		
 		var agregarInstrumentoEnPantalla = function(instrumento){
-			var $instrumento_item = $('#plantilla_instrumento_item')
+			var $instrumento_item = $('#plantilla_list_item')
 								.clone()
 								.attr('id', 'item_' + instrumento.codigo)
 								.text( instrumento.descripcion );

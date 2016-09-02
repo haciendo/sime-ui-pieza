@@ -132,16 +132,6 @@ var toolbar = {
 				
 		if(typeof(opt.click) !== "undefined"){
 			$('body').delegate('#'+opt.id, 'click', opt.click);
-		
-		/*
-		/// TODO: SE COMENTA: refactorizar el llamado a esta opción
-		
-		}else{
-			$('body').delegate('#'+opt.id, 'click', function (){
-				$('.pantalla').hide();
-				opt.parent.show();
-			});
-		*/
 		}
 		
 		

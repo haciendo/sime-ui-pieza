@@ -41,7 +41,7 @@ var pantalla_abm_tipoPieza_detalle =  $.extend(true, {}, pantalla, {
 	appendCota: function(cota, callback){
 		var self = this;
 		
-		var $cota_item = $('#plantilla_cota_item')
+		var $cota_item = $('#plantilla_list_item')
 						.clone()
 						.attr('id', 'item_' + cota.id)
 						.text( cota.descripcion );
@@ -71,8 +71,7 @@ var pantalla_abm_tipoPieza_detalle =  $.extend(true, {}, pantalla, {
 		
 		self.tipoPieza = tipoPieza;
 		
-		self.ui.find('#descripcion>.lbl_valor_atributo').text(tipoPieza.descripcion);
-		self.ui.find('#descripcion>.txt_valor_atributo').val(tipoPieza.descripcion);
+		self.ctrl_descripcion.val(tipoPieza.descripcion);
 		
 	},
 	
