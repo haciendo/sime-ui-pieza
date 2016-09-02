@@ -33,17 +33,17 @@ var pantalla_abm_cota_detalle = $.extend(true, {}, pantalla, {
         });
 		
 		self.ctrl_base = new AtributoEditable(self.ui.find("#base"), function(valor_nuevo){
-            self.cota.base = valor_nuevo;
+            self.cota.base = parseFloat(valor_nuevo);
 			RepositorioLocal.save();
         });
 		
 		self.ctrl_tolMax = new AtributoEditable(self.ui.find("#tolMax"), function(valor_nuevo){
-            self.cota.tolMax = valor_nuevo;
+            self.cota.tolMax = parseFloat(valor_nuevo);
 			RepositorioLocal.save();
         });
 		
 		self.ctrl_tolMin = new AtributoEditable(self.ui.find("#tolMin"), function(valor_nuevo){
-            self.cota.tolMin = valor_nuevo;
+            self.cota.tolMin = parseFloat(valor_nuevo);
 			RepositorioLocal.save();
         });
 	},

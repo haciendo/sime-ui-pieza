@@ -11,21 +11,24 @@ $(function(){
 		var iSenoMock = 0
 		var empezo_tiempo_real = false;
 		$('#marca_sime').on('click', function(){
+			var valor = ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0);
 			Vx.send({
 				tipoDeMensaje:"medicion",
-				instrumento: "111",
-				valor: ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0),
+				instrumento: datos.instrumentos["0"].codigo,
+				valor: valor,
 				unidad: "mm"
 			});
 			
             if(!empezo_tiempo_real){
                 empezo_tiempo_real = true;
-                mockup_handler_id_setInterval_medicionTiempoReal = setInterval(function(){		
-    
+                mockup_handler_id_setInterval_medicionTiempoReal = setInterval(function(){
+					
+					var valor = ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0);
+					
                     Vx.send({
                         tipoDeMensaje:"medicionTiempoReal",
-                        instrumento: "111",
-                        valor: ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0),
+                        instrumento: datos.instrumentos["0"].codigo,
+                        valor: valor,
                         unidad: "mm"
                     });
     

@@ -99,15 +99,23 @@ var pantalla_abm_tipoPieza_detalle =  $.extend(true, {}, pantalla, {
 				id: "idCota" + Math.random(),
 				idTipoPieza: self.tipoPieza.id,
 				descripcion: "nueva cota",
-				base:  1.0 * self.ui.find('#base').val(),
-				tolMax: 1.0 * self.ui.find('#tolMax').val(),
-				tolMin: 1.0 * self.ui.find('#tolMin').val()
+				base:  0,
+				tolMax: 0,
+				tolMin: 0
 			};
 			
 			
 			datos.tipoPiezas[cota.idTipoPieza].cotas[cota.id] = cota;
 			RepositorioLocal.save();
             
+			
+			if(datos.cotaSeleccionada.id == "idCota0"){
+				datos.cotaSeleccionada = cota;
+				datos.cotaAnterior = cota;
+				
+				gestor_medicion.onChangeCota(datos.cotaSeleccionada);
+			}
+			
 			self.appendCota(cota);
 			
 			pantalla_abm_cota_detalle.setCota(cota);

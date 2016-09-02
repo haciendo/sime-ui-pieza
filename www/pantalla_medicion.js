@@ -379,21 +379,26 @@ var pantalla_medicion = {
 		var iSenoMock = 0
 		var empezo_tiempo_real = false;
 		ui.find('#superficieClick').click(function(){
+			/*TODO: mandar mensaje de medicion como corresponde, esto está mockeado*/
+			
+			var valor = ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0);
 			Vx.send({
 				tipoDeMensaje:"medicion",
-				instrumento: gestor_medicion.instrumentoSeleccionado.codigo,
-				valor: ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0),
+				instrumento: datos.instrumentos["0"].codigo,
+				valor: valor,
 				unidad: "mm"
 			});
 			
             if(!empezo_tiempo_real){
                 empezo_tiempo_real = true;
-                mockup_handler_id_setInterval_medicionTiempoReal = setInterval(function(){		
-    
+                mockup_handler_id_setInterval_medicionTiempoReal = setInterval(function(){
+					
+					var valor = ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0);
+					
                     Vx.send({
                         tipoDeMensaje:"medicionTiempoReal",
-                        instrumento: gestor_medicion.instrumentoSeleccionado.codigo,
-                        valor: ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0),
+                        instrumento: datos.instrumentos["0"].codigo,
+                        valor: valor,
                         unidad: "mm"
                     });
     
