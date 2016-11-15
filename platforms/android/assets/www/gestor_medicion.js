@@ -15,19 +15,28 @@ var gestor_medicion = {
 	
 	start: function(){
 		var self = this;
-
-		gestor_instrumentos.onNuevoInstrumento(function(instrumento){
-            self.suscribirseAInstrumento(instrumento);
-		});
-		
-		_.each(datos.instrumentos, function(instrumento){
-			self.suscribirseAInstrumento(instrumento);
-		});
+        
+        this.pedido_medicion = {remove: function(){}}; 
+        this.pedido_medicion_tr = {remove: function(){}}; 
+        
+//		gestor_instrumentos.onNuevoInstrumento(function(instrumento){
+//            self.seleccionarInstrumento(instrumento);
+//		});
+//		
+        gestor_instrumentos.onInstrumentoModificado(function(instrumento){
+             if(self.instrumentoSeleccionado.id == instrumento.id) self.seleccionarInstrumento(instrumento);
+        });
+		//_.each(datos.instrumentos, function(instrumento){
+            if(datos.instrumentos[0]) self.seleccionarInstrumento(datos.instrumentos[0]);
+		//});        
 	},
-	suscribirseAInstrumento: function(instrumento){
+	seleccionarInstrumento: function(instrumento){
         var self = this;
 		
-		Vx.when({
+        this.instrumentoSeleccionado = instrumento;
+        
+        this.pedido_medicion.remove();
+		this.pedido_medicion = Vx.when({
 			tipoDeMensaje:"medicion",
 			instrumento: instrumento.codigo    
 		},function(mensaje){
@@ -55,7 +64,8 @@ var gestor_medicion = {
 		});
 		
 		
-		Vx.when({
+		this.pedido_medicion_tr.remove();
+		this.pedido_medicion_tr = Vx.when({
 			tipoDeMensaje:"medicionTiempoReal",
 			instrumento: instrumento.codigo    
 		},function(mensaje){
@@ -238,8 +248,59 @@ var gestor_medicion = {
         
 		self.onMoveTipoPiezaPrevious(datos.cotaSeleccionada);
 		self.onChangeCota(datos.cotaSeleccionada);
-	}
-	
-	
-
+	},
+    onMoveInstrumentoNext_vEventos: [],
+	onMoveInstrumentoNext: function(p1, p2){
+		if(typeof p1 == "function"){
+			this.onMoveInstrumentoNext_vEventos.push(p1);
+		}else{
+			_.each(this.onMoveInstrumentoNext_vEventos, function(evento){
+				evento(p1, p2);
+			});
+		}
+	},
+    moveInstrumentoNext: function(){
+        var  self = this;		
+        var proximo_instrumento;
+        var instrumento_actual = self.instrumentoSeleccionado;
+        var keys_instrumentos = _.keys(datos.instrumentos);
+        for(var i=0; i<keys_instrumentos.length; i++){
+            var instrumento_iteracion = datos.instrumentos[keys_instrumentos[i]];
+            if(instrumento_iteracion.id == self.instrumentoSeleccionado.id){
+                if(i==keys_instrumentos.length-1) proximo_instrumento = datos.instrumentos[keys_instrumentos[0]];
+                else proximo_instrumento = datos.instrumentos[keys_instrumentos[i+1]];
+                break;
+            }
+        }
+        
+        self.seleccionarInstrumento(proximo_instrumento);
+		self.onMoveInstrumentoNext(instrumento_actual, proximo_instrumento);
+    },
+    onMoveInstrumentoPrevious_vEventos: [],
+	onMoveInstrumentoPrevious: function(p1, p2){
+		if(typeof p1 == "function"){
+			this.onMoveInstrumentoPrevious_vEventos.push(p1);
+		}else{
+			_.each(this.onMoveInstrumentoPrevious_vEventos, function(evento){
+				evento(p1, p2);
+			});
+		}
+	},
+    moveInstrumentoPrevious: function(){
+        var  self = this;		
+        var instrumento_anterior;
+        var instrumento_actual = self.instrumentoSeleccionado;
+        var keys_instrumentos = _.keys(datos.instrumentos);
+        for(var i=0; i<keys_instrumentos.length; i++){
+            var instrumento_iteracion = datos.instrumentos[keys_instrumentos[i]];
+            if(instrumento_iteracion.id == self.instrumentoSeleccionado.id){
+                if(i==0) instrumento_anterior = datos.instrumentos[keys_instrumentos[keys_instrumentos.length-1]];
+                else instrumento_anterior = datos.instrumentos[keys_instrumentos[i-1]];
+                break;
+            }
+        }
+        self.seleccionarInstrumento(instrumento_anterior);
+		self.onMoveInstrumentoPrevious(instrumento_actual, instrumento_anterior);
+        
+    }
 };

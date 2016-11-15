@@ -1,4 +1,4 @@
-var pantalla_medicion = {
+var pantalla_medicion =  $.extend(true, {}, pantalla, {
 	buttons:[],
 	dialMedicion: null,
 	dialMedicionTiempoReal: null,
@@ -413,8 +413,7 @@ var pantalla_medicion = {
             }
 
 		});
-		
-		
+
 	}
 	
-};
+});

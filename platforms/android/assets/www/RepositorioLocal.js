@@ -1,6 +1,6 @@
 var datos = {
-    tipoPiezas: {
-        "idTipoPiezaXXXXXX": {
+    tipoPiezas: {/*
+		"idTipoPiezaXXXXXX": {
             index: 0,
             id: "idTipoPiezaXXXXXX",
             descripcion: "Engranaje espirilénguico",
@@ -33,7 +33,8 @@ var datos = {
                     tolMin: 90
                 }
             }
-        },
+        
+		},
         "idTipoPiezaHHHHHHHH": {
             index: 1,
             id: "idTipoPiezaHHHHHHHH",
@@ -51,11 +52,22 @@ var datos = {
 
             }
         }
-    },
+    */},
     instrumentos:{
-        "111": {
-            codigo: "111",
+        0: {
+            id: 0,
+            codigo: "000",
             descripcion: "calibre mitutoyo"
+        },
+        1: {
+            id: 1,
+            codigo: "111",
+            descripcion: "micrometro measureking"
+        },
+        2: {
+            id: 2,
+            codigo: "222",
+            descripcion: "optoscanner cacapiur"
         }
     },
     cotaAnterior: null,

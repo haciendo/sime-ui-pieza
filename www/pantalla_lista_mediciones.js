@@ -1,4 +1,4 @@
-var pantalla_lista_mediciones = {
+var pantalla_lista_mediciones =  $.extend(true, {}, pantalla, {
 	buttons:[],
 	show: function(){
 		var self = this;
@@ -30,4 +30,4 @@ var pantalla_lista_mediciones = {
 			
 		});
 	}
-};
+});

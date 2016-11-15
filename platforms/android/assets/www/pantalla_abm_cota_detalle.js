@@ -8,14 +8,13 @@ var pantalla_abm_cota_detalle = $.extend(true, {}, pantalla, {
 		toolbar.addCustomToolbarButton(	{
             id: 'btn_volver',
             click: function(){
-				slider.show_left_to_right(pantalla_abm_tipoPieza_detalle, pantalla_abm_cota_detalle, function(){
+				pantalla_abm_tipoPieza_detalle.show_left_to_right(function(){
+					
 					$('#titulo').text('Pieza: ' + datos.tipoPiezas[self.cota.idTipoPieza].descripcion);
+					
 				});
 			}
         });
-		
-		
-		
 		toolbar.addCustomToolbarButton(	toolbar.invokeButtons.pantalla_medicion	);
 		
 		self.ui.show();

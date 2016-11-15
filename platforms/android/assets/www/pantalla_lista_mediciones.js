@@ -20,7 +20,7 @@ var pantalla_lista_mediciones = {
 		
 		gestor_medicion.onMedicion(function(medicion){
 			
-			var $medicion_item = $('#plantilla_medicion_item')
+			var $medicion_item = $('#plantilla_list_item')
 								.clone()
 								.attr('id', 'medicion_item_' + medicion.index)
 								.text( printMedicion(medicion) );

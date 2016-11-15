@@ -1,5 +1,5 @@
 
-var pantalla_instrumento =  $.extend(true, {}, pantalla, {
+var pantalla_instrumento = {
 	show: function(){
 		var self = this;
 		
@@ -55,4 +55,4 @@ var pantalla_instrumento =  $.extend(true, {}, pantalla, {
         self.ctrl_codigo.val(instrumento.codigo);
         self.ctrl_descripcion.val(instrumento.descripcion);
 	}
-});
+};

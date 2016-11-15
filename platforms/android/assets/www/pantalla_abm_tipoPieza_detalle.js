@@ -9,7 +9,7 @@ var pantalla_abm_tipoPieza_detalle =  $.extend(true, {}, pantalla, {
 		toolbar.addCustomToolbarButton(	{
             id: 'btn_volver',
             click: function(){
-				slider.show_left_to_right(pantalla_abm_tipoPieza, pantalla_abm_tipoPieza_detalle, function(){
+				pantalla_abm_tipoPieza.show_left_to_right(function(){
 					$('#titulo').text('Piezas');
 				});
 			}
@@ -50,14 +50,11 @@ var pantalla_abm_tipoPieza_detalle =  $.extend(true, {}, pantalla, {
 		if(!callback){
 			callback = function(){
 				
-				var tipoPieza = datos.tipoPiezas[self.tipoPieza.id];
-				
-				var cota = tipoPieza.cotas[$(this).attr('id').replace('item_','')];
+				var cota = datos.tipoPiezas[self.tipoPieza.id].cotas[$(this).attr('id').replace('item_','')];
 				
 				pantalla_abm_cota_detalle.setCota(cota);
-				
-				slider.show_right_to_left(pantalla_abm_cota_detalle, pantalla_abm_tipoPieza_detalle, function(){
-					$('#titulo').text('Pieza: ' + tipoPieza.descripcion);
+				pantalla_abm_cota_detalle.show_right_to_left(function(){
+					$('#titulo').text('Cota: ' + cota.descripcion);
 				});
 				
 				

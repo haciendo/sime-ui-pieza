@@ -7,20 +7,30 @@ var toolbar = {
 		self.ui = ui;
 		
 		self.custom_toolbar = ui.find('#custom_toolbar');
+
 		
 		/**** invokeButtons *******/
 		self.invokeButtons = {
 			pantalla_lista_mediciones: {
 				id: 'btn_pantalla_lista_mediciones',
-				parent: pantalla_lista_mediciones
+				click: function(){
+					$('.pantalla').hide();
+					pantalla_lista_mediciones.show();
+				}
 			},
 			pantalla_exportar: {
 				id: 'btn_pantalla_exportar',
-				parent: pantalla_exportar
+				click: function(){
+					$('.pantalla').hide();
+					pantalla_exportar.show();
+				}
 			},
 			pantalla_medicion: {
 				id: 'btn_pantalla_medicion',
-				parent: pantalla_medicion
+				click: function(){
+					$('.pantalla').hide();
+					pantalla_medicion.show();
+				}
 			}
 		}
 		
@@ -122,115 +132,15 @@ var toolbar = {
 				
 		if(typeof(opt.click) !== "undefined"){
 			$('body').delegate('#'+opt.id, 'click', opt.click);
-		}else{
-			$('body').delegate('#'+opt.id, 'click', function (){
-				$('.pantalla').hide();
-				opt.parent.show();
-			});
 		}
 		
 		
 		this.ui.find('#custom_toolbar').append($toolbar_button);
-
+		
 	},
 	addCustomToolbarButtons: function(vec){
 		for(i in vec){
 			this.addCustomToolbarButton(vec[i]);
 		}
-	},
-	addCrudButtons: function(opt){
-		var self = this;
-		this.addCustomToolbarButton({
-			id: opt.parent.ui.attr('id') + '_btn_agregar',
-			parent: opt.parent,
-			class: 'btn_agregar',
-			click: function(e){
-				var ui = opt.parent.ui;
-				
-				ui.find('.detail').css({
-					height: 0
-				});
-				ui.find('.overlay').css({
-					opacity: 0
-				});
-				// TODO: se puede calcular el opt.parent.height_detail en base a la cantidad de campos (:1_todo_ref:)
-				
-				ui.find('.detail').show();
-				ui.find('>.overlay').show();
-				
-				ui.find('.detail').animate({
-					height: opt.parent.height_detail
-				}, 200);
-				ui.find('.overlay').animate({
-					opacity: 0.6
-				}, 200);
-				
-				
-				
-				self.custom_toolbar.find('.btn_agregar').hide();
-				self.custom_toolbar.find('.btn_aceptar').show();
-				self.custom_toolbar.find('.btn_cancelar').show();
-				
-				
-				opt.agregar_callback();
-			}
-		});
-		
-		
-		// TODO: asignarle a todos el enter que haga el foco al siguiente
-		// TODO: buscar último item de los li y asignarle el evento enter para que haga click en aceptar
-		
-		
-		
-		var ocultar =  function(){
-			var ui = opt.parent.ui;
-			
-			ui.find('.detail').animate({
-				height: 0
-			}, 200, function(){
-				ui.find('.detail').hide();
-			});
-			
-			
-			ui.find('.overlay').animate({
-				opacity: 0
-			}, 200, function(){
-				ui.find('.overlay').hide();
-			});
-			
-			
-			self.custom_toolbar.find('.btn_agregar').show();
-			self.custom_toolbar.find('.btn_aceptar').hide();
-			self.custom_toolbar.find('.btn_cancelar').hide();
-			
-		};
-		
-		
-		this.addCustomToolbarButton({
-			id: opt.parent.ui.attr('id') + '_btn_aceptar',
-			parent: opt.parent,
-			class: 'btn_aceptar',
-			click: function(){
-				ocultar();
-				opt.aceptar_callback();
-				opt.parent.ui.find('>.detail>ul>li.input_field input').val('');
-				
-			}
-		});
-		
-		this.addCustomToolbarButton({
-			id: opt.parent.ui.attr('id') + '_btn_cancelar',
-			parent: opt.parent,
-			class: 'btn_cancelar',
-			click: function(){
-				ocultar();
-			}
-		});
-		
-		
-		self.custom_toolbar.find('.btn_aceptar').hide();
-		self.custom_toolbar.find('.btn_cancelar').hide();
-		
 	}
-	
 };

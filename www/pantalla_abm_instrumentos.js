@@ -1,4 +1,4 @@
-var pantalla_abm_instrumentos = {
+var pantalla_abm_instrumentos =  $.extend(true, {}, pantalla, {
 	buttons:[],
 	show: function(){		
 		var self = this;
@@ -59,4 +59,4 @@ var pantalla_abm_instrumentos = {
 			agregarInstrumentoEnPantalla(instrumento);
 		});
 	}
-};
+});

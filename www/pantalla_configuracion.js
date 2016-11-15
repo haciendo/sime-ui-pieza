@@ -1,4 +1,4 @@
-var pantalla_configuracion = {
+var pantalla_configuracion =  $.extend(true, {}, pantalla, {
 	buttons:[],
 	show: function(){
 		var self = this;
@@ -21,4 +21,4 @@ var pantalla_configuracion = {
 		
 		
 	}
-};
+});

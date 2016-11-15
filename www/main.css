@@ -26,7 +26,7 @@ div.pantalla{
     top: 6em;
     bottom: 0px;
 	left:0px;
-	right:0px;
+	width:100%;
 	background-color: #c8c8c8;
 	overflow: hidden;
 }

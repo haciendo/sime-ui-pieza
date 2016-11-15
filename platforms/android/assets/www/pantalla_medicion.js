@@ -25,7 +25,6 @@ var pantalla_medicion = {
 		self.buttons.push(toolbar.invokeButtons.pantalla_lista_mediciones);
 		/***************************/
 		
-		//se selecciona la primer pieza y primer cota
 		var cotas = datos.tipoPiezas[Object.keys(datos.tipoPiezas)[0]].cotas;
 		datos.cotaSeleccionada = cotas[Object.keys(cotas)[0]];
 		datos.cotaAnterior = datos.cotaSeleccionada;
@@ -39,27 +38,28 @@ var pantalla_medicion = {
 			idDial : '#dialMedicionTiempoReal',
 			color : 'rgb(255,255,255)'
 		});
-		
+		self.dialMedicion.ui.css({opacity: 0});
 		
 		$(window).on('resize', function(){
 			self.dialMedicion.start();
 			self.dialMedicionTiempoReal.start();
 		});
 
-		self.dialMedicion.start();
-		self.dialMedicionTiempoReal.start();
+		//self.dialMedicion.start();
+		//self.dialMedicionTiempoReal.start();
 		
+        $("#instrumentoSeleccionado").text("Instrumento: " + gestor_medicion.instrumentoSeleccionado.descripcion);
 		
 		/***********************************************/
 		/********************** GESTOS *****************/
 
-		var myElement = document.getElementById('pantalla_medicion');
+		var overlay_swipe_izquierda = document.getElementById('overlay_swipe_izquierda');
 		
-		var mc = new Hammer(myElement);
+		var gestos_izquierda = new Hammer(overlay_swipe_izquierda);
 
-		mc.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+		gestos_izquierda.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
-		mc.on("swipeleft swiperight", function(ev) {
+		gestos_izquierda.on("swipeleft swiperight", function(ev) {
 			if( $('#cotaSeleccionada').is(':animated') ) {
 				return
 			}
@@ -72,7 +72,7 @@ var pantalla_medicion = {
 			}
 		});
 		
-		mc.on("swipeup swipedown", function(ev) {
+		gestos_izquierda.on("swipeup swipedown", function(ev) {
 			if( $('#cotaSeleccionada').is(':animated') ) {
 				return
 			}
@@ -82,6 +82,26 @@ var pantalla_medicion = {
 			}
 			if(ev.type=="swipedown"){
 				gestor_medicion.moveCotaPrevious();
+			}
+
+		});
+        
+        var overlay_swipe_derecha = document.getElementById('overlay_swipe_derecha');
+		
+		var gestos_derecha = new Hammer(overlay_swipe_derecha);
+
+		gestos_derecha.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+
+		gestos_derecha.on("swipeup swipedown", function(ev) {
+			if( $('#instrumentoSeleccionado').is(':animated') ) {
+				return
+			}
+			
+			if(ev.type=="swipeup"){
+				gestor_medicion.moveInstrumentoNext();
+			}
+			if(ev.type=="swipedown"){
+				gestor_medicion.moveInstrumentoPrevious();
 			}
 
 		});
@@ -110,6 +130,7 @@ var pantalla_medicion = {
 		
 		var TIEMPO_TRANSICION_COTA = 400;
 		var TIEMPO_TRANSICION_TIPOPIEZA = 600;
+		var TIEMPO_TRANSICION_INSTRUMENTO = 400;
 		
 		
 		gestor_medicion.onMoveCotaNext(function(){
@@ -223,7 +244,57 @@ var pantalla_medicion = {
 
 		gestor_medicion.onChangeCota(datos.cotaSeleccionada);
 		
+        
+		gestor_medicion.onMoveInstrumentoNext(function(anterior, seleccionado){
+			var div_instrumento_seleccionado = ui.find('#instrumentoSeleccionado');
+			var div_instrumento_anterior = ui.find('#instrumentoAnterior');
+			div_instrumento_anterior.show();
+			
+            div_instrumento_seleccionado.text("Instrumento: " + seleccionado.descripcion);
+            div_instrumento_anterior.text("Instrumento: " + anterior.descripcion);
+            
+			div_instrumento_anterior.css({top: 10, right: 5,  opacity: 0.9});			
+			div_instrumento_seleccionado.css({top: ui.height() - 100, right: 5, opacity: 0});		
+			
+			div_instrumento_anterior.animate({
+				top: 0,
+				opacity: 0
+			}, TIEMPO_TRANSICION_INSTRUMENTO, function(){
+				div_instrumento_anterior.hide();
+			});
+			
+			div_instrumento_seleccionado.animate({
+				top: 10,
+				opacity: 0.9
+			}, TIEMPO_TRANSICION_INSTRUMENTO);			
+
+		});
 		
+		
+		gestor_medicion.onMoveInstrumentoPrevious(function(anterior, seleccionado){
+			var div_instrumento_seleccionado = ui.find('#instrumentoSeleccionado');
+			var div_instrumento_anterior = ui.find('#instrumentoAnterior');
+			
+			div_instrumento_anterior.show();
+			
+            div_instrumento_seleccionado.text("Instrumento: " + seleccionado.descripcion);
+            div_instrumento_anterior.text("Instrumento: " + anterior.descripcion);
+            
+			div_instrumento_anterior.css({top: 10, right: 5, opacity: 0.9});			
+			div_instrumento_seleccionado.css({top: 0, right: 5, opacity: 0});
+			
+			div_instrumento_seleccionado.animate({
+				top: 10,
+				opacity: 0.9
+			}, TIEMPO_TRANSICION_INSTRUMENTO);
+			
+			div_instrumento_anterior.animate({
+				top: ui.height() - 100,
+				opacity: 0
+			}, TIEMPO_TRANSICION_INSTRUMENTO, function(){
+				div_instrumento_anterior.hide();
+			});
+		});
 		
 
 		
@@ -267,6 +338,7 @@ var pantalla_medicion = {
 			ojetosMedicion.show();
 			ojetosMedicion.css({opacity: 1});
 			
+            
 			//////////////////////////////////////////
 			ojetosMedicion.animate({
 				opacity: 0.8
@@ -274,7 +346,7 @@ var pantalla_medicion = {
 			ojetosMedicion.animate({
 				opacity: 0
 			}, 1000, function(){
-				ojetosMedicion.hide();
+				//ojetosMedicion.hide();
 			});
 			/////////////////////////////////
 			
@@ -300,6 +372,48 @@ var pantalla_medicion = {
 			}, 4500);
 			
 		});
+		
+		/****** BOTON_MEDIR ************/
+		
+		
+		var iSenoMock = 0
+		var empezo_tiempo_real = false;
+		ui.find('#superficieClick').click(function(){
+			/*TODO: mandar mensaje de medicion como corresponde, esto está mockeado*/
+			
+			var valor = ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0);
+			Vx.send({
+				tipoDeMensaje:"medicion",
+				instrumento: datos.instrumentos["0"].codigo,
+				valor: valor,
+				unidad: "mm"
+			});
+			
+            if(!empezo_tiempo_real){
+                empezo_tiempo_real = true;
+                mockup_handler_id_setInterval_medicionTiempoReal = setInterval(function(){
+					
+					var valor = ((Math.sin(iSenoMock/180*Math.PI) * 12) + datos.cotaSeleccionada.base).toFixed(0);
+					
+                    Vx.send({
+                        tipoDeMensaje:"medicionTiempoReal",
+                        instrumento: datos.instrumentos["0"].codigo,
+                        valor: valor,
+                        unidad: "mm"
+                    });
+    
+                    // no logea, sería mucho
+                    iSenoMock++;
+    
+                    if(iSenoMock>360){
+                        iSenoMock=0;
+                    }
+    
+                }, 10);
+            }
+
+		});
+		
 		
 	}
 	

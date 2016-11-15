@@ -1,0 +1,34 @@
+
+#pantalla_abm_tipoPieza_detalle
+.contenedor_atributo_lista{
+    position: relative;
+    box-sizing: border-box;
+    font-size: 18px;
+    cursor: pointer;
+	background-color: rgb(200,200,200);
+	color: rgb(70,70,70);
+	text-align: left;
+	padding-top: 4px;
+}
+#pantalla_abm_tipoPieza_detalle
+.contenedor_atributo_lista
+ul{
+	overflow-x: hidden;
+	overflow-y: scroll;
+	position: relative;
+	left: 31%;
+	right: 0px;
+	margin-top: 15px;
+	bottom: 0px;
+}
+
+#pantalla_abm_tipoPieza_detalle
+.contenedor_atributo_lista
+li{
+	background-color: rgb(200,200,200);
+	color: rgb(70,70,70);
+	text-align: left;
+	height: 3em;
+	padding-top: 4px;
+	border-bottom: solid 1px rgb(190,190,190);
+}

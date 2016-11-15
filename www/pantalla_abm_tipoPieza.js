@@ -35,10 +35,10 @@ var pantalla_abm_tipoPieza = $.extend(true, {}, pantalla, {
 				var tipoPieza = datos.tipoPiezas[$(this).attr('id').replace('item_','')];
 				
 				pantalla_abm_tipoPieza_detalle.setTipoPieza(tipoPieza);
-				pantalla_abm_tipoPieza_detalle.show_right_to_left(function(){
+				
+				slider.show_right_to_left(pantalla_abm_tipoPieza_detalle, pantalla_abm_tipoPieza, function(){
 					$('#titulo').text('Pieza: ' + tipoPieza.descripcion);
 				});
-				
 				
 			};
 		}
