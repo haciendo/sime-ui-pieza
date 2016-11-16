@@ -7,11 +7,10 @@ var pantalla_abm_tipoPieza_detalle =  $.extend(true, {}, pantalla, {
 		toolbar.custom_toolbar.empty();
 		
 		toolbar.addCustomToolbarButton(	{
-            id: 'btn_volver',
+            id: 'pantalla_abm_tipoPieza_detalle_btn_volver',
+			class: 'btn_volver',
             click: function(){
-				slider.show_left_to_right(pantalla_abm_tipoPieza, pantalla_abm_tipoPieza_detalle, function(){
-					$('#titulo').text('Piezas');
-				});
+				slider.show_left_to_right(pantalla_abm_tipoPieza, pantalla_abm_tipoPieza_detalle);
 			}
         });
 		toolbar.addCustomToolbarButton(	toolbar.invokeButtons.pantalla_medicion	);
@@ -57,7 +56,7 @@ var pantalla_abm_tipoPieza_detalle =  $.extend(true, {}, pantalla, {
 				pantalla_abm_cota_detalle.setCota(cota);
 				
 				slider.show_right_to_left(pantalla_abm_cota_detalle, pantalla_abm_tipoPieza_detalle, function(){
-					$('#titulo').text('Pieza: ' + tipoPieza.descripcion);
+					$('#titulo').text('Pieza: ' + tipoPieza.descripcion + ' - Cota: ' + cota.descripcion);
 				});
 				
 				

@@ -8,8 +8,9 @@ var pantalla_instrumento =  $.extend(true, {}, pantalla, {
 		self.ui.show();
 		
 		toolbar.addCustomToolbarButton(	{
-            id:'btn_volver',
-			click: function(){
+            id: 'pantalla_instrumento_btn_volver',
+			class: 'btn_volver',
+            click: function(){
 				$('.pantalla').hide();
 				self.show();
 			}

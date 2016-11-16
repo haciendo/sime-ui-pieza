@@ -129,7 +129,6 @@ var toolbar = {
 			$toolbar_button.addClass(opt.class);
 		}
 		
-		
 		if(typeof(opt.click) !== "undefined"){
 			$('body').delegate('#'+opt.id, 'click', opt.click);
 		}
