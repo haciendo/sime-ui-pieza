@@ -64,8 +64,11 @@ var pantalla_abm_tipoPieza_detalle =  $.extend(true, {}, pantalla, {
 		}
 		
 		$cota_item.on('click', callback);
+		var result = self.ui.find('#cotas>ul>li').not('#item__nuevacota_').last().after($cota_item)
 		
-		self.ui.find('#cotas>ul').append($cota_item);
+		if(result.length == 0){
+			self.ui.find('#cotas>ul').append($cota_item);
+		};
 		
 	},
 	setTipoPieza: function(tipoPieza){
@@ -121,9 +124,11 @@ var pantalla_abm_tipoPieza_detalle =  $.extend(true, {}, pantalla, {
 			self.appendCota(cota);
 			
 			pantalla_abm_cota_detalle.setCota(cota);
-			pantalla_abm_cota_detalle.show_right_to_left(function(){
-				$('#titulo').text('Cota: ' + cota.descripcion);
+			
+			slider.show_right_to_left(pantalla_abm_cota_detalle, pantalla_abm_tipoPieza_detalle, function(){
+				$('#titulo').text('Pieza: ' + self.tipoPieza.descripcion + ' - Cota: ' + cota.descripcion);
 			});
+			
 		});
 
 	}

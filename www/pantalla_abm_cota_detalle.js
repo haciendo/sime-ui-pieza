@@ -31,8 +31,7 @@ var pantalla_abm_cota_detalle = $.extend(true, {}, pantalla, {
 		self.ctrl_descripcion = new AtributoEditable(self.ui.find("#descripcion"), function(valor_nuevo){
             self.cota.descripcion = valor_nuevo;
 			RepositorioLocal.save();
-			
-            $('#titulo').text("Cota: " + self.cota.descripcion);
+			$('#titulo').text('Pieza: ' + datos.tipoPiezas[self.cota.idTipoPieza].descripcion + ' - Cota: ' + self.cota.descripcion);
         });
 		
 		self.ctrl_base = new AtributoEditable(self.ui.find("#base"), function(valor_nuevo){

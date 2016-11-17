@@ -84,9 +84,11 @@ var pantalla_abm_tipoPieza = $.extend(true, {}, pantalla, {
 			self.appendTipoPieza(tipoPieza);
 			
 			pantalla_abm_tipoPieza_detalle.setTipoPieza(tipoPieza);
-			pantalla_abm_tipoPieza_detalle.show_right_to_left(function(){
+			
+			slider.show_right_to_left(pantalla_abm_tipoPieza_detalle, pantalla_abm_tipoPieza, function(){
 				$('#titulo').text('Pieza: ' + tipoPieza.descripcion);
 			});
+			
 		});
 
 	}
