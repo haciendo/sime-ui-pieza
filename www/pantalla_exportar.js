@@ -12,6 +12,8 @@ var pantalla_exportar =  $.extend(true, {}, pantalla, {
 		self.ui.show();
 	},
 	start: function() {
+		console.log('-_-_-_-_-_-_pantalla_exportar.js');
+		
 		var self = this;
 		var ui = $('#pantalla_exportar');
 		self.ui = ui;

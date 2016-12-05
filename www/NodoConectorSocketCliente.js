@@ -9,6 +9,9 @@ if(typeof(require) != "undefined"){
 }
 
 var NodoConectorSocketCliente = function(url){
+	console.log('-_-_-_-_-_-_NodoConectorSocketCliente.js');
+	
+	
     this.url = url;  
     this.initSocket();    
     this.verbose = false;

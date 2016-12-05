@@ -13,6 +13,9 @@ var AtributoEditable = function(ui_original, al_modificar){
 	
 	self.lbl = self.ui.find(".lbl_valor_atributo");
     self.txt = self.ui.find(".txt_valor_atributo");
+	
+	self.val(self.lbl.text());
+	
     self.txt.bind('keypress', function(e) {
         var code = e.keyCode || e.which;
         if(code==13){

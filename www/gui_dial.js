@@ -18,6 +18,8 @@ var gui_dial = function(opt){
 gui_dial.prototype = {
 	
 	start: function(){
+		console.log('-_-_-_-_-_-_gui_dial.js');
+		
 		var dial = this;
 		
 		dial.ui.empty();

@@ -1,3 +1,4 @@
+console.log('-_-_-_-_-_-_NodoConectorSocketCliente.js');
 var pantalla = {
 	show:function(){
 		var self = this;

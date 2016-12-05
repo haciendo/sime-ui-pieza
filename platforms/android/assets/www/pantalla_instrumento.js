@@ -1,5 +1,5 @@
 
-var pantalla_instrumento = {
+var pantalla_instrumento =  $.extend(true, {}, pantalla, {
 	show: function(){
 		var self = this;
 		
@@ -8,10 +8,11 @@ var pantalla_instrumento = {
 		self.ui.show();
 		
 		toolbar.addCustomToolbarButton(	{
-            id:'btn_volver',
-			click: function(){
-				$('.pantalla').hide();
-				self.show();
+            id: 'pantalla_instrumento_btn_volver',
+			class: 'btn_volver',
+            click: function(){
+				
+				slider.show_left_to_right(pantalla_abm_instrumentos, pantalla_instrumento);
 			}
 		});
 		
@@ -20,6 +21,8 @@ var pantalla_instrumento = {
 	},
 	
 	start: function(){
+		console.log('-_-_-_-_-_-_pantalla_instrumento.js');
+		
 		var self = this;
 		
 		self.ui = $('#pantalla_instrumento');
@@ -39,20 +42,15 @@ var pantalla_instrumento = {
 	setInstrumento: function(instrumento){
 		var self = this;
 		
-		self.show();
-		self.ui.css({
-			left: pantalla_abm_instrumentos.ui.width()
-		});		
 		
-		self.ui.animate({
-			left: 0
-		}, 300, function(){
+		slider.show_right_to_left(pantalla_instrumento, pantalla_abm_instrumentos, function(){
 			$('#titulo').text("Instrumento: " + instrumento.descripcion);
 		});
+		
 		
 		self.instrumento = instrumento;
         
         self.ctrl_codigo.val(instrumento.codigo);
         self.ctrl_descripcion.val(instrumento.descripcion);
 	}
-};
+});

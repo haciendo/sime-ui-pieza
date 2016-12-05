@@ -1,4 +1,4 @@
-var pantalla_abm_instrumentos = {
+var pantalla_abm_instrumentos =  $.extend(true, {}, pantalla, {
 	buttons:[],
 	show: function(){		
 		var self = this;
@@ -8,6 +8,8 @@ var pantalla_abm_instrumentos = {
 		self.ui.show();
 	},
 	start: function() {
+		console.log('pantalla_abm_instrumentos.js');
+		
 		var self = this;
 		self.ui = $('#pantalla_abm_instrumentos');
 		var txt_codigo = self.ui.find('#codigo');
@@ -38,6 +40,7 @@ var pantalla_abm_instrumentos = {
 								.text( instrumento.descripcion );
             $instrumento_item.click(function(){
                 pantalla_instrumento.setInstrumento(instrumento);
+				
             });
 			self.ui.find('.list>ul').append($instrumento_item);	
             
@@ -59,4 +62,4 @@ var pantalla_abm_instrumentos = {
 			agregarInstrumentoEnPantalla(instrumento);
 		});
 	}
-};
+});

@@ -23,6 +23,8 @@ var pantalla_abm_tipoPieza_detalle =  $.extend(true, {}, pantalla, {
 	},
 	
 	start: function(){
+		console.log('-_-_-_-_-_-_pantalla_abm_tipoPieza_detalle.js');
+		
 		var self = this;
 		
 		self.ui = $('#pantalla_abm_tipoPieza_detalle');
@@ -64,11 +66,17 @@ var pantalla_abm_tipoPieza_detalle =  $.extend(true, {}, pantalla, {
 		}
 		
 		$cota_item.on('click', callback);
+		
+		self.ui.find('#cotas>ul').append($cota_item);
+		
+		/*
+		// Esto es para poner el agreagar nueva al final
 		var result = self.ui.find('#cotas>ul>li').not('#item__nuevacota_').last().after($cota_item)
 		
 		if(result.length == 0){
 			self.ui.find('#cotas>ul').append($cota_item);
 		};
+		*/
 		
 	},
 	setTipoPieza: function(tipoPieza){
@@ -86,11 +94,6 @@ var pantalla_abm_tipoPieza_detalle =  $.extend(true, {}, pantalla, {
 		var self = this;
 		
 		self.ui.find('#cotas>ul').empty();
-		for(key in self.tipoPieza.cotas){
-			var cota = self.tipoPieza.cotas[key];
-			if(cota.id == "idCotaCero") continue;
-			self.appendCota(cota);
-		}
 		
 		
 		self.appendCota({
@@ -130,6 +133,13 @@ var pantalla_abm_tipoPieza_detalle =  $.extend(true, {}, pantalla, {
 			});
 			
 		});
+		
+		
+		for(key in self.tipoPieza.cotas){
+			var cota = self.tipoPieza.cotas[key];
+			if(cota.id == "idCotaCero") continue;
+			self.appendCota(cota);
+		}
 
 	}
 	

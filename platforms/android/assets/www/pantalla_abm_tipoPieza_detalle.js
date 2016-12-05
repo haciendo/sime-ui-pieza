@@ -7,11 +7,10 @@ var pantalla_abm_tipoPieza_detalle =  $.extend(true, {}, pantalla, {
 		toolbar.custom_toolbar.empty();
 		
 		toolbar.addCustomToolbarButton(	{
-            id: 'btn_volver',
+            id: 'pantalla_abm_tipoPieza_detalle_btn_volver',
+			class: 'btn_volver',
             click: function(){
-				pantalla_abm_tipoPieza.show_left_to_right(function(){
-					$('#titulo').text('Piezas');
-				});
+				slider.show_left_to_right(pantalla_abm_tipoPieza, pantalla_abm_tipoPieza_detalle);
 			}
         });
 		toolbar.addCustomToolbarButton(	toolbar.invokeButtons.pantalla_medicion	);
@@ -24,6 +23,8 @@ var pantalla_abm_tipoPieza_detalle =  $.extend(true, {}, pantalla, {
 	},
 	
 	start: function(){
+		console.log('-_-_-_-_-_-_pantalla_abm_tipoPieza_detalle.js');
+		
 		var self = this;
 		
 		self.ui = $('#pantalla_abm_tipoPieza_detalle');
@@ -50,11 +51,14 @@ var pantalla_abm_tipoPieza_detalle =  $.extend(true, {}, pantalla, {
 		if(!callback){
 			callback = function(){
 				
-				var cota = datos.tipoPiezas[self.tipoPieza.id].cotas[$(this).attr('id').replace('item_','')];
+				var tipoPieza = datos.tipoPiezas[self.tipoPieza.id];
+				
+				var cota = tipoPieza.cotas[$(this).attr('id').replace('item_','')];
 				
 				pantalla_abm_cota_detalle.setCota(cota);
-				pantalla_abm_cota_detalle.show_right_to_left(function(){
-					$('#titulo').text('Cota: ' + cota.descripcion);
+				
+				slider.show_right_to_left(pantalla_abm_cota_detalle, pantalla_abm_tipoPieza_detalle, function(){
+					$('#titulo').text('Pieza: ' + tipoPieza.descripcion + ' - Cota: ' + cota.descripcion);
 				});
 				
 				
@@ -64,6 +68,15 @@ var pantalla_abm_tipoPieza_detalle =  $.extend(true, {}, pantalla, {
 		$cota_item.on('click', callback);
 		
 		self.ui.find('#cotas>ul').append($cota_item);
+		
+		/*
+		// Esto es para poner el agreagar nueva al final
+		var result = self.ui.find('#cotas>ul>li').not('#item__nuevacota_').last().after($cota_item)
+		
+		if(result.length == 0){
+			self.ui.find('#cotas>ul').append($cota_item);
+		};
+		*/
 		
 	},
 	setTipoPieza: function(tipoPieza){
@@ -81,11 +94,6 @@ var pantalla_abm_tipoPieza_detalle =  $.extend(true, {}, pantalla, {
 		var self = this;
 		
 		self.ui.find('#cotas>ul').empty();
-		for(key in self.tipoPieza.cotas){
-			var cota = self.tipoPieza.cotas[key];
-			if(cota.id == "idCotaCero") continue;
-			self.appendCota(cota);
-		}
 		
 		
 		self.appendCota({
@@ -119,10 +127,19 @@ var pantalla_abm_tipoPieza_detalle =  $.extend(true, {}, pantalla, {
 			self.appendCota(cota);
 			
 			pantalla_abm_cota_detalle.setCota(cota);
-			pantalla_abm_cota_detalle.show_right_to_left(function(){
-				$('#titulo').text('Cota: ' + cota.descripcion);
+			
+			slider.show_right_to_left(pantalla_abm_cota_detalle, pantalla_abm_tipoPieza_detalle, function(){
+				$('#titulo').text('Pieza: ' + self.tipoPieza.descripcion + ' - Cota: ' + cota.descripcion);
 			});
+			
 		});
+		
+		
+		for(key in self.tipoPieza.cotas){
+			var cota = self.tipoPieza.cotas[key];
+			if(cota.id == "idCotaCero") continue;
+			self.appendCota(cota);
+		}
 
 	}
 	

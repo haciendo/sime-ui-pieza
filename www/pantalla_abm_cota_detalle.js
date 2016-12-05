@@ -23,7 +23,12 @@ var pantalla_abm_cota_detalle = $.extend(true, {}, pantalla, {
 		self.ui.show();
 	},
 	start: function(){
+		
+		console.log('-_-_-_-_-_-_pantalla_abm_cota_detalle.js');
+		
 		var self = this;
+		
+		
 		
 		self.ui = $('#pantalla_abm_cota_detalle');
 		

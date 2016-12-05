@@ -13,6 +13,9 @@ var pantalla_abm_tipoPieza = $.extend(true, {}, pantalla, {
 		self.ui.show();
 	},
 	start: function(){
+		console.log('-_-_-_-_-_-_pantalla_abm_tipoPieza.js');
+		
+		
 		var self = this;
 		self.ui = $('#pantalla_abm_tipoPieza');
 		
@@ -35,10 +38,10 @@ var pantalla_abm_tipoPieza = $.extend(true, {}, pantalla, {
 				var tipoPieza = datos.tipoPiezas[$(this).attr('id').replace('item_','')];
 				
 				pantalla_abm_tipoPieza_detalle.setTipoPieza(tipoPieza);
-				pantalla_abm_tipoPieza_detalle.show_right_to_left(function(){
+				
+				slider.show_right_to_left(pantalla_abm_tipoPieza_detalle, pantalla_abm_tipoPieza, function(){
 					$('#titulo').text('Pieza: ' + tipoPieza.descripcion);
 				});
-				
 				
 			};
 		}
@@ -53,13 +56,6 @@ var pantalla_abm_tipoPieza = $.extend(true, {}, pantalla, {
 		
 		var self = this;
 		self.ui.find('.list>ul').empty();
-		
-		for(key in datos.tipoPiezas){
-			var tipoPieza = datos.tipoPiezas[key];
-			if(tipoPieza.id == "idTipoPiezaCero") continue;
-			self.appendTipoPieza(tipoPieza);
-		}
-		
 		
 		self.appendTipoPieza({
 			id: '_nuevapieza_',
@@ -84,10 +80,19 @@ var pantalla_abm_tipoPieza = $.extend(true, {}, pantalla, {
 			self.appendTipoPieza(tipoPieza);
 			
 			pantalla_abm_tipoPieza_detalle.setTipoPieza(tipoPieza);
-			pantalla_abm_tipoPieza_detalle.show_right_to_left(function(){
+			
+			slider.show_right_to_left(pantalla_abm_tipoPieza_detalle, pantalla_abm_tipoPieza, function(){
 				$('#titulo').text('Pieza: ' + tipoPieza.descripcion);
 			});
+			
 		});
+		
+		
+		for(key in datos.tipoPiezas){
+			var tipoPieza = datos.tipoPiezas[key];
+			if(tipoPieza.id == "idTipoPiezaCero") continue;
+			self.appendTipoPieza(tipoPieza);
+		}
 
 	}
 });

@@ -10,8 +10,13 @@ var DivConsola = {
 			var div_entrada = $("<div>");
 			_.forEach(arguments, function(arg){
 				if(arg === undefined) return;
-				if(_.isString(arg)) div_entrada.text(div_entrada.text() + arg + " ");
-				else {
+				
+				
+				if(_.isString(arg)){
+					div_entrada.text(div_entrada.text() + arg + " ");
+				
+				} else {
+					
 					if(_.isObject(arg)){
 						try{
 							div_entrada.text(div_entrada.text() + JSON.stringify(arg));
@@ -21,7 +26,9 @@ var DivConsola = {
 					}
 					else 
 						div_entrada.text(div_entrada.text() + arg.toString());
-				};				
+				};
+
+				
 			});
 			_this.divConsola.append(div_entrada);
 			_this.divConsola[0].scrollTop = _this.divConsola[0].scrollHeight;
@@ -42,8 +49,8 @@ var DivConsola = {
 };
 
 $(function(){
-	if(window.isphone){
+	//if(window.isphone){
 		DivConsola.start();
 		console.log("url", document.URL);
-	}
+	//}
 });

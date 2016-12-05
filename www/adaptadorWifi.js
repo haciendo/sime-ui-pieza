@@ -1,4 +1,6 @@
 //$(function(){
+	console.log('-_-_-_-_-_-_adaptadorWifi.js');
+	
 	var pedir_medicion = function(url){
 		$.ajax({
 			type: "GET",

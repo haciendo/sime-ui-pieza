@@ -13,6 +13,9 @@ var pantalla_abm_tipoPieza = $.extend(true, {}, pantalla, {
 		self.ui.show();
 	},
 	start: function(){
+		console.log('-_-_-_-_-_-_pantalla_abm_tipoPieza.js');
+		
+		
 		var self = this;
 		self.ui = $('#pantalla_abm_tipoPieza');
 		
@@ -54,13 +57,6 @@ var pantalla_abm_tipoPieza = $.extend(true, {}, pantalla, {
 		var self = this;
 		self.ui.find('.list>ul').empty();
 		
-		for(key in datos.tipoPiezas){
-			var tipoPieza = datos.tipoPiezas[key];
-			if(tipoPieza.id == "idTipoPiezaCero") continue;
-			self.appendTipoPieza(tipoPieza);
-		}
-		
-		
 		self.appendTipoPieza({
 			id: '_nuevapieza_',
 			descripcion: "+ Agregar una pieza"
@@ -90,6 +86,13 @@ var pantalla_abm_tipoPieza = $.extend(true, {}, pantalla, {
 			});
 			
 		});
+		
+		
+		for(key in datos.tipoPiezas){
+			var tipoPieza = datos.tipoPiezas[key];
+			if(tipoPieza.id == "idTipoPiezaCero") continue;
+			self.appendTipoPieza(tipoPieza);
+		}
 
 	}
 });

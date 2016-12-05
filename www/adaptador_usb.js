@@ -1,5 +1,7 @@
 $(function(){
 	
+	console.log('-_-_-_-_-_-_adaptador_usb.js');
+	
 	var buffer_entrada_serie = "";
 	var abrirPuertoSerie = function(){
 		serial.open (

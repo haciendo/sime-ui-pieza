@@ -6,21 +6,29 @@ var pantalla_abm_cota_detalle = $.extend(true, {}, pantalla, {
 		toolbar.custom_toolbar.empty();
 		
 		toolbar.addCustomToolbarButton(	{
-            id: 'btn_volver',
+            id: 'pantalla_abm_cota_detalle_btn_volver',
+			class: 'btn_volver',
             click: function(){
-				pantalla_abm_tipoPieza_detalle.show_left_to_right(function(){
-					
+				slider.show_left_to_right(pantalla_abm_tipoPieza_detalle, pantalla_abm_cota_detalle, function(){
 					$('#titulo').text('Pieza: ' + datos.tipoPiezas[self.cota.idTipoPieza].descripcion);
-					
 				});
+				
 			}
         });
+		
+		
+		
 		toolbar.addCustomToolbarButton(	toolbar.invokeButtons.pantalla_medicion	);
 		
 		self.ui.show();
 	},
 	start: function(){
+		
+		console.log('-_-_-_-_-_-_pantalla_abm_cota_detalle.js');
+		
 		var self = this;
+		
+		
 		
 		self.ui = $('#pantalla_abm_cota_detalle');
 		
@@ -28,8 +36,7 @@ var pantalla_abm_cota_detalle = $.extend(true, {}, pantalla, {
 		self.ctrl_descripcion = new AtributoEditable(self.ui.find("#descripcion"), function(valor_nuevo){
             self.cota.descripcion = valor_nuevo;
 			RepositorioLocal.save();
-			
-            $('#titulo').text("Cota: " + self.cota.descripcion);
+			$('#titulo').text('Pieza: ' + datos.tipoPiezas[self.cota.idTipoPieza].descripcion + ' - Cota: ' + self.cota.descripcion);
         });
 		
 		self.ctrl_base = new AtributoEditable(self.ui.find("#base"), function(valor_nuevo){

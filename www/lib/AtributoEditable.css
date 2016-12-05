@@ -2,12 +2,17 @@
     position:absolute;
     top: 15px;
     right: 71%;
-    color: gray;
+    color: rgb(70,70,70);
+	text-align: left;
+    font-size: 1.2em;
 }
 .lbl_valor_atributo{
     position:absolute;
     top: 15px;
-    left: 31%;    
+    left: 31%;
+	color: rgb(70,70,70);
+	text-align: left;
+	font-size: 1.1em;
 }
 .txt_valor_atributo{
     position: absolute;
@@ -18,5 +23,25 @@
     background-color: #c8c8c8;
     border: none;
     bottom: 0px;
-    font-size: 18px;
+    font-size: 1.1em;
+}
+
+
+@media (max-width: 600px) {
+    .nombre_atributo{
+        left: 4px;
+        top: 4px;
+        font-size: 1em;
+    }
+    .lbl_valor_atributo{
+        left: 4px;
+        bottom: 4px;
+        top: initial;
+    }
+    .txt_valor_atributo{
+        left: 4px;
+        bottom: 4px;
+        top: initial;
+        width: 98%;
+    }
 }

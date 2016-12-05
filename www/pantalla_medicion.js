@@ -17,6 +17,8 @@ var pantalla_medicion =  $.extend(true, {}, pantalla, {
 		
 	},
 	start: function() {
+		console.log('-_-_-_-_-_-_pantalla_medicion.js');
+		
 		var self = this;
 		
 		var ui = $('#pantalla_medicion');

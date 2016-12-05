@@ -2,6 +2,7 @@ var mockup_handler_id_setInterval_medicionTiempoReal;
 //clearInterval(mockup_handler_id_setInterval_medicionTiempoReal)
 
 $(function(){
+	console.log('-_-_-_-_-_-_desarrollo_mockups_celu.js');
 	
 	/**************************************************
 	 * Mock del instrumento 111

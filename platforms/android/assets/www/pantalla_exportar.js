@@ -1,4 +1,4 @@
-var pantalla_exportar = {
+var pantalla_exportar =  $.extend(true, {}, pantalla, {
 	buttons:[],
 	show: function(){
 		var self = this;
@@ -12,6 +12,8 @@ var pantalla_exportar = {
 		self.ui.show();
 	},
 	start: function() {
+		console.log('-_-_-_-_-_-_pantalla_exportar.js');
+		
 		var self = this;
 		var ui = $('#pantalla_exportar');
 		self.ui = ui;
@@ -53,4 +55,4 @@ var pantalla_exportar = {
 			
 		});
 	}
-};
+});

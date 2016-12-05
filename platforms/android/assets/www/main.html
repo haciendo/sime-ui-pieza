@@ -8,7 +8,9 @@
 		<!--		para debuguear en phonegap, sacarlo para release-->
         <link rel="stylesheet" href="lib/DivConsola.css" />
         <!--		-->
-		
+        
+		<link rel="stylesheet" href="lib/AtributoEditable.css" />
+        
         <link rel="stylesheet" href="main.css" />
         <link rel="stylesheet" href="toolbar.css" />
         <link rel="stylesheet" href="pantalla_medicion.css" />
@@ -82,12 +84,12 @@
 		<div id="pantalla_abm_tipoPieza_detalle" class="pantalla">
 			<ul>
 			
-				<li id="descripcion">
+				<li id="descripcion" class="list_item">
 						Descripción
 				</li>
 				
 				<li id="cotas" class="contenedor_atributo_lista">
-					<div class="nombre_atributo">
+					<div class="nombre_atributo list_item">
 						Cotas
 					</div>
 					
@@ -246,6 +248,7 @@
 	<script type="text/javascript" src="main.js"></script>
     
 	<script type="text/javascript" src="toolbar.js"></script>
+	<script type="text/javascript" src="slider.js"></script>
 	<script type="text/javascript" src="gui_dial.js"></script>
 	<script type="text/javascript" src="gestor_medicion.js"></script>
 	<script type="text/javascript" src="gestor_instrumentos.js"></script>

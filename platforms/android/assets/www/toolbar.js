@@ -1,6 +1,7 @@
 var toolbar = {
 	invokeButtons:{},
 	start: function(){
+		console.log('-_-_-_-_-_-_toolbar.js');
 		var self = this;
 		
 		var ui = $('#toolbar');
@@ -129,7 +130,6 @@ var toolbar = {
 			$toolbar_button.addClass(opt.class);
 		}
 		
-				
 		if(typeof(opt.click) !== "undefined"){
 			$('body').delegate('#'+opt.id, 'click', opt.click);
 		}

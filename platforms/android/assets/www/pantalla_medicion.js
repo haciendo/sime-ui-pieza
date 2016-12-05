@@ -1,4 +1,4 @@
-var pantalla_medicion = {
+var pantalla_medicion =  $.extend(true, {}, pantalla, {
 	buttons:[],
 	dialMedicion: null,
 	dialMedicionTiempoReal: null,
@@ -17,6 +17,8 @@ var pantalla_medicion = {
 		
 	},
 	start: function() {
+		console.log('-_-_-_-_-_-_pantalla_medicion.js');
+		
 		var self = this;
 		
 		var ui = $('#pantalla_medicion');
@@ -413,8 +415,7 @@ var pantalla_medicion = {
             }
 
 		});
-		
-		
+
 	}
 	
-};
+});

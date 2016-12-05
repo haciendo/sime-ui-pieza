@@ -26,7 +26,7 @@ div.pantalla{
     top: 6em;
     bottom: 0px;
 	left:0px;
-	right:0px;
+	width:100%;
 	background-color: #c8c8c8;
 	overflow: hidden;
 }
@@ -52,8 +52,6 @@ div.list{
 
 li.list_item{
 	background-color: rgb(200,200,200);
-	color: rgb(70,70,70);
-	text-align: left;
 	height: 3em;
 	padding-top: 0.6em;
 	padding-left: 0.6em;
@@ -61,51 +59,38 @@ li.list_item{
 	
 	position: relative;
 	box-sizing: border-box;
+	color: rgb(70,70,70);
+	text-align: left;
     font-size: 1.2em;
     cursor: pointer;
 }
 
 
-.nombre_atributo{
-    position:absolute;
-    top: 15px;
-    right: 71%;
-    color: gray;
-}
-.lbl_valor_atributo{
-    position:absolute;
-    top: 15px;
-    left: 31%;    
-}
-.txt_valor_atributo{
-    position: absolute;
-    top: 3px;
-    left: 31%;
-    display: none;
-    width: 69%;
-    background-color: #c8c8c8;
-    border: none;
-    bottom: 0px;
-    font-size: 18px;
+.contenedor_atributo_lista{
+    position: relative;
+    box-sizing: border-box;
+    cursor: pointer;
+	background-color: rgb(200,200,200);
+	color: rgb(70,70,70);
+	text-align: left;
+	padding-top: 4px;
 }
 
+.contenedor_atributo_lista
+ul{
+	position: relative;
+	left: 31%;
+	right: 0px;
+	margin-top: 15px;
+	bottom: 0px;
+}
 
-
-@media (max-width: 600px) {
-    .nombre_atributo{
-        left: 4px;
-        top: 4px;
-        font-size: 14px;
-    }
-    .lbl_valor_atributo{
-        left: 4px;
-        bottom: 4px;
-        top: initial;
-    }
-    .txt_valor_atributo{
-        left: 4px;
-        bottom: 4px;
-        top: initial;
-        width: 98%;
-    }
+.contenedor_atributo_lista
+li{
+	background-color: rgb(200,200,200);
+	color: rgb(70,70,70);
+	text-align: left;
+	height: 3em;
+	padding-top: 4px;
+	border-bottom: solid 1px rgb(190,190,190);
 }

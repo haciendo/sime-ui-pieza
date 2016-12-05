@@ -1,3 +1,4 @@
+console.log('-_-_-_-_-_-_slider.js');
 var slider = {
 	show_right_to_left: function(pantallaShow, pantallaHide, onEnd_callback){
 		

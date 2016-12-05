@@ -1,5 +1,6 @@
 var gestor_instrumentos = {
 	start: function(){
+		console.log('-_-_-_-_-_-_gestor_instrumentos.js');
     },
     addInstrumento: function(instrumento){        
         instrumento.id = _.max(datos.instrumentos.keys) + 1;        

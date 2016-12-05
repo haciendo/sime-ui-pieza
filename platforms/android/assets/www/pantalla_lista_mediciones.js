@@ -1,4 +1,4 @@
-var pantalla_lista_mediciones = {
+var pantalla_lista_mediciones =  $.extend(true, {}, pantalla, {
 	buttons:[],
 	show: function(){
 		var self = this;
@@ -7,6 +7,8 @@ var pantalla_lista_mediciones = {
 		self.ui.show();
 	},
 	start: function() {
+		console.log('-_-_-_-_-_-_pantalla_lista_mediciones.js');
+		
 		var self = this;
 		
 		var ui = $('#pantalla_lista_mediciones');
@@ -30,4 +32,4 @@ var pantalla_lista_mediciones = {
 			
 		});
 	}
-};
+});

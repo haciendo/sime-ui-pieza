@@ -90,6 +90,7 @@ var RepositorioLocal = {
 		});
 	},
 	load: function(callback){
+		console.log('-_-_-_-_-_-_RepositorioLocal.js -- load');
 		var miFile = new FileHelper("_DatosSIME", function(){
 			miFile.read(
 				function(archivo){

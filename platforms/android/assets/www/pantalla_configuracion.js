@@ -1,4 +1,4 @@
-var pantalla_configuracion = {
+var pantalla_configuracion =  $.extend(true, {}, pantalla, {
 	buttons:[],
 	show: function(){
 		var self = this;
@@ -7,6 +7,8 @@ var pantalla_configuracion = {
 		self.ui.show();
 	},
 	start: function() {
+		console.log('-_-_-_-_-_-_pantalla_configuracion.js');
+		
 		var self = this;
 		
 		var ui = $('#pantalla_configuracion');
@@ -21,4 +23,4 @@ var pantalla_configuracion = {
 		
 		
 	}
-};
+});

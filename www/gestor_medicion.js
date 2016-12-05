@@ -14,6 +14,9 @@ var printMedicion=function(medicion){
 var gestor_medicion = {
 	
 	start: function(){
+		
+		console.log('-_-_-_-_-_-_gestor_medicion.js');
+		
 		var self = this;
         
         this.pedido_medicion = {remove: function(){}}; 

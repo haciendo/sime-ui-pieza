@@ -11,8 +11,8 @@ var pantalla_instrumento =  $.extend(true, {}, pantalla, {
             id: 'pantalla_instrumento_btn_volver',
 			class: 'btn_volver',
             click: function(){
-				$('.pantalla').hide();
-				self.show();
+				
+				slider.show_left_to_right(pantalla_abm_instrumentos, pantalla_instrumento);
 			}
 		});
 		
@@ -21,6 +21,8 @@ var pantalla_instrumento =  $.extend(true, {}, pantalla, {
 	},
 	
 	start: function(){
+		console.log('-_-_-_-_-_-_pantalla_instrumento.js');
+		
 		var self = this;
 		
 		self.ui = $('#pantalla_instrumento');
@@ -40,16 +42,11 @@ var pantalla_instrumento =  $.extend(true, {}, pantalla, {
 	setInstrumento: function(instrumento){
 		var self = this;
 		
-		self.show();
-		self.ui.css({
-			left: pantalla_abm_instrumentos.ui.width()
-		});		
 		
-		self.ui.animate({
-			left: 0
-		}, 300, function(){
+		slider.show_right_to_left(pantalla_instrumento, pantalla_abm_instrumentos, function(){
 			$('#titulo').text("Instrumento: " + instrumento.descripcion);
 		});
+		
 		
 		self.instrumento = instrumento;
         

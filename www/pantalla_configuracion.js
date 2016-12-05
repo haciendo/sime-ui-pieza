@@ -7,6 +7,8 @@ var pantalla_configuracion =  $.extend(true, {}, pantalla, {
 		self.ui.show();
 	},
 	start: function() {
+		console.log('-_-_-_-_-_-_pantalla_configuracion.js');
+		
 		var self = this;
 		
 		var ui = $('#pantalla_configuracion');
